@@ -97,4 +97,63 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    var videoTriggers = document.querySelectorAll('.video-trigger');
+    var modalIframe = document.getElementById('modalVideoIframe');
+    var videoModal = document.getElementById('videoModal'); // L'elemento HTML
+    var bsModal; // L'istanza Bootstrap del modal
+
+    // Inizializza il modal di Bootstrap se esiste
+    if (videoModal) {
+        // Usa l'oggetto Bootstrap globale 'bootstrap' caricato dallo script CDN
+        bsModal = new bootstrap.Modal(videoModal);
+
+        // A. QUANDO CLICCHI SULLA THUMBNAIL
+        videoTriggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function() {
+                // 1. Prendi l'ID dal data-attribute
+                
+                var videoId = this.getAttribute('data-video-id');
+                var titleText = this.getAttribute('data-title') || ""; // Se manca, metti stringa vuota
+                var descText = this.getAttribute('data-description') || ""; 
+
+                if (!videoId) {
+                    console.error("Manca data-video-id nell'HTML!");
+                    return;
+                }
+
+                // B. IMPOSTA VIDEO YOUTUBE
+                var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0&showinfo=0&modestbranding=1";
+                if(modalIframe) modalIframe.src = youtubeUrl;
+
+                // C. IMPOSTA TESTI (Solo se gli elementi esistono nell'HTML)
+                if (modalTitle) modalTitle.textContent = titleText;
+                if (modalDescription) modalDescription.textContent = descText;
+
+                // D. APRI MODALE
+                bsModal.show();
+
+                // E. MUTO IL VIDEO HERO (così non si sovrappongono gli audio)
+                if (video) {
+                    video.muted = true;
+                    video.volume = 0;
+                    if (slider) slider.value = 0;
+                    updateIcon(0);
+                }
+;
+                
+
+            });
+        });
+
+        // B. QUANDO CHIUDI LA MODALE (STOP VIDEO)
+        // È fondamentale svuotare l'SRC, altrimenti l'audio continua in background!
+        videoModal.addEventListener('hidden.bs.modal', function () {
+            modalIframe.src = ""; 
+            // Pulisci il testo quando chiudi (opzionale, ma pulito)
+            modalTitle.textContent = "";
+            modalDescription.textContent = "";
+        });
+    }
+
+
 });
