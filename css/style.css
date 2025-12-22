@@ -128,10 +128,22 @@ body {
 
 /* Testi introduttivi Portfolio */
 .portfolio-heading {
-    font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; color: white;
+    font-weight: 300; 
+    text-transform: uppercase; 
+    letter-spacing: 4px; /* Aumentato un po' per eleganza */
+    margin-bottom: 20px; 
+    color: white;
+    font-size: 2rem; /* Titolo un po' più piccolo e raffinato */
 }
+
 .portfolio-subheading {
-    font-weight: 650; font-size: 1.2rem; color: #888;
+    font-family: 'Playfair Display', serif; /* Font diverso ed elegante */
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #bbb;
+    font-weight: 400;
+    line-height: 1.6;
+    text-transform: none;
 }
 
 /* Container Carosello (con padding per le frecce) */
@@ -236,6 +248,20 @@ body {
     color: #ccc !important; /* Grigio chiaro */
 }
 
+.hero-bottom-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh; /* Occupa il 30% basso dello schermo */
+    
+    /* IL TRUCCO: Gradiente da Trasparente a Colore Sfondo (#0a0a0a) */
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 0%, #0a0a0a 100%);
+    
+    z-index: 1; /* Sta sopra al video ma sotto la freccia/testo se serve */
+    pointer-events: none; /* Cliccabile attraverso (non blocca la freccia) */
+}
+
 /* Animazione entrata testo */
 .fade-in-up {
     animation: fadeInUp 0.5s ease-out forwards;
@@ -261,6 +287,19 @@ body {
     border-radius: 50%;
 }
 
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px); /* Parte 40px più in basso */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    will-change: opacity, transform; /* Ottimizza per il browser */
+}
+
+/* Stato attivo: visibile e nella posizione originale */
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* =========================================
    6. MOBILE RESPONSIVE
    ========================================= */
@@ -282,4 +321,108 @@ body {
         width: 85vw; /* Occupa quasi tutto lo schermo */
         margin-left: 15px; /* Un po' di margine a sinistra */
     }
+}
+
+
+/* =========================================
+   SEZIONE CHI SONO
+   ========================================= */
+.about-section { opacity: 1 !important; transform: none !important; }
+
+.about-heading {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: white;
+}
+
+.about-content p {
+    font-family: 'Playfair Display', serif;
+        font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.9; /* Interlinea ampia per eleganza e leggibilità */
+    color: #ccc; /* Grigio chiaro, meno stancante del bianco puro */
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.about-content strong {
+    color: white;
+    font-weight: 600;
+}
+
+/* Firma "sccritta a mano" o elegante */
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: white;
+    opacity: 0.9;
+}
+
+/* =========================================
+   HOVER EFFECTS PORTFOLIO (Elegant)
+   ========================================= */
+
+/* 1. Il contenitore del video (la card) */
+.video-thumb-wrapper {
+    overflow: hidden; /* Fondamentale per il crop dello zoom */
+    border-radius: 0; /* Arrotondamento leggero */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Ombra di base */
+}
+
+/* Quando passi il mouse sopra il blocco generale (.video-trigger) */
+.video-trigger:hover .video-thumb-wrapper {
+    transform: translateY(-7px); /* Si solleva verso l'alto */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* L'ombra diventa più profonda e diffusa */
+}
+
+/* 2. L'immagine di sfondo (Thumbnail) */
+.video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease, filter 0.5s ease; /* Transizione lenta e morbida */
+    filter: brightness(0.85); /* Di base è leggermente scura */
+}
+
+.video-trigger:hover .video-thumb {
+    transform: scale(1.06); /* Zoom leggerissimo (6%) */
+    filter: brightness(1.05); /* Diventa luminosa */
+}
+
+/* 3. L'icona Play */
+.play-overlay {
+    background: rgba(0,0,0,0.3); /* Sfondo scuro leggero */
+    transition: background 0.4s ease;
+}
+
+.play-overlay i {
+    font-size: 3rem;
+    color: rgba(255,255,255,0.8);
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+/* Hover sull'icona play */
+.video-trigger:hover .play-overlay {
+    background: rgba(0,0,0,0.1); /* Si schiarisce quasi del tutto */
+}
+
+.video-trigger:hover .play-overlay i {
+    color: #fff; /* Bianco puro */
+    transform: scale(1.2); /* Diventa un po' più grande */
+}
+
+/* 4. Il Titolo sotto il video */
+.video-title {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.video-trigger:hover + .video-title {
+    color: white; /* Il testo si illumina */
+    transform: translateX(5px); /* Si sposta leggermente a destra */
 }

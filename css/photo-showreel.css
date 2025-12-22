@@ -1,0 +1,155 @@
+.photo-section {
+    position: relative; /* Necessario per ancorare il video assoluto */
+    padding: 100px 0;   /* Aumentiamo un po' il padding per dare respiro */
+    overflow: hidden; 
+    /* Rimuoviamo il background-color fisso perché ora c'è il video */
+    background-color: #0a0a0a; 
+}
+
+
+/* Wrapper che contiene video + velo nero */
+.bg-video-wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0; /* Sta sotto a tutto */
+    overflow: hidden;
+}
+
+/* Il Video vero e proprio */
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Copre tutto lo spazio senza deformarsi */
+    opacity: 0.6; /* Riduciamo l'opacità del video per non disturbare */
+}
+
+/* Il Velo Scuro (Overlay) */
+.bg-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Gradiente: Nero pieno sopra e sotto (per fondersi col sito), trasparente al centro */
+    background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.6) 50%, #0a0a0a 100%);
+    z-index: 1; /* Sta sopra il video */
+}
+
+/* Classe di utilità per il contenuto */
+.z-2 {
+    z-index: 2; /* Porta testo e foto sopra il video */
+}
+
+/* --- IL RESTO DEGLI STILI RIMANE UGUALE --- */
+.photo-carousel-wrapper {
+    width: 100%;
+    position: relative;
+    padding: 0; 
+}
+
+/* Wrapper del carosello */
+.photo-carousel-wrapper {
+    width: 100%;
+    position: relative;
+    /* Rimuoviamo il padding interno perché ora le frecce stanno fuori */
+    padding: 0; 
+}
+
+/* IL BINARIO (TRACK) */
+.photo-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+    
+    /* Nascondi scrollbar */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.photo-track::-webkit-scrollbar { display: none; }
+
+/* LA SINGOLA FOTO */
+.photo-item {
+    flex: 0 0 auto;
+    width: 300px;  
+    height: 450px; 
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo-item img {
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+}
+
+/* HOVER EFFECT */
+.photo-item:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.photo-item:hover img { transform: scale(1.1); }
+
+/* OVERLAY TESTO */
+.photo-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white; opacity: 0; transition: opacity 0.3s ease;
+}
+.photo-item:hover .photo-overlay { opacity: 1; }
+.photo-overlay span {
+    font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
+}
+
+/* --- FRECCE FOTO ESTERNE --- */
+.photo-btn {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%);
+    background: transparent; /* Sfondo trasparente per eleganza */
+    color: white;
+    border: none; /* Niente bordo */
+    font-size: 2rem; /* Freccia più grande */
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10; transition: all 0.3s ease;
+}
+
+/* Posizioniamo le frecce NELLO SPAZIO VUOTO a lato */
+#photoLeft { left: -50px; }
+#photoRight { right: -50px; }
+
+.photo-btn:hover {
+    color: #ccc; 
+    transform: translateY(-50%) scale(1.2); /* Leggero zoom */
+}
+
+/* SU MOBILE / TABLET */
+@media (max-width: 992px) {
+    .photo-item { width: 240px; height: 360px; }
+    
+    /* Su schermi piccoli le frecce esterne darebbero fastidio, le nascondiamo */
+    .photo-btn { display: none; } 
+    
+    /* Ripristiniamo lo scroll touch naturale */
+    .photo-carousel-wrapper { overflow: visible; }
+}
+
+.photo-bottom-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; /* Lunghezza della sfumatura, aumentala se vuoi un fade più lungo */
+    
+    /* Il trucco: Sfumatura da Trasparente -> al colore esatto del Footer (#050505) */
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, #050505 100%);
+    
+    z-index: 5; /* Deve stare sopra il video di background */
+    pointer-events: none; /* Così non blocca eventuali click */
+}
+
+/* Rimuovi eventuali bordi dal footer per sicurezza */
+footer {
+    border-top: none !important;
+    position: relative;
+    z-index: 6; /* Il footer sta sopra la sfumatura finale */
+}

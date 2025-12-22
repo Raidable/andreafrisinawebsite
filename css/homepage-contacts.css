@@ -1,0 +1,134 @@
+/* =========================================
+   SEZIONE CONTATTI (LUXURY / EDITORIAL)
+   ========================================= */
+.contact-section {
+    padding: 150px 0; /* Molto respiro verticale */
+    background-color: #050505; 
+    color: white;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Tipografia Colonna Sinistra */
+.contact-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem; /* Titolo grande e impattante */
+    line-height: 1.1;
+    letter-spacing: -1px; /* Lettere più vicine, stile moderno */
+    color: white;
+    text-transform: uppercase;
+}
+
+.contact-sub {
+    font-family: 'Playfair Display', serif; /* Contrasto Serif */
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* Dettagli (Email, Social) */
+.detail-item .label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.detail-item .value {
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+/* Effetto Hover sui link testuali */
+.link-hover {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.link-hover::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+.link-hover:hover::after {
+    width: 100%;
+}
+
+/* --- IL FORM LUXURY --- */
+.luxury-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03); /* Appena visibile */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordo sottilissimo */
+    color: white;
+    padding: 20px; /* Spazioso */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+.luxury-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* Focus: diventa un po' più chiaro */
+.luxury-input:focus {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Bottone Solo Testo con Freccia */
+.btn-luxury {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 0;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+.btn-luxury .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+.btn-luxury:hover {
+    opacity: 0.8;
+}
+
+.btn-luxury:hover .arrow {
+    transform: translateX(10px); /* La freccia si sposta a destra */
+}
+
+/* Responsive: su mobile riduciamo il titolo */
+@media (max-width: 992px) {
+    .contact-heading {
+        font-size: 2.5rem;
+    }
+    .contact-section {
+        padding: 80px 0;
+    }
+}
