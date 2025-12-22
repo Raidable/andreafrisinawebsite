@@ -140,6 +140,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     return;
                 }
 
+                
+                
                 // B. COSTRUISCI URL IN BASE AL PROVIDER
                 var finalUrl = "";
 

@@ -426,3 +426,49 @@ body {
     color: white; /* Il testo si illumina */
     transform: translateX(5px); /* Si sposta leggermente a destra */
 }
+
+/* =========================================
+   MOBILE HORIZONTAL SCROLL (PORTFOLIO)
+   ========================================= */
+@media (max-width: 991px) {
+    .video-title {
+        color: white !important;       /* Forza il colore bianco puro */
+        opacity: 1 !important;         /* Assicura che sia visibile */
+        margin-top: 12px !important;   /* Un po' di spazio dal video */
+        font-size: 0.9rem !important;  /* Dimensione leggibile */
+        display: block !important;     /* Sicurezza per visualizzarlo */
+        
+        /* Opzionale: se vuoi che siano leggermente spostati a destra come l'effetto hover */
+        transform: translateX(5px); 
+    }
+
+    .mobile-scroll-row {
+        display: flex !important;           /* Forza Flexbox */
+        flex-wrap: nowrap !important;       /* VIETA di andare a capo */
+        overflow-x: auto !important;        /* Forza lo scroll orizzontale */
+        overflow-y: hidden;                 /* Niente scroll verticale */
+        gap: 15px !important;               /* Spazio tra i video */
+        padding-bottom: 30px !important;    /* Spazio sotto per l'ombra hover */
+        
+        /* Sistema scroll su iOS/Android */
+        -webkit-overflow-scrolling: touch; 
+        scrollbar-width: none;             
+        
+        /* Rimuovi i margini negativi standard di Bootstrap che rompono lo scroll */
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    
+    .mobile-scroll-row::-webkit-scrollbar { 
+        display: none; 
+    }
+
+    /* Seleziona le colonne direttamente dentro la riga */
+    .mobile-scroll-row > div {
+        flex: 0 0 85% !important;    /* Occupa l'85% fisso */
+        width: 85% !important;       /* Larghezza fissa */
+        max-width: 85% !important;   /* Massimo larghezza fissa */
+        margin-top: 0 !important;    /* Rimuove margini strani */
+    }
+}
+
