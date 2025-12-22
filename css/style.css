@@ -1,5 +1,9 @@
-/* --- STILI GENERALI --- */
-html { scroll-behavior: smooth; }
+/* =========================================
+   1. STILI GENERALI E RESET
+   ========================================= */
+html { 
+    scroll-behavior: smooth; 
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -9,7 +13,9 @@ body {
     overflow-x: hidden;
 }
 
-/* --- HERO SECTION --- */
+/* =========================================
+   2. HERO SECTION (VIDEO LOCALE)
+   ========================================= */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -22,6 +28,7 @@ body {
     text-align: center;
 }
 
+/* Wrapper per il video .mp4 locale */
 .local-video-wrapper {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -33,110 +40,29 @@ body {
 .local-video-wrapper video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Magia CSS: copre tutto lo schermo mantenendo le proporzioni */
+    object-fit: cover; /* Copre tutto lo schermo senza deformare */
     
-    /* Effetto fade-in */
-    opacity: 0;
-    transition: opacity 1s ease-in;
+    opacity: 0; /* Parte invisibile */
+    transition: opacity 1s ease-in; /* Fade-in all'avvio */
 }
 
-/* Classe per mostrare il video quando parte */
+/* Classe aggiunta via JS quando il video parte */
 .local-video-wrapper video.visible {
     opacity: 1;
 }
 
-
-/* Regole per coprire sempre lo schermo */
-@media (min-aspect-ratio: 16/9) {
-    .youtube-wrapper iframe { height: 56.25vw; width: 100vw; }
-}
-@media (max-aspect-ratio: 16/9) {
-    .youtube-wrapper iframe { width: 177.78vh; height: 100vh; }
-}
-
-
-.youtube-wrapper iframe.visible {
-    opacity: 1;
-}
-
-/* --- NAVBAR & SOCIAL ICONS (SINISTRA) --- */
-.navbar-brand { 
-    letter-spacing: 2px; 
-    text-transform: uppercase; 
-    font-weight: 600; 
-    margin-right: 0; /* Reset margine default */
-}
-
-/* Contenitore logo + icone */
-.brand-social-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.social-left-icons {
-    display: flex;
-    gap: 15px; /* Spazio tra le icone */
-    margin-left: 25px; /* Spazio tra Logo e Icone */
-    border-left: 1px solid rgba(255,255,255,0.2); /* Opzionale: linea separatrice */
-    padding-left: 25px;
-}
-
-.social-left-icons a {
-    color: rgba(255,255,255,0.7);
-    font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-left-icons a:hover {
-    color: white;
-    transform: scale(1.1);
-}
-
-.nav-link { letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
-
-
-/* --- CONTROLLO AUDIO --- */
-.audio-wrapper {
-    position: absolute; bottom: 30px; right: 30px; z-index: 10;
-    display: flex; align-items: center; justify-content: center;
-    width: 50px; height: 50px;
-    background: rgba(255, 255, 255, 0.1); 
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px; overflow: hidden; 
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.audio-wrapper:hover {
-    width: 160px; background: rgba(0, 0, 0, 0.7);
-    justify-content: flex-start; padding-left: 15px;
-}
-
-.audio-icon { font-size: 1.2rem; cursor: pointer; color: white; flex-shrink: 0; }
-
-.volume-slider {
-    width: 0; opacity: 0; margin-left: 0; height: 4px;
-    -webkit-appearance: none; background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px; outline: none; cursor: pointer;
-    transition: all 0.4s ease 0.1s;
-}
-
-.audio-wrapper:hover .volume-slider { width: 90px; opacity: 1; margin-left: 15px; }
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 12px; height: 12px;
-    background: white; border-radius: 50%; cursor: pointer;
-}
-
-/* --- MOBILE E ALTRO --- */
+/* Overlay scuro sopra il video per leggere meglio il testo */
 .video-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.3); z-index: 1;
 }
 
+/* Testi Hero */
 .hero-content { position: relative; z-index: 2; padding: 20px; pointer-events: none; }
 .main-title { font-size: 3.5rem; font-weight: 400; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 0.5rem; }
 .subtitle { font-size: 1.1rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: rgba(255, 255, 255, 0.85); }
 
+/* Freccia che rimbalza in basso */
 .scroll-down {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     z-index: 3; color: white; font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; pointer-events: auto;
@@ -147,15 +73,158 @@ body {
     60% {transform: translate(-50%, -5px);}
 }
 
-.portfolio-section { padding: 100px 0; background-color: #0a0a0a; position: relative; z-index: 2; }
-.portfolio-item { margin-bottom: 40px; transition: transform 0.3s ease; }
-.portfolio-item:hover { transform: translateY(-5px); }
-.video-title { margin-top: 15px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #888; }
+/* =========================================
+   3. NAVBAR & SOCIAL
+   ========================================= */
+.navbar-brand { 
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-right: 0; 
+}
+.brand-social-wrapper { display: flex; align-items: center; }
 
-@media (max-width: 768px) {
+.social-left-icons {
+    display: flex; gap: 15px; margin-left: 25px; 
+    border-left: 1px solid rgba(255,255,255,0.2); padding-left: 25px;
+}
+.social-left-icons a {
+    color: rgba(255,255,255,0.7); font-size: 1.1rem; 
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-left-icons a:hover { color: white; transform: scale(1.1); }
+.nav-link { letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+
+/* =========================================
+   4. CONTROLLI AUDIO (Slider & Icona)
+   ========================================= */
+.audio-wrapper {
+    position: absolute; bottom: 30px; right: 30px; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+    width: 50px; height: 50px;
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px; overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.audio-wrapper:hover {
+    width: 160px; background: rgba(0, 0, 0, 0.7);
+    justify-content: flex-start; padding-left: 15px;
+}
+.audio-icon { font-size: 1.2rem; cursor: pointer; color: white; flex-shrink: 0; }
+.volume-slider {
+    width: 0; opacity: 0; margin-left: 0; height: 4px;
+    -webkit-appearance: none; background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px; outline: none; cursor: pointer; transition: all 0.4s ease 0.1s;
+}
+.audio-wrapper:hover .volume-slider { width: 90px; opacity: 1; margin-left: 15px; }
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 12px; height: 12px;
+    background: white; border-radius: 50%; cursor: pointer;
+}
+
+/* =========================================
+   5. PORTFOLIO CAROUSEL (3 COLONNE + THUMBNAILS)
+   ========================================= */
+.portfolio-section { 
+    padding: 100px 0; background-color: #0a0a0a; position: relative; z-index: 2; 
+}
+
+/* Testi introduttivi Portfolio */
+.portfolio-heading {
+    font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; color: white;
+}
+.portfolio-subheading {
+    font-weight: 600; font-size: 1.2rem; color: #888; text-transform: lowercase; font-style: italic;
+}
+
+/* Container Carosello (con padding per le frecce) */
+.carousel-container {
+    width: 100%;
+    padding: 0 60px; /* Spazio laterale per le frecce */
+}
+
+/* Wrapper scorrevole */
+.horizontal-scroll-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px; /* Spazio tra i video */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    
+    /* Nascondi scrollbar (Chrome, Safari, Opera) */
+    -webkit-overflow-scrolling: touch;
+}
+.horizontal-scroll-wrapper::-webkit-scrollbar { display: none; }
+.horizontal-scroll-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* SINGOLO ITEM (Logica 3 Colonne Desktop) */
+.scroll-item {
+    flex: 0 0 auto;
+    /* Calcolo: (100% - spazio gap) diviso 3 */
+    width: calc((100% - 60px) / 3); 
+    transition: transform 0.3s ease;
+}
+.scroll-item:hover { transform: scale(1.02); }
+
+/* Titolo Video */
+.video-title {
+    margin-top: 15px; font-size: 0.9rem; letter-spacing: 2px; 
+    text-transform: uppercase; color: #aaa; text-align: left;
+}
+
+/* --- STILE THUMBNAIL (Immagine + Overlay Play) --- */
+.video-link {
+    display: block; position: relative; text-decoration: none;
+}
+.video-thumb {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.8); transition: filter 0.3s ease;
+}
+.play-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.2); transition: background 0.3s ease;
+}
+.play-overlay i {
+    font-size: 3rem; color: white; opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* Hover Effects */
+.video-link:hover .video-thumb { filter: brightness(1); }
+.video-link:hover .play-overlay { background: rgba(0,0,0,0); }
+.video-link:hover .play-overlay i { transform: scale(1.2); opacity: 1; }
+
+/* --- FRECCE DI NAVIGAZIONE --- */
+.scroll-btn {
+    position: absolute; top: 40%; transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5); color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%; width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10; transition: all 0.3s ease;
+}
+.scroll-btn:hover {
+    background: white; color: black; transform: translateY(-50%) scale(1.1);
+}
+.btn-left { left: 5px; }
+.btn-right { right: 5px; }
+
+/* =========================================
+   6. MOBILE RESPONSIVE
+   ========================================= */
+@media (max-width: 992px) {
+    /* Testi più piccoli su mobile */
     .main-title { font-size: 2.2rem; }
+    
+    /* Nascondi audio wrapper su mobile */
     .audio-wrapper { display: none; } 
     
-    /* Su mobile riduciamo un po' lo spazio tra logo e icone */
+    /* Social più compatti */
     .social-left-icons { margin-left: 15px; padding-left: 15px; gap: 10px; }
+    
+    /* CAROSELLO MOBILE: 1 Colonna grande, niente frecce */
+    .carousel-container { padding: 0; }
+    .scroll-btn { display: none; } /* Nascondi frecce */
+    
+    .scroll-item { 
+        width: 85vw; /* Occupa quasi tutto lo schermo */
+        margin-left: 15px; /* Un po' di margine a sinistra */
+    }
 }

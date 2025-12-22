@@ -15,40 +15,30 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container-fluid px-4 pt-3">
-        
         <div class="brand-social-wrapper">
             <a class="navbar-brand" href="#">AF</a>
-            
             <div class="social-left-icons">
-                <a href="https://www.instagram.com/andreafrisinafilms/" target="_blank" title="Instagram">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="https://vimeo.com/andreafrisinafilms" target="_blank" title="Vimeo">
-                    <i class="bi bi-vimeo"></i>
-                </a>
+                <a href="https://www.instagram.com/andreafrisinafilms/" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://vimeo.com/andreafrisinafilms" target="_blank" title="Vimeo"><i class="bi bi-vimeo"></i></a>
             </div>
         </div>
-
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
             <li class="nav-item"><a class="nav-link px-3" href="#portfolio">Chi Sono</a></li>
             <li class="nav-item"><a class="nav-link px-3" href="#contatti">Contatti</a></li>
           </ul>
         </div>
-
       </div>
     </nav>
 
     <header id="home" class="hero-section">
-        
         <div class="local-video-wrapper">
             <video id="hero-video" autoplay muted loop playsinline>
                 <source src="../media/showreel.mp4" type="video/mp4">
-                Il tuo browser e' obsoleto.
+                Il tuo browser non supporta il tag video.
             </video>
         </div>
 
@@ -67,25 +57,92 @@
         </a>
     </header>
 
-    <section id="portfolio" class="portfolio-section">
-        <div class="container">
-            <div class="row mb-5 text-center">
-                <div class="col"><span class="text-uppercase text-muted" style="letter-spacing: 3px; font-size: 0.8rem;">Selected Works</span></div>
-            </div>
-            <div class="row g-5">
-                <div class="col-12 col-md-6 portfolio-item">
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/RIVR6M7Tb50?rel=0" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-title">Project One</div>
-                </div>
-                <div class="col-12 col-md-6 portfolio-item">
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/RIVR6M7Tb50?rel=0" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-title">Project Two</div>
+<section id="portfolio" class="portfolio-section">
+        <div class="container-fluid">
+            
+            <div class="row mb-4 text-center">
+                <div class="col-12">
+                    <h2 class="portfolio-heading">Questo è il mio portfolio</h2>
+                    <p class="portfolio-subheading">dai un'occhiata</p>
                 </div>
             </div>
+
+            <div class="carousel-container position-relative">
+                
+                <button class="scroll-btn btn-left" id="scrollLeft">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <div class="horizontal-scroll-wrapper" id="scrollContainer">
+                    
+                    <div class="scroll-item">
+                        <a href="https://www.youtube.com/watch?v=RIVR6M7Tb50" target="_blank" class="video-link">
+                            <div class="ratio ratio-16x9 video-thumb-wrapper">
+                                <img src="https://img.youtube.com/vi/RIVR6M7Tb50/maxresdefault.jpg" alt="Project 1" class="video-thumb">
+                                <div class="play-overlay">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-title">Commercial TV</div>
+                    </div>
+
+                    <div class="scroll-item">
+                        <a href="https://www.youtube.com/watch?v=RIVR6M7Tb50" target="_blank" class="video-link">
+                            <div class="ratio ratio-16x9 video-thumb-wrapper">
+                                <img src="https://img.youtube.com/vi/RIVR6M7Tb50/maxresdefault.jpg" alt="Project 2" class="video-thumb">
+                                <div class="play-overlay">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-title">Documentary</div>
+                    </div>
+
+                    <div class="scroll-item">
+                        <a href="https://www.youtube.com/watch?v=RIVR6M7Tb50" target="_blank" class="video-link">
+                            <div class="ratio ratio-16x9 video-thumb-wrapper">
+                                <img src="https://img.youtube.com/vi/RIVR6M7Tb50/maxresdefault.jpg" alt="Project 3" class="video-thumb">
+                                <div class="play-overlay">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-title">Music Video</div>
+                    </div>
+
+                    <div class="scroll-item">
+                        <a href="https://www.youtube.com/watch?v=RIVR6M7Tb50" target="_blank" class="video-link">
+                            <div class="ratio ratio-16x9 video-thumb-wrapper">
+                                <img src="https://img.youtube.com/vi/RIVR6M7Tb50/maxresdefault.jpg" alt="Project 4" class="video-thumb">
+                                <div class="play-overlay">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-title">Short Film</div>
+                    </div>
+
+                     <div class="scroll-item">
+                        <a href="https://www.youtube.com/watch?v=RIVR6M7Tb50" target="_blank" class="video-link">
+                            <div class="ratio ratio-16x9 video-thumb-wrapper">
+                                <img src="https://img.youtube.com/vi/RIVR6M7Tb50/maxresdefault.jpg" alt="Project 5" class="video-thumb">
+                                <div class="play-overlay">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-title">Fashion Film</div>
+                    </div>
+
+                </div>
+
+                <button class="scroll-btn btn-right" id="scrollRight">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+
+            </div>
+
         </div>
     </section>
 
@@ -97,7 +154,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="main.js"></script>
 </body>
 </html>
