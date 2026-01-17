@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleziona Portfolio - Andrea Frisina</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/portfolio.css"> 
+
+
+</head>
+<body>
+
+    <div class="vimeo-bg-wrapper">
+        <iframe class="vimeo-bg-iframe" 
+            src="https://player.vimeo.com/video/1091598477?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" 
+            frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+        </iframe>
+        <div class="page-bg-overlay"></div>
+    </div>
+
+    <a href="index.html" class="back-home">&larr; Home</a>
+    <a href="#contatti" class="contact-top-right">Contattami</a>
+
+    <div class="top-social-center">
+        <a href="https://vimeo.com/andreafrisinafilms" target="_blank" title="Vimeo">
+            <i class="bi bi-vimeo"></i>
+        </a>
+        <a href="https://www.youtube.com/@IL_TUO_CANALE" target="_blank" title="YouTube">
+            <i class="bi bi-youtube"></i>
+        </a>
+    </div>
+
+    <div class="selection-container fade-section visible"> 
+        
+        <h1 class="selection-title">PORTFOLIO</h1>
+        <p class="selection-subtitle">Racconti di luce</p>
+
+        <div class="categories-wrapper container">
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="filmmaking.html" class="cat-card">
+                        <div class="card-bg-img" style="background-image: url('../media/cover-riquadri-portfolio/filmmaking.jpg');"></div>
+                        <div class="cat-text">
+                            <span class="cat-name">Filmmaking</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="videomaking.html" class="cat-card">
+                        <div class="card-bg-img" style="background-image: url('../media/cover-riquadri-portfolio/videomaking.jpg');"></div>
+                        <div class="cat-text">
+                            <span class="cat-name">Videomaking</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="photography.html" class="cat-card">
+                        <div class="card-bg-img" style="background-image: url('../media/cover-riquadri-portfolio/photography.jpg');"></div>
+                        <div class="cat-text">
+                            <span class="cat-name">Photography</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div> 
+            
+            <div class="mobile-swipe-hint">
+                &larr; Scorri per esplorare &rarr;
+            </div>
+
+        </div> 
+    </div>
+            
+    <section class="quote-interlude">
+        <div class="container text-center">
+            
+            <p class="interlude-pre">LAVORA CON ME</p>
+            
+            <h2 class="interlude-quote">
+                "Ogni visione ha bisogno<br>
+                <span class="text-italic">della giusta luce.</span>"
+            </h2>
+            
+            <div class="interlude-line"></div>
+            
+            <p class="interlude-sub">
+                Costruiamo insieme la tua prossima storia.
+            </p>
+
+        </div>
+    </section>
+
+    <section id="contatti" class="contact-section">
+        <div class="container">
+            <div class="row justify-content-between align-items-start">
+                
+                <div class="col-12 col-lg-5 mb-5 mb-lg-0">
+                    <h2 class="contact-heading">
+                        PARLAMI DEL<br>TUO PROGETTO.
+                    </h2>
+                    <p class="mt-4 text-white-50">
+                        Disponibile per commissioni in Italia e all'estero.
+                        Compila il form per richiedere un preventivo o una consulenza.
+                    </p>
+                    
+                    <div class="mt-5">
+                        <div class="mb-4">
+                            <span class="d-block text-white-50 small mb-1">EMAIL</span>
+                            <a href="mailto:info@andreafrisina.it" class="text-white text-decoration-none fs-5">info@andreafrisina.it</a>
+                        </div>
+                        <div>
+                            <span class="d-block text-white-50 small mb-1">SOCIAL</span>
+                            <a href="https://www.instagram.com/andreafrisinafilms/" class="text-white me-3 text-decoration-none">Instagram</a>
+                            <a href="https://vimeo.com/andreafrisinafilms" class="text-white text-decoration-none">Vimeo</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-lg-6">
+                    <form action="https://formspree.io/f/TUO_CODICE" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="luxury-input" placeholder="Il tuo nome" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" name="email" class="luxury-input" placeholder="La tua email" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" class="luxury-input" placeholder="Oggetto">
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" class="luxury-input" rows="4" placeholder="Messaggio..." required></textarea>
+                            </div>
+                            <div class="col-12 mt-4 text-end">
+                                <button type="submit" class="btn-luxury">Invia &rarr;</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 border-top border-secondary border-opacity-10" style="background-color: #050505;">
+        <div class="container">
+            <p class="text-white-50 small m-0">ANDREA FRISINA &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

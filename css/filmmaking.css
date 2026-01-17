@@ -1,0 +1,209 @@
+/* =========================================
+    STILI PAGINA FILMMAKING (Specifici)
+    ========================================= */
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header */
+.page-header { padding: 100px 0 60px 0; text-align: center; }
+.page-title {
+    font-size: 3rem; letter-spacing: 5px; text-transform: uppercase;
+    font-weight: 300; margin-bottom: 10px;
+}
+.page-subtitle {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: #888; font-size: 1.2rem;
+}
+
+/* Navigazione "Torna indietro" */
+.back-link {
+    position: absolute; top: 30px; left: 30px;
+    color: rgba(255,255,255,0.6); text-decoration: none; text-transform: uppercase;
+    font-size: 0.8rem; letter-spacing: 2px; transition: color 0.3s;
+}
+.back-link:hover { color: white; }
+
+
+/* =========================================
+    STILE VIDEO TRIGGER (Identico alla Home)
+    ========================================= */
+.video-trigger {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.video-trigger:hover {
+    transform: translateY(-5px); /* Leggero lift all'hover */
+}
+
+/* Immagine Thumbnail */
+.video-thumb-wrapper {
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+}
+
+/* Arrotondamento (Se lo usi nella home) */
+.rounded-video { border-radius: 8px; }
+
+.video-thumb {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.3s ease;
+    filter: brightness(0.8);
+}
+
+.video-trigger:hover .video-thumb {
+    transform: scale(1.05);
+    filter: brightness(1);
+}
+
+/* Icona Play Overlay */
+.play-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.2);
+    transition: background 0.3s;
+}
+.play-overlay i {
+    font-size: 3rem; color: white; opacity: 0.8;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.video-trigger:hover .play-overlay { background: rgba(0,0,0,0); }
+.video-trigger:hover .play-overlay i {
+    transform: scale(1.2); color: white; opacity: 1;
+}
+
+/* Titolo sotto il video */
+.video-title {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    text-align: left; /* O center se preferisci */
+}
+
+
+
+
+/* =========================================
+    MODALE VIDEO (POPUP)
+    ========================================= */
+.modal-custom-backdrop {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95); z-index: 9999;
+    display: none; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.4s ease;
+}
+.modal-custom-backdrop.active { display: flex; opacity: 1; }
+
+.modal-custom-content {
+    width: 90%; max-width: 1200px;
+    position: relative;
+}
+
+/* Close Button */
+.close-custom-modal {
+    position: absolute; top: -50px; right: 0;
+    color: white; font-size: 2rem; cursor: pointer;
+    transition: transform 0.3s;
+}
+.close-custom-modal:hover { transform: rotate(90deg); color: #ccc; }
+
+/* Contenitore Video 16:9 */
+.modal-video-container {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+    background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.modal-video-container iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+/* Info Testo Modale */
+.modal-info { text-align: center; margin-top: 30px; color: white; }
+.modal-title-display {
+    font-family: 'Montserrat', sans-serif; font-size: 2rem;
+    text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px;
+}
+.modal-desc-display {
+    font-family: 'Montserrat', serif;
+    font-size: 1.1rem; color: #ccc; max-width: 700px; margin: 0 auto;
+}
+
+
+/* =========================================
+    STILE NAVIGAZIONE HEADER
+    ========================================= */
+
+/* 1. Icone Social (Alto Centro) */
+.top-social-center {
+    position: absolute;
+    top: 40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.top-social-center a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.top-social-center a:hover {
+    color: white;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+}
+
+/* 2. Link "Successivo" (Alto Destra) */
+.next-page-link {
+    position: absolute;
+    top: 40px; /* Allineato con gli altri */
+    right: 40px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    z-index: 100;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spazio tra testo e freccia */
+}
+.next-page-link:hover {
+    color: white;
+}
+
+/* 3. Back Link (Già esistente, ma assicuriamoci sia allineato) */
+.back-link {
+    top: 40px;
+    left: 40px;
+}
+
+/* Adattamento Mobile: Spostiamo le icone giù per non sovrapporsi */
+@media (max-width: 768px) {
+    .top-social-center {
+        top: 85px; 
+    }
+    .next-page-link, .back-link {
+        top: 30px;
+        font-size: 0.7rem; /* Testo più piccolo su mobile */
+    }
+    .next-page-link { right: 20px; }
+    .back-link { left: 20px; }
+}

@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    
-    // 1. Selettori Video Hero
+    // ============================================================
+    // 1. GESTIONE VIDEO HERO (HOMEPAGE)
+    // ============================================================
     var video = document.getElementById('hero-video');
     var slider = document.getElementById('volumeSlider');
     var icon = document.getElementById('audioIcon');
 
-    // 2. Logica di avvio e Fade-In (Hero Video)
     if (video) {
+        // Avvio e Fade-In
         video.addEventListener('canplay', function() {
             video.play().then(function() {
                 video.classList.add('visible');
@@ -16,204 +17,214 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
 
-        // Fallback
+        // Fallback se il video è già caricato
         if (video.readyState >= 3) {
             video.classList.add('visible');
         }
 
-    video.addEventListener('pause', function() {
-                
-                // Controlla se la Modale del portfolio è aperta
-                var isModalOpen = document.getElementById('videoModal').classList.contains('show');
-                
-                // Controlla se la pagina è visibile (per non consumare batteria se l'utente cambia scheda)
-                var isPageVisible = !document.hidden;
+        // Logica Smart Pause: Riavvia se si ferma per sbaglio (tranne se c'è una modale aperta)
+        video.addEventListener('pause', function() {
+            var isModalOpen = document.body.classList.contains('modal-open') || document.querySelector('.modal-custom-backdrop.active');
+            var isPageVisible = !document.hidden;
 
-                // SE la modale è CHIUSA e la pagina è VISIBILE...
-                if (!isModalOpen && isPageVisible) {
-                    console.log("Il video si è fermato (es. PiP chiuso), forzo il riavvio...");
-                    
-                    // ...FORZA IL PLAY
-                    video.play().catch(e => console.error("Impossibile riavviare:", e));
+            if (!isModalOpen && isPageVisible) {
+                console.log("Il video si è fermato, riavvio...");
+                video.play().catch(e => console.error("Impossibile riavviare:", e));
+            }
+        });
+
+        // Slider Audio
+        if (slider) {
+            slider.addEventListener('input', function() {
+                var volumeValue = parseFloat(this.value);
+                var volumeDecimal = volumeValue / 100;
+                video.volume = volumeDecimal;
+                video.muted = (volumeDecimal <= 0);
+                updateIcon(volumeValue);
+            });
+        }
+
+        // Click Icona Mute/Unmute
+        if (icon) {
+            icon.addEventListener('click', function() {
+                if (video.muted || video.volume === 0) {
+                    video.muted = false;
+                    video.volume = 0.8;
+                    if(slider) slider.value = 80;
+                    updateIcon(80);
+                } else {
+                    video.muted = true;
+                    video.volume = 0;
+                    if(slider) slider.value = 0;
+                    updateIcon(0);
                 }
             });
-    }
-
-    // 3. Logica Slider Audio
-    if (slider && video) {
-        slider.addEventListener('input', function() {
-            var volumeValue = parseFloat(this.value);
-            var volumeDecimal = volumeValue / 100;
-            
-            video.volume = volumeDecimal;
-            
-            if (volumeDecimal > 0) {
-                video.muted = false;
-            } else {
-                video.muted = true;
-            }
-            
-            updateIcon(volumeValue);
-        });
-    }
-
-    // 4. Logica Click Icona (Mute/Unmute)
-    if (icon && video) {
-        icon.addEventListener('click', function() {
-            if (video.muted || video.volume === 0) {
-                // UNMUTE
-                video.muted = false;
-                video.volume = 0.8;
-                if(slider) slider.value = 80;
-                updateIcon(80);
-            } else {
-                // MUTE
-                video.muted = true;
-                video.volume = 0;
-                if(slider) slider.value = 0;
-                updateIcon(0);
-            }
-        });
-    }
-
-    // 5. Funzione Aggiorna Icona
-    function updateIcon(vol) {
-        if(!icon) return;
-        icon.classList.remove('bi-volume-mute-fill', 'bi-volume-down-fill', 'bi-volume-up-fill');
-        
-        if (vol <= 0) {
-            icon.classList.add('bi-volume-mute-fill');
-        } else if (vol < 50) {
-            icon.classList.add('bi-volume-down-fill');
-        } else {
-            icon.classList.add('bi-volume-up-fill');
         }
     }
 
-    // --- 6. LOGICA CAROSELLO PORTFOLIO (NUOVA) ---
+    function updateIcon(vol) {
+        if(!icon) return;
+        icon.classList.remove('bi-volume-mute-fill', 'bi-volume-down-fill', 'bi-volume-up-fill');
+        if (vol <= 0) icon.classList.add('bi-volume-mute-fill');
+        else if (vol < 50) icon.classList.add('bi-volume-down-fill');
+        else icon.classList.add('bi-volume-up-fill');
+    }
+
+
+    // ============================================================
+    // 2. LOGICA MODALE VIDEO (UNIVERSALE: BOOTSTRAP + CUSTOM)
+    // ============================================================
+    var videoTriggers = document.querySelectorAll('.video-trigger');
+    
+    // Cerchiamo i due tipi di modale
+    var bsModalEl = document.getElementById('videoModal'); // Elemento generico
+    var customModalEl = document.querySelector('.modal-custom-backdrop'); // Modale Custom (Filmmaking)
+
+    // A. SCENARIO 1: MODALE CUSTOM (Pagina Filmmaking)
+    if (customModalEl) {
+        
+        var modalVideoContainer = document.getElementById('modalVideoContainer');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalDesc = document.getElementById('modalDesc');
+        var closeModalBtn = document.getElementById('closeModal');
+
+        videoTriggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function() {
+                var videoId = this.getAttribute('data-video-id');
+                var provider = this.getAttribute('data-provider') || 'vimeo';
+                var title = this.getAttribute('data-title');
+                var desc = this.getAttribute('data-description');
+
+                // Testi
+                if(modalTitle) modalTitle.textContent = title;
+                if(modalDesc) modalDesc.textContent = desc;
+
+                // URL
+                var embedUrl = "";
+                if (provider === 'youtube') {
+                    embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0&showinfo=0&modestbranding=1";
+                } else {
+                    embedUrl = "https://player.vimeo.com/video/" + videoId + "?autoplay=1&color=ffffff&title=0&byline=0&portrait=0";
+                }
+
+                // Inietta Iframe
+                if(modalVideoContainer) {
+                    modalVideoContainer.innerHTML = '<iframe src="' + embedUrl + '" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+                }
+
+                // Mostra Modale Custom
+                customModalEl.classList.add('active');
+            });
+        });
+
+        // Funzione Chiudi Custom
+        function closeCustomModal() {
+            customModalEl.classList.remove('active');
+            setTimeout(function() {
+                if(modalVideoContainer) modalVideoContainer.innerHTML = '';
+            }, 300);
+        }
+
+        if(closeModalBtn) closeModalBtn.addEventListener('click', closeCustomModal);
+        
+        customModalEl.addEventListener('click', function(e) {
+            if (e.target === customModalEl) closeCustomModal();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && customModalEl.classList.contains('active')) closeCustomModal();
+        });
+    }
+
+    // B. SCENARIO 2: MODALE BOOTSTRAP (Homepage)
+    // (Eseguiamo questo solo se NON c'è la modale custom, per evitare conflitti)
+    else if (bsModalEl && typeof bootstrap !== 'undefined') {
+        
+        var bsModal = new bootstrap.Modal(bsModalEl);
+        var modalIframe = document.getElementById('modalVideoIframe');
+        var bsTitle = document.getElementById('modalTitle'); // Assumendo che usi questi ID nella home
+        var bsDesc = document.getElementById('modalDescription');
+
+        videoTriggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function() {
+                var videoId = this.getAttribute('data-video-id');
+                var provider = this.getAttribute('data-provider') || 'vimeo';
+                var title = this.getAttribute('data-title');
+                var desc = this.getAttribute('data-description');
+
+                var embedUrl = "";
+                if (provider === 'youtube') {
+                    embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0&showinfo=0&modestbranding=1";
+                } else {
+                    embedUrl = "https://player.vimeo.com/video/" + videoId + "?autoplay=1&badge=0&autopause=0";
+                }
+
+                if(modalIframe) modalIframe.src = embedUrl;
+                if(bsTitle) bsTitle.textContent = title;
+                if(bsDesc) bsDesc.textContent = desc;
+
+                // Zittisci video hero
+                if (video) {
+                    video.muted = true;
+                    if(slider) slider.value = 0;
+                    updateIcon(0);
+                }
+
+                bsModal.show();
+            });
+        });
+
+        bsModalEl.addEventListener('hidden.bs.modal', function () {
+            if(modalIframe) modalIframe.src = "";
+        });
+    }
+
+
+    // ============================================================
+    // 3. SCROLL ORIZZONTALI (PORTFOLIO / FOTO)
+    // ============================================================
+    
+    // Scroll Portfolio (Video)
     var scrollContainer = document.getElementById('scrollContainer');
     var btnLeft = document.getElementById('scrollLeft');
     var btnRight = document.getElementById('scrollRight');
 
     if (scrollContainer && btnLeft && btnRight) {
-        
-        // Distanza di scorrimento (circa larghezza video + spazio)
-        var scrollAmount = 500; 
-
         btnRight.addEventListener('click', function() {
-            scrollContainer.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
+            scrollContainer.scrollBy({ left: 500, behavior: 'smooth' });
         });
-
         btnLeft.addEventListener('click', function() {
-            scrollContainer.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
+            scrollContainer.scrollBy({ left: -500, behavior: 'smooth' });
         });
     }
 
-    var videoTriggers = document.querySelectorAll('.video-trigger');
-    var modalIframe = document.getElementById('modalVideoIframe');
-    var videoModal = document.getElementById('videoModal'); // L'elemento HTML
-    var bsModal; // L'istanza Bootstrap del modal
-
-    // Inizializza il modal di Bootstrap se esiste
-    if (videoModal) {
-        // Usa l'oggetto Bootstrap globale 'bootstrap' caricato dallo script CDN
-        bsModal = new bootstrap.Modal(videoModal);
-
-        // A. QUANDO CLICCHI SULLA THUMBNAIL
-        videoTriggers.forEach(function(trigger) {
-            trigger.addEventListener('click', function() {
-                // 1. Prendi l'ID dal data-attribute
-                
-                var videoId = this.getAttribute('data-video-id');
-                var titleText = this.getAttribute('data-title') || ""; // Se manca, metti stringa vuota
-                var provider = this.getAttribute('data-provider'); // 'youtube' o 'vimeo'
-                var descText = this.getAttribute('data-description') || ""; 
-
-                if (!videoId) {
-                    console.error("Manca data-video-id nell'HTML!");
-                    return;
-                }
-
-                
-                
-                // B. COSTRUISCI URL IN BASE AL PROVIDER
-                var finalUrl = "";
-
-                if (provider === 'vimeo') {
-                    // URL VIMEO: player.vimeo.com/video/[ID]?autoplay=1
-                    finalUrl = "https://player.vimeo.com/video/" + videoId + "?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479";
-                } else {
-                    // URL YOUTUBE (Default): youtube.com/embed/[ID]?autoplay=1
-                    finalUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0&showinfo=0&modestbranding=1";
-                }
-
-                // C. IMPOSTA IFRAME E TESTI
-                if(modalIframe) modalIframe.src = finalUrl;
-                if(modalTitle) modalTitle.textContent = titleText;
-                if(modalDescription) modalDescription.textContent = descText;
-
-                // D. APRI MODALE E ZITTISCI HERO
-                bsModal.show();
-
-                if (video) {
-                    video.muted = true;
-                    video.volume = 0;
-                    if (slider) slider.value = 0;
-                    updateIcon(0);
-                }
-                
-
-            });
-        });
-
-        // B. QUANDO CHIUDI LA MODALE (STOP VIDEO)
-        // È fondamentale svuotare l'SRC, altrimenti l'audio continua in background!
-        videoModal.addEventListener('hidden.bs.modal', function () {
-            modalIframe.src = ""; 
-            // Pulisci il testo quando chiudi (opzionale, ma pulito)
-            modalTitle.textContent = "";
-            modalDescription.textContent = "";
-        });
-    }
-
+    // Scroll Foto (Track)
     var photoTrack = document.getElementById('photoTrack');
     var photoLeft = document.getElementById('photoLeft');
     var photoRight = document.getElementById('photoRight');
 
     if (photoTrack && photoLeft && photoRight) {
-        
         photoRight.addEventListener('click', function() {
-            // Scorre di circa 300px (larghezza foto) + gap
             photoTrack.scrollBy({ left: 320, behavior: 'smooth' });
         });
-
         photoLeft.addEventListener('click', function() {
             photoTrack.scrollBy({ left: -320, behavior: 'smooth' });
         });
     }
 
-// ============================================================
-    // 9. ANIMAZIONE FADE SCROLL (QUESTA È LA PARTE CHE MANCAVA)
+
+    // ============================================================
+    // 4. ANIMAZIONE FADE-IN ALLO SCROLL
     // ============================================================
     var faders = document.querySelectorAll('.fade-section');
-
     if (faders.length > 0 && 'IntersectionObserver' in window) {
         var appearOptions = {
-            threshold: 0.15,       // Appare quando il 15% è visibile
-            rootMargin: "0px 0px -50px 0px" 
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         };
-
         var appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
             entries.forEach(function(entry) {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     appearOnScroll.unobserve(entry.target);
                 }
@@ -224,12 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
             appearOnScroll.observe(fader);
         });
     } else {
-        // Fallback per browser vecchi o se qualcosa va storto: mostra tutto subito
-        faders.forEach(function(fader) {
-            fader.classList.add('visible');
-        });
+        faders.forEach(function(fader) { fader.classList.add('visible'); });
     }
-
-
 
 });

@@ -1,0 +1,318 @@
+        html {
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            min-height: 100%;
+            width: 100%;
+            margin: 0; padding: 0;
+            overflow-x: hidden; 
+            overflow-y: auto;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* =========================================
+           VIMEO BACKGROUND (FISSO)
+           ========================================= */
+        .vimeo-bg-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .vimeo-bg-iframe {
+            width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+
+        .page-bg-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); z-index: 0;
+        }
+
+        /* =========================================
+           NAVIGAZIONE
+           ========================================= */
+        .back-home {
+            position: absolute; top: 40px; left: 40px;
+            color: rgba(255,255,255,0.7); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 2px; font-size: 0.8rem; z-index: 100;
+        }
+        .back-home:hover { color: white; }
+
+        .contact-top-right {
+            position: absolute; top: 30px; right: 40px; z-index: 100;
+            color: white; text-decoration: none; text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.3); padding: 10px 25px; transition: all 0.3s ease;
+        }
+        .contact-top-right:hover {
+            background-color: white; color: black; border-color: white;
+        }
+
+        /* =========================================
+           SEZIONE CENTRALE (PORTFOLIO)
+           ========================================= */
+        .selection-container {
+            min-height: 100vh; width: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 100px 20px; position: relative; z-index: 5;
+        }
+
+        .selection-title {
+            font-family: 'Montserrat', sans-serif; font-size: 3rem; letter-spacing: 6px;
+            margin-bottom: 5px; text-transform: uppercase; font-weight: 300;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .selection-subtitle {
+            font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem;
+            color: #ccc; margin-bottom: 50px; text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .categories-wrapper { width: 100%; max-width: 1600px; }
+
+        /* --- STILE CARD BASE --- */
+        .cat-card {
+            display: block; position: relative; width: 100%;
+            height: 550px; /* Altezza Desktop */
+            overflow: hidden; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            background-color: black; /* Sfondo di sicurezza */
+            background-size: cover; background-position: center;
+            transition: all 0.3s ease;
+        }
+
+        .cat-text {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 10; width: 100%; text-align: center; pointer-events: none;
+        }
+
+        .cat-name {
+            color: white; font-family: 'Montserrat', sans-serif; font-size: 1.5rem;
+            letter-spacing: 4px; text-transform: uppercase; font-weight: 400;
+            transition: letter-spacing 0.4s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* --- IMMAGINE INTERNA (FIX IMPORTANTE) --- */
+        /* Questa regola ora è GLOBALE, vale per Desktop e Mobile */
+        .card-bg-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7) grayscale(20%); /* Filtro scuro base */
+            transition: transform 0.8s, filter 0.8s;
+        }
+
+        .mobile-swipe-hint { display: none; } /* Nascosto su desktop */
+
+
+        .quote-interlude {
+    padding: 150px 0 100px 0; /* Molto spazio sopra (150px) per staccare dal portfolio */
+    background-color: #0a0a0a;
+}
+
+.interlude-pre {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 20px;
+}
+
+.interlude-quote {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.interlude-quote .text-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    text-transform: none; /* Corsivo minuscolo elegante */
+    color: #ddd;
+}
+
+.interlude-line {
+    width: 1px;
+    height: 60px; /* Linea verticale decorativa */
+    background-color: rgba(255,255,255,0.2);
+    margin: 40px auto;
+}
+
+.interlude-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+}
+
+
+/* =========================================
+   STILE CONTATTI (ORIGINALE)
+   ========================================= */
+.contact-section {
+    padding: 50px 0 100px 0; /* Spazio sotto la citazione */
+    background-color: #050505; /* Leggermente più scuro per stacco visivo */
+}
+
+.contact-heading {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 2.5rem; 
+    letter-spacing: 3px;
+    color: white;
+}
+
+/* Stili del Form (Assicurati di averli ancora) */
+.luxury-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 15px 0;
+    border-radius: 0;
+    transition: border-color 0.3s;
+}
+.luxury-input:focus {
+    outline: none;
+    border-bottom-color: white;
+}
+.btn-luxury {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.btn-luxury:hover {
+    background: white;
+    color: black;
+}
+
+
+/* =========================================
+    STILE ICONE SOCIAL (ALTO CENTRO)
+    ========================================= */
+.top-social-center {
+    position: absolute;
+    top: 40px; /* Allineato con il tasto Home e Contattami */
+    left: 50%;
+    transform: translateX(-50%); /* Centratura matematica esatta */
+    z-index: 100;
+    display: flex;
+    gap: 25px; /* Spazio tra le icone */
+    align-items: center;
+}
+
+.top-social-center a {
+    color: rgba(255, 255, 255, 0.6); /* Colore iniziale sobrio */
+    font-size: 1.4rem; /* Dimensione icone */
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.top-social-center a:hover {
+    color: white; /* Bianco puro all'hover */
+    transform: scale(1.2); /* Leggero ingrandimento */
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); /* Effetto glow */
+}
+
+/* Su Mobile le spostiamo un po' più in basso per non accavallarsi */
+@media (max-width: 768px) {
+    .top-social-center {
+        top: 85px; 
+    }
+}
+
+/* =========================================
+    MEDIA QUERY: DESKTOP (> 992px)
+    ========================================= */
+@media (min-width: 992px) {
+    .cat-card:hover { border-color: rgba(255,255,255,0.8); }
+    
+    /* Zoom immagine all'hover */
+    .cat-card:hover .card-bg-img {
+        transform: scale(1.1);
+        filter: brightness(1) grayscale(0%);
+    }
+    .cat-card:hover .cat-name { letter-spacing: 8px; }
+}
+
+/* =========================================
+    MEDIA QUERY: MOBILE (< 991px)
+    ========================================= */
+@media (max-width: 991px) {
+    
+    .categories-wrapper .row {
+        display: flex; flex-wrap: nowrap; overflow-x: auto;
+        scroll-snap-type: x mandatory; gap: 15px; padding-bottom: 20px;
+        padding-left: 5vw; padding-right: 5vw;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .categories-wrapper .row::-webkit-scrollbar { display: none; }
+
+    .categories-wrapper .col-12 {
+        flex: 0 0 92%; width: 92%; scroll-snap-align: center;
+    }
+
+    .cat-card {
+        height: 520px; /* Altezza Mobile */
+        border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    
+    /* Su mobile togliamo un po' di filtro scuro */
+    .card-bg-img { filter: brightness(0.9) grayscale(0%); }
+
+    .selection-title { font-size: 2rem; margin-top: 10px; }
+    .cat-name { font-size: 1.2rem; letter-spacing: 2px; }
+
+    .contact-top-right {
+        padding: 6px 12px; font-size: 0.7rem; top: 20px; right: 20px; letter-spacing: 1px;
+    }
+    .back-home { top: 25px; left: 20px; font-size: 0.7rem; }
+
+    .mobile-swipe-hint {
+        display: block; text-align: center; color: rgba(255,255,255,0.5);
+        font-family: 'Montserrat', sans-serif; font-size: 0.75rem;
+        letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
+        animation: fadeMove 2s infinite;
+    }
+}
+
+@keyframes fadeMove {
+    0% { opacity: 0.3; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(10px); }
+    100% { opacity: 0.3; transform: translateX(0); }
+}
+
+/* =========================================
+    STILE SEZIONE CONTATTI
+    ========================================= */
+.contact-section { padding: 80px 0; background-color: #050505; }
+.luxury-input {
+    width: 100%; background: transparent; border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2); color: white;
+    padding: 15px 0; border-radius: 0; transition: border-color 0.3s;
+}
+.luxury-input:focus { outline: none; border-bottom-color: white; box-shadow: none; }
+.btn-luxury {
+    background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 30px; text-transform: uppercase; letter-spacing: 2px;
+    transition: all 0.3s; cursor: pointer;
+}
+.btn-luxury:hover { background: white; color: black; }
