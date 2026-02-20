@@ -40,29 +40,64 @@ body {
 .local-video-wrapper video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Copre tutto lo schermo senza deformare */
-    
-    opacity: 0; /* Parte invisibile */
-    transition: opacity 1s ease-in; /* Fade-in all'avvio */
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 1s ease-in;
 }
 
-/* Classe aggiunta via JS quando il video parte */
 .local-video-wrapper video.visible {
     opacity: 1;
 }
 
-/* Overlay scuro sopra il video per leggere meglio il testo */
 .video-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.3); z-index: 1;
 }
 
-/* Testi Hero */
-.hero-content { position: relative; z-index: 2; padding: 20px; pointer-events: none; }
-.main-title { font-size: 3.5rem; font-weight: 400; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 0.5rem; }
-.subtitle { font-size: 1.1rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: rgba(255, 255, 255, 0.85); }
+/* --- CONTENUTI HERO (TITOLO E MANIFESTO) --- */
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+    padding: 20px; 
+    pointer-events: none; 
+    width: 100%;
+}
 
-/* Freccia che rimbalza in basso */
+.main-title { 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem; 
+    font-weight: 600;  
+    letter-spacing: 5px; 
+    text-transform: uppercase; 
+    margin-bottom: 0.5rem; 
+    text-shadow: 0 5px 20px rgba(0,0,0,0.8); 
+}
+
+/* STILE MANIFESTO */
+.hero-manifesto {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #ffffff;
+    font-weight: 300; /* Light */
+    font-size: 1.1rem; 
+    line-height: 1.6;
+    max-width: 900px; 
+    margin: 30px auto 0; 
+    text-shadow: 0 2px 15px rgba(0,0,0,0.8); 
+    opacity: 0.9;
+}
+
+.hero-manifesto p {
+    margin-bottom: 8px; 
+}
+
+.hero-manifesto strong {
+    font-weight: 600 !important; 
+    color: #ffffff;              
+    opacity: 1;                  
+    text-shadow: 0 0 10px rgba(0,0,0,0.5); 
+}
+
+/* Freccia che rimbalza */
 .scroll-down {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     z-index: 3; color: white; font-size: 2rem; animation: bounce 2s infinite; cursor: pointer; pointer-events: auto;
@@ -93,7 +128,7 @@ body {
 .nav-link { letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
 
 /* =========================================
-   4. CONTROLLI AUDIO (Slider & Icona)
+   4. CONTROLLI AUDIO
    ========================================= */
 .audio-wrapper {
     position: absolute; bottom: 30px; right: 30px; z-index: 10;
@@ -120,71 +155,64 @@ body {
 }
 
 /* =========================================
-   5. PORTFOLIO CAROUSEL (3 COLONNE + THUMBNAILS)
+   5. PORTFOLIO CAROUSEL
    ========================================= */
 .portfolio-section { 
     padding: 100px 0; background-color: #0a0a0a; position: relative; z-index: 2; 
 }
 
-/* Testi introduttivi Portfolio */
 .portfolio-heading {
     font-weight: 300; 
     text-transform: uppercase; 
-    letter-spacing: 4px; /* Aumentato un po' per eleganza */
+    letter-spacing: 4px; 
     margin-bottom: 20px; 
     color: white;
-    font-size: 2rem; /* Titolo un po' più piccolo e raffinato */
+    font-size: 2rem; 
 }
 
+/* >>> MODIFICA: Sottotitolo Portfolio in Montserrat Light <<< */
 .portfolio-subheading {
-    font-family: 'Playfair Display', serif; /* Font diverso ed elegante */
-    font-style: italic;
-    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif; /* Prima era Playfair */
+    font-weight: 300; /* Light */
+    font-size: 1.1rem;
     color: #bbb;
-    font-weight: 400;
     line-height: 1.6;
-    text-transform: none;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Container Carosello (con padding per le frecce) */
+/* Container Carosello */
 .carousel-container {
     width: 100%;
-    padding: 0 60px; /* Spazio laterale per le frecce */
+    padding: 0 60px; 
 }
 
-/* Wrapper scorrevole */
 .horizontal-scroll-wrapper {
     display: flex;
     overflow-x: auto;
-    gap: 30px; /* Spazio tra i video */
+    gap: 30px; 
     padding-bottom: 20px;
     scroll-behavior: smooth;
-    
-    /* Nascondi scrollbar (Chrome, Safari, Opera) */
     -webkit-overflow-scrolling: touch;
 }
 .horizontal-scroll-wrapper::-webkit-scrollbar { display: none; }
 .horizontal-scroll-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* SINGOLO ITEM (Logica 3 Colonne Desktop) */
 .scroll-item {
     flex: 0 0 auto;
-    /* Calcolo: (100% - spazio gap) diviso 3 */
     width: calc((100% - 60px) / 3); 
     transition: transform 0.3s ease;
 }
 .scroll-item:hover { transform: scale(1.02); }
 
-/* Titolo Video */
 .video-title {
     margin-top: 15px; font-size: 0.9rem; letter-spacing: 2px; 
     text-transform: uppercase; color: #aaa; text-align: left;
 }
 
-/* --- STILE THUMBNAIL (Immagine + Overlay Play) --- */
-.video-link {
-    display: block; position: relative; text-decoration: none;
-}
+/* --- THUMBNAILS --- */
+.video-link { display: block; position: relative; text-decoration: none; }
 .video-thumb {
     width: 100%; height: 100%; object-fit: cover;
     filter: brightness(0.8); transition: filter 0.3s ease;
@@ -198,12 +226,11 @@ body {
     font-size: 3rem; color: white; opacity: 0.8;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
-/* Hover Effects */
 .video-link:hover .video-thumb { filter: brightness(1); }
 .video-link:hover .play-overlay { background: rgba(0,0,0,0); }
 .video-link:hover .play-overlay i { transform: scale(1.2); opacity: 1; }
 
-/* --- FRECCE DI NAVIGAZIONE --- */
+/* --- FRECCE --- */
 .scroll-btn {
     position: absolute; top: 40%; transform: translateY(-50%);
     background: rgba(0, 0, 0, 0.5); color: white;
@@ -218,114 +245,65 @@ body {
 .btn-left { left: 5px; }
 .btn-right { right: 5px; }
 
-/* --- STILI MODALE VIDEO --- */
-
-/* Rendiamo il puntatore una manina sulle thumbnail */
-.video-trigger {
-    cursor: pointer;
-    display: block;
-    position: relative;
-}
-
+/* --- MODALE --- */
+.video-trigger { cursor: pointer; display: block; position: relative; }
 .modal-video-info {
-    max-width: 800px;
-    margin: 0 auto; /* Centrato */
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8); /* Sfondo scuro per leggere meglio */
-    border-radius: 10px;
-    backdrop-filter: blur(5px); /* Effetto vetro elegante */
+    max-width: 800px; margin: 0 auto; padding: 20px;
+    background: rgba(0, 0, 0, 0.8); border-radius: 10px; backdrop-filter: blur(5px); 
 }
-
-.modal-video-info h3 {
-    font-size: 1.5rem;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-}
-
-.modal-video-info p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #ccc !important; /* Grigio chiaro */
-}
+.modal-video-info h3 { font-size: 1.5rem; letter-spacing: 3px; margin-bottom: 10px; }
+.modal-video-info p { font-size: 1rem; line-height: 1.6; color: #ccc !important; }
 
 .hero-bottom-fade {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30vh; /* Occupa il 30% basso dello schermo */
-    
-    /* IL TRUCCO: Gradiente da Trasparente a Colore Sfondo (#0a0a0a) */
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 30vh; 
     background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 0%, #0a0a0a 100%);
-    
-    z-index: 1; /* Sta sopra al video ma sotto la freccia/testo se serve */
-    pointer-events: none; /* Cliccabile attraverso (non blocca la freccia) */
+    z-index: 1; pointer-events: none; 
 }
 
-/* Animazione entrata testo */
 .fade-in-up {
     animation: fadeInUp 0.5s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 0; transform: translateY(20px);
 }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-@keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Effetto scuro sullo sfondo quando apre la modale */
-.modal-backdrop.show {
-    opacity: 0.9; /* Molto scuro */
-    background-color: #000;
-}
-
-/* Tasto chiudi più visibile */
+.modal-backdrop.show { opacity: 0.9; background-color: #000; }
 .btn-close-white {
     filter: invert(1) grayscale(100%) brightness(200%);
-    background-color: rgba(0,0,0,0.5); /* Sfondo per contrasto */
-    padding: 10px;
-    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: 50%;
 }
 
 .fade-section {
-    opacity: 0;
-    transform: translateY(40px); /* Parte 40px più in basso */
+    opacity: 0; transform: translateY(40px); 
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-    will-change: opacity, transform; /* Ottimizza per il browser */
+    will-change: opacity, transform; 
 }
-
-/* Stato attivo: visibile e nella posizione originale */
-.fade-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.fade-section.visible { opacity: 1; transform: translateY(0); }
 
 /* =========================================
    6. MOBILE RESPONSIVE
    ========================================= */
 @media (max-width: 992px) {
-    /* Testi più piccoli su mobile */
-    .main-title { font-size: 2.2rem; }
-    
-    /* Nascondi audio wrapper su mobile */
+    .main-title { font-size: 2.5rem; }
     .audio-wrapper { display: none; } 
-    
-    /* Social più compatti */
     .social-left-icons { margin-left: 15px; padding-left: 15px; gap: 10px; }
-    
-    /* CAROSELLO MOBILE: 1 Colonna grande, niente frecce */
     .carousel-container { padding: 0; }
-    .scroll-btn { display: none; } /* Nascondi frecce */
-    
-    .scroll-item { 
-        width: 85vw; /* Occupa quasi tutto lo schermo */
-        margin-left: 15px; /* Un po' di margine a sinistra */
+    .scroll-btn { display: none; } 
+    .scroll-item { width: 85vw; margin-left: 15px; }
+}
+
+@media (max-width: 768px) {
+    .hero-manifesto {
+        font-size: 0.85rem !important; 
+        padding: 0 20px;   
+        line-height: 1.5;
+        width: 100%;
     }
+    .main-title { font-size: 2.2rem; }
 }
 
 
 /* =========================================
-   SEZIONE CHI SONO
+   SEZIONE CHI SONO (Uniformata a Montserrat)
    ========================================= */
 .about-section { opacity: 1 !important; transform: none !important; }
 
@@ -338,14 +316,17 @@ body {
     color: white;
 }
 
+/* >>> MODIFICA: Testo 'Chi Sono' in Montserrat Light <<< */
 .about-content p {
-    font-family: 'Playfair Display', serif;
-        font-style: italic;
-    font-size: 1.3rem;
-    line-height: 1.9; /* Interlinea ampia per eleganza e leggibilità */
-    color: #ccc; /* Grigio chiaro, meno stancante del bianco puro */
+    font-family: 'Montserrat', sans-serif; /* Prima era Playfair */
+    font-weight: 300; /* Light */
+    font-size: 1.2rem; /* Leggermente più grande per leggibilità */
+    line-height: 1.8; /* Interlinea ariosa */
+    color: #ccc; 
     margin-bottom: 20px;
-    font-weight: 300;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .about-content strong {
@@ -353,122 +334,88 @@ body {
     font-weight: 600;
 }
 
-/* Firma "sccritta a mano" o elegante */
+/* >>> MODIFICA: Firma in stile 'Timbro' moderno <<< */
 .signature {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase; /* Stile timbro */
+    letter-spacing: 4px;
+    font-size: 1.5rem;
     color: white;
-    opacity: 0.9;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255,255,255,0.3); /* Lineetta sopra per stile */
+    padding-top: 10px;
+    display: inline-block;
 }
 
 /* =========================================
-   HOVER EFFECTS PORTFOLIO (Elegant)
+   SEZIONE CONTATTI
    ========================================= */
-
-/* 1. Il contenitore del video (la card) */
-.video-thumb-wrapper {
-    overflow: hidden; /* Fondamentale per il crop dello zoom */
-    border-radius: 0; /* Arrotondamento leggero */
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Ombra di base */
-}
-
-/* Quando passi il mouse sopra il blocco generale (.video-trigger) */
-.video-trigger:hover .video-thumb-wrapper {
-    transform: translateY(-7px); /* Si solleva verso l'alto */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* L'ombra diventa più profonda e diffusa */
-}
-
-/* 2. L'immagine di sfondo (Thumbnail) */
-.video-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s ease, filter 0.5s ease; /* Transizione lenta e morbida */
-    filter: brightness(0.85); /* Di base è leggermente scura */
-}
-
-.video-trigger:hover .video-thumb {
-    transform: scale(1.06); /* Zoom leggerissimo (6%) */
-    filter: brightness(1.05); /* Diventa luminosa */
-}
-
-/* 3. L'icona Play */
-.play-overlay {
-    background: rgba(0,0,0,0.3); /* Sfondo scuro leggero */
-    transition: background 0.4s ease;
-}
-
-.play-overlay i {
+.contact-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold per impatto */
+    letter-spacing: 3px;
     font-size: 3rem;
-    color: rgba(255,255,255,0.8);
-    transition: transform 0.4s ease, color 0.4s ease;
+    line-height: 1.1;
 }
 
-/* Hover sull'icona play */
-.video-trigger:hover .play-overlay {
-    background: rgba(0,0,0,0.1); /* Si schiarisce quasi del tutto */
+.contact-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #bbb;
+    line-height: 1.6;
 }
 
-.video-trigger:hover .play-overlay i {
-    color: #fff; /* Bianco puro */
-    transform: scale(1.2); /* Diventa un po' più grande */
+/* Form Styles */
+.luxury-input {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
 
-/* 4. Il Titolo sotto il video */
-.video-title {
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.video-trigger:hover + .video-title {
-    color: white; /* Il testo si illumina */
-    transform: translateX(5px); /* Si sposta leggermente a destra */
+.btn-luxury {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
 }
 
 /* =========================================
-   MOBILE HORIZONTAL SCROLL (PORTFOLIO)
+   HOVER EFFECTS PORTFOLIO
+   ========================================= */
+.video-thumb-wrapper {
+    overflow: hidden; border-radius: 0; 
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+.video-trigger:hover .video-thumb-wrapper { transform: translateY(-7px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+.video-thumb {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease, filter 0.5s ease; filter: brightness(0.85); 
+}
+.video-trigger:hover .video-thumb { transform: scale(1.06); filter: brightness(1.05); }
+.play-overlay { background: rgba(0,0,0,0.3); transition: background 0.4s ease; }
+.play-overlay i { font-size: 3rem; color: rgba(255,255,255,0.8); transition: transform 0.4s ease, color 0.4s ease; }
+.video-trigger:hover .play-overlay { background: rgba(0,0,0,0.1); }
+.video-trigger:hover .play-overlay i { color: #fff; transform: scale(1.2); }
+.video-title { transition: color 0.3s ease, transform 0.3s ease; }
+.video-trigger:hover + .video-title { color: white; transform: translateX(5px); }
+
+/* =========================================
+   MOBILE HORIZONTAL SCROLL
    ========================================= */
 @media (max-width: 991px) {
     .video-title {
-        color: white !important;       /* Forza il colore bianco puro */
-        opacity: 1 !important;         /* Assicura che sia visibile */
-        margin-top: 12px !important;   /* Un po' di spazio dal video */
-        font-size: 0.9rem !important;  /* Dimensione leggibile */
-        display: block !important;     /* Sicurezza per visualizzarlo */
-        
-        /* Opzionale: se vuoi che siano leggermente spostati a destra come l'effetto hover */
-        transform: translateX(5px); 
+        color: white !important; opacity: 1 !important; margin-top: 12px !important;   
+        font-size: 0.9rem !important; display: block !important; transform: translateX(5px); 
     }
-
     .mobile-scroll-row {
-        display: flex !important;           /* Forza Flexbox */
-        flex-wrap: nowrap !important;       /* VIETA di andare a capo */
-        overflow-x: auto !important;        /* Forza lo scroll orizzontale */
-        overflow-y: hidden;                 /* Niente scroll verticale */
-        gap: 15px !important;               /* Spazio tra i video */
-        padding-bottom: 30px !important;    /* Spazio sotto per l'ombra hover */
-        
-        /* Sistema scroll su iOS/Android */
-        -webkit-overflow-scrolling: touch; 
-        scrollbar-width: none;             
-        
-        /* Rimuovi i margini negativi standard di Bootstrap che rompono lo scroll */
-        margin-right: 0 !important;
-        margin-left: 0 !important;
+        display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important;        
+        overflow-y: hidden; gap: 15px !important; padding-bottom: 30px !important;    
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;             
+        margin-right: 0 !important; margin-left: 0 !important;
     }
-    
-    .mobile-scroll-row::-webkit-scrollbar { 
-        display: none; 
-    }
-
-    /* Seleziona le colonne direttamente dentro la riga */
+    .mobile-scroll-row::-webkit-scrollbar { display: none; }
     .mobile-scroll-row > div {
-        flex: 0 0 85% !important;    /* Occupa l'85% fisso */
-        width: 85% !important;       /* Larghezza fissa */
-        max-width: 85% !important;   /* Massimo larghezza fissa */
-        margin-top: 0 !important;    /* Rimuove margini strani */
+        flex: 0 0 85% !important; width: 85% !important; max-width: 85% !important; margin-top: 0 !important;    
     }
 }
-

@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var icon = document.getElementById('audioIcon');
 
     if (video) {
+        video.muted = true;
+        video.volume = 0;
+        
         // Avvio e Fade-In
         video.addEventListener('canplay', function() {
             video.play().then(function() {
@@ -38,8 +41,20 @@ document.addEventListener("DOMContentLoaded", function() {
             slider.addEventListener('input', function() {
                 var volumeValue = parseFloat(this.value);
                 var volumeDecimal = volumeValue / 100;
+                
+                // Applichiamo il volume
                 video.volume = volumeDecimal;
-                video.muted = (volumeDecimal <= 0);
+                
+                if (volumeDecimal > 0) {
+                    // FONDAMENTALE: Togliamo il mute sia come proprietà che come attributo HTML
+                    video.muted = false;
+                    video.removeAttribute('muted');
+                    // Alcuni browser richiedono play() dopo lo smontaggio del mute per attivare l'audio
+                    video.play().catch(e => console.log("Riproduzione già attiva"));
+                } else {
+                    video.muted = true;
+                }
+                
                 updateIcon(volumeValue);
             });
         }
@@ -49,9 +64,12 @@ document.addEventListener("DOMContentLoaded", function() {
             icon.addEventListener('click', function() {
                 if (video.muted || video.volume === 0) {
                     video.muted = false;
+                    video.removeAttribute('muted'); // Rimuoviamo l'attributo fisico
                     video.volume = 0.8;
                     if(slider) slider.value = 80;
                     updateIcon(80);
+                    // Forza il play per sbloccare il contesto audio
+                    video.play().catch(e => {});
                 } else {
                     video.muted = true;
                     video.volume = 0;

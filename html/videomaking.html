@@ -14,7 +14,101 @@
     <link rel="stylesheet" href="../css/style.css"> 
     <link rel="stylesheet" href="../css/videomaking.css"> 
 
+    <style>
+        /* --- CLASSE PER VIDEO VERTICALI (Elimina le bande nere su YouTube) --- */
+        .ratio-9x16 {
+            --bs-aspect-ratio: 177.77%; 
+        }
 
+        /* --- STILI PER LE CARTELLE --- */
+        .folder-card {
+            display: block; position: relative; height: 350px; 
+            background-color: #111; background-size: cover; background-position: center;
+            border-radius: 4px; overflow: hidden; cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .folder-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); 
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: background 0.4s ease; padding: 20px;
+        }
+        .folder-title {
+            font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 3px; color: white; margin-bottom: 10px; text-align: center;
+        }
+        .folder-desc {
+            font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 300;
+            color: #ddd; text-align: center; max-width: 95%; opacity: 0.9; line-height: 1.4;
+        }
+        .folder-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .folder-card:hover .folder-overlay { background: rgba(0,0,0,0.3); }
+
+        /* --- STILI PER LA "FINESTRA" --- */
+        .category-window {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0a0a0a;
+            z-index: 1040;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            overflow-y: auto; padding-top: 80px;
+        }
+        .category-window.active { opacity: 1; visibility: visible; }
+
+        .close-cat-btn {
+            position: fixed; top: 30px; right: 30px;
+            font-size: 3rem; color: white; cursor: pointer;
+            z-index: 1050; opacity: 0.7; transition: opacity 0.3s; line-height: 1;
+        }
+        .close-cat-btn:hover { opacity: 1; transform: scale(1.1); }
+
+        .cat-content {
+            transform: translateY(30px); opacity: 0; transition: all 0.5s ease 0.1s;
+        }
+        .category-window.active .cat-content { transform: translateY(0); opacity: 1; }
+
+        /* --- MODALE VIDEO (CENTRATA CON FADE) --- */
+        .modal-custom-backdrop {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000 !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .modal-custom-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* CORNICE GRIGIA PER VIDEO LOCALE */
+        .local-video-frame {
+            border: 2px solid #555; /* Bordo grigio */
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-custom-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 2100;
+        }
+    </style>
 
 </head>
 <body>
@@ -23,158 +117,463 @@
 
     <div class="top-social-center">
         <a href="https://vimeo.com/andreafrisinafilms" target="_blank"><i class="bi bi-vimeo"></i></a>
-        <a href="https://www.youtube.com/@IL_TUO_CANALE" target="_blank"><i class="bi bi-youtube"></i></a>
     </div>
 
     <a href="filmmaking.html" class="prev-page-link">
-        <i class="bi bi-arrow-left"></i> Filmmaking 
+        Filmmaking <i class="bi bi-arrow-right"></i>
     </a>
 
     <header class="page-header container" style="padding: 120px 0 60px 0; text-align:center; color:white;">
         <h1 class="page-title" style="font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300;">Videomaking</h1>
-        <p class="page-subtitle" style="font-family: 'Playfair Display', serif; font-style: italic; color: #888; font-size: 1.2rem;">Narrative & Cinematic Works</p>
+        <p class="page-subtitle" style="font-family: 'Montserrat', sans-serif; font-weight: 300; color: #ccc; font-size: 1.1rem; line-height: 1.6; max-width: 700px; margin: 20px auto 0;">
+            Stories created for clients, combining creativity and professional execution.
+        </p>
     </header>
 
-    <div class="container-fluid container-lg pb-5 px-0 px-lg-3 mobile-padding-fix">
-        
-        <div class="swipe-hint">&larr; Scorri i video &rarr;</div>
-
-        <div class="row g-5 mobile-scroll-row row-horizontal-mobile" id="horizontalCarousel"> 
+    <div class="container pb-5">
+        <div class="row g-4 justify-content-center">
             
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="video-trigger"
-                     data-video-id="0KrIyGslAWE"
-                     data-title="IL LIMBO"
-                     data-provider="youtube"
-                     data-description="E' un progetto personale che racconta il mio viaggio...">
-                    <div class="ratio ratio-16x9 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/0KrIyGslAWE/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                <div class="folder-card" onclick="openCategory('overlaySport')" style="background-image: url('../media/sportfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Sport Films</span>
+                        <p class="folder-desc">Cinematic stories centered on sport itself.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title">IL LIMBO</div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="video-trigger" 
-                        data-video-id="s6TOZxST8p0"
-                        data-title="Un santo Natale al Chelcio"
-                        data-provider="youtube"
-                        data-description="...">
-                    <div class="ratio ratio-16x9 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/s6TOZxST8p0/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                <div class="folder-card" onclick="openCategory('overlayMusic')" style="background-image: url('../media/musicfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Music Films</span>
+                        <p class="folder-desc">Narrative-driven music videos built around the artist’s vision.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title">Un santo Natale al Chelcio</div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="video-trigger"
-                     data-video-id="0KrIyGslAWE"
-                     data-title="IL LIMBO"
-                     data-provider="youtube"
-                     data-description="...">
-                    <div class="ratio ratio-16x9 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/0KrIyGslAWE/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                <div class="folder-card" onclick="openCategory('overlayFood')" style="background-image: url('../media/foodfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Food Films</span>
+                        <p class="folder-desc">Visual narratives centered around food.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title">IL LIMBO</div>
             </div>
 
-        </div> 
-    </div>
-
-
-    <h2 class="section-title-vertical">Vertical Videomaking</h2>
-    
-    <div class="swipe-hint">&larr; Scorri i reels &rarr;</div>
-
-    <div class="container-fluid container-wide pb-5 px-0 px-lg-3">
-        <div class="row g-4 mobile-scroll-row row-vertical-mobile" id="verticalCarousel"> 
-            
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="video-trigger"
-                    data-video-id="JxhMTriQi5g"
-                    data-title="Chelcio In Theatre"
-                    data-provider="youtube"
-                    data-description="...">
-                    <div class="ratio ratio-9x16 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/JxhMTriQi5g/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle" style="font-size: 2.5rem;"></i></div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openCategory('overlayEvent')" style="background-image: url('../media/eventfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Event Films</span>
+                        <p class="folder-desc">Condensed narratives that transform hours or days into a short cinematic experience.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title-vertical">Chelcio In Theatre</div>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="video-trigger"
-                    data-video-id="hxGlruo6ntc"
-                    data-title="Chelcio Iscrizioni"
-                    data-provider="youtube"
-                    data-description="...">
-                    <div class="ratio ratio-9x16 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/hxGlruo6ntc/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle" style="font-size: 2.5rem;"></i></div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openCategory('overlayCommercial')" style="background-image: url('../media/commercialfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Commercial Films</span>
+                        <p class="folder-desc">Story-driven visual pieces where products are introduced through mood, light, and narrative.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title-vertical">Chelcio Iscrizioni</div>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="video-trigger"
-                    data-video-id="JxhMTriQi5g"
-                    data-title="Chelcio In Theatre"
-                    data-provider="youtube"
-                    data-description="...">
-                    <div class="ratio ratio-9x16 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/JxhMTriQi5g/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle" style="font-size: 2.5rem;"></i></div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openCategory('overlayTeaser')" style="background-image: url('../media/cinematicfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Cinematic Teasers</span>
+                        <p class="folder-desc">Highly cinematic short films created to introduce an idea, an event, or a beginning.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title-vertical">Chelcio In Theatre</div>
             </div>
-            
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="video-trigger"
-                    data-video-id="hxGlruo6ntc"
-                    data-title="Chelcio Iscrizioni"
-                    data-provider="youtube"
-                    data-description="...">
-                    <div class="ratio ratio-9x16 video-thumb-wrapper">
-                        <img src="https://img.youtube.com/vi/hxGlruo6ntc/maxresdefault.jpg" class="video-thumb">
-                        <div class="play-overlay"><i class="bi bi-play-circle" style="font-size: 2.5rem;"></i></div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openCategory('overlayFashion')" style="background-image: url('../media/fashionfilms.png');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Fashion Films</span>
+                        <p class="folder-desc">Cinematic portrayals of fashion focused on presence, movement, and atmosphere.</p>
+                        <div class="mt-3 text-white small text-uppercase" style="letter-spacing: 2px;">GUARDA &rarr;</div>
                     </div>
                 </div>
-                <div class="video-title-vertical">Chelcio Iscrizioni</div>
             </div>
 
         </div>
     </div>
 
-    
-    <footer class="text-center py-5 text-secondary border-top border-secondary border-opacity-10 mt-5">
-        <p class="small m-0">ANDREA FRISINA &copy; 2024</p>
+    <div id="overlaySport" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlaySport')">&times;</div>
+        <div class="container cat-content pb-5">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Sport Films</h2>
+                <p class="text-white-50 px-3">Cinematic stories centered on sport itself, capturing intensity, rhythm, and emotion through a narrative lens.</p>
+            </header>
+            <div class="row g-5 justify-content-center"> 
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="ratio ratio-9x16">
+                        <iframe src="https://www.youtube.com/embed/cljOrVQFW0w?rel=0&loop=1&playlist=cljOrVQFW0w" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div id="overlayFood" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayFood')">&times;</div>
+        <div class="container cat-content pb-5">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Food Films</h2>
+                <p class="text-white-50 px-3">Visual narratives centered around food.</p>
+            </header>
+            
+            <div class="row g-5 justify-content-center"> 
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/foodfilms/Assaggi.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/foodfilms/Assaggi.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Assaggi</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/foodfilms/Ricetta32GamberettiAsmr.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/foodfilms/Gamberetti.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Gamberetti ASMR</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/foodfilms/Servizio Asmr.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/foodfilms/Servizio.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Servizio ASMR</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/foodfilms/Torta Alle Mele.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/foodfilms/Torta.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Torta alle Mele</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/foodfilms/Ricetta1SpaghettiCozzeEVongole.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/foodfilms/Spaghetti.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Spaghetti Cozze e Vongole</div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div id="overlayMusic" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayMusic')">&times;</div>
+        <div class="container cat-content">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Music Films</h2>
+                <p class="text-white-50 px-3">Narrative-driven music videos built around the artist’s vision, connecting music, emotion, and visual storytelling.</p>
+            </header>
+            <p class="text-center text-muted">Coming soon...</p>
+        </div>
+    </div>
+
+    <div id="overlayFashion" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayFashion')">&times;</div>
+        <div class="container cat-content">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Fashion Films</h2>
+                <p class="text-white-50 px-3">Cinematic portrayals of fashion focused on presence, movement, and atmosphere, capturing the essence of a model within a visual context.</p>
+            </header>
+
+            <div class="row g-5 justify-content-center px-3">
+                <div class="col-12 col-md-8">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-format="landscape" data-video-src="../media/videomaking/fashionfilms/Sfilata Lv.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/fashionfilms/sfilata.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Sfilata - LV</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="overlayEvent" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayEvent')">&times;</div>
+        <div class="container cat-content">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Event Films</h2>
+                <p class="text-white-50 px-3">Condensed narratives that transform hours or days into a short cinematic experience, preserving the energy and emotion of an event.</p>
+            </header>
+            
+            <div class="row g-5 justify-content-center"> 
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/Cozy Talks - Film Della Serata.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/cozy.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Cozy Talks - IL FILM DELLA SERATA</div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/Film Del Karaoke.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/filmkaraoke.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Film Del Karaoke</div>
+                </div>
+
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/Madiscool League - Film Della Giornata.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/madis.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Madiscool League - Film Della Giornata</div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/Stars Trial Luseney 2025 - Film Della Giornata.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/stars.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Stars Trial Luseney 2025 - Film Della Giornata</div>
+                </div>
+
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/The Guardians Of Reggio - Interviste E Coperture.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/guardiansofreggio.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">The Guardians Of Reggio - Interviste E Coperture</div>
+
+
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/Big Easy 2612.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/bigeasy.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">BIG EASY</div>
+                
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/eventfilms/Beach Soccer Charity Cup 2025   Film Dell'evento.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/eventfilms/beach.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Beach Soccer Charity Cup 2025</div>
+                </div>
+
+
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <div id="overlayCommercial" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayCommercial')">&times;</div>
+        <div class="container cat-content">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Commercial Films</h2>
+                <p class="text-white-50 px-3">Story-driven visual pieces where products are introduced through mood, light, and narrative, blending cinematic language with brand identity.</p>
+            </header>
+            
+            <div class="row g-5 justify-content-center">    
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/commercialfilms/Spot - Open Days 2025.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/commercialfilms/opendays.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">SPOT - OPEN DAYS</div>
+                
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/commercialfilms/Spot Aura.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/commercialfilms/aura.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Spot - AURA</div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/commercialfilms/Spot Slice.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/commercialfilms/slice.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Spot - Slice</div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-format="landscape" data-video-src="../media/videomaking/commercialfilms/Spot Gioielli.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/commercialfilms/gioielli.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Spot - Gioielli</div>
+                </div>                
+
+
+                <div class="col-12 col-md-6">
+                    <div class="video-trigger" style="cursor: pointer;" data-provider="local" data-video-src="../media/videomaking/commercialfilms/Spot Gallina X Phone Hub.mp4">
+                        <div class="ratio ratio-16x9 video-thumb-wrapper">
+                            <img src="../media/videomaking/commercialfilms/phonehub.jpg" style="object-fit: cover; width:100%; height:100%;">
+                            <div class="play-overlay"><i class="bi bi-play-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-title mt-3 text-center fs-5 text-white">Spot - Gallina X Phone HUB</div>
+                </div>        
+
+
+            </div>
+
+        
+
+
+        </div>
+    </div>
+
+    <div id="overlayTeaser" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayTeaser')">&times;</div>
+        <div class="container cat-content">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Cinematic Teasers</h2>
+                <p class="text-white-50 px-3">Highly cinematic short films created to introduce an idea, an event, or a beginning, with actors and strong visual imagination.</p>
+            </header>
+            <p class="text-center text-muted">Coming soon...</p>
+        </div>
+    </div>
+
+    <footer class="text-center py-5 text-secondary">
+        <p class="small m-0">ANDREA FRISINA &copy; 2026</p>
     </footer>
 
-
     <div class="modal-custom-backdrop" id="videoModal">
-        <div class="modal-custom-content">
-            <div class="close-custom-modal" id="closeModal">&times;</div>
-            <div class="modal-video-container" id="modalVideoContainer"></div>
-            <div class="modal-info">
-                <h2 class="modal-title-display" id="modalTitle"></h2>
-                <p class="modal-desc-display" id="modalDesc"></p>
-            </div>
-        </div>
+        <div class="close-custom-modal" id="closeModal">&times;</div>
+        <div id="modalVideoContainer"></div>
     </div>
 
-
-    <script src="../js/main.js"></script>
-
-    <script src="../js/videomaking.js"> </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function openCategory(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeCategory(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const triggers = document.querySelectorAll('.video-trigger');
+            const modal = document.getElementById('videoModal');
+            const modalContainer = document.getElementById('modalVideoContainer');
+            const closeModal = document.getElementById('closeModal');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const provider = this.getAttribute('data-provider');
+                    const format = this.getAttribute('data-format'); // Legge se è landscape
+                    modalContainer.innerHTML = '';
+
+                    if (provider === 'local') {
+                        const src = this.getAttribute('data-video-src');
+                        
+                        // LOGICA ADATTIVA:
+                        // Se format è landscape, usa 16/9 e larghezza ampia.
+                        // Altrimenti (verticale), usa 9/16 e altezza 85vh.
+                        const isLandscape = (format === 'landscape');
+                        const frameStyle = isLandscape 
+                            ? 'width: 80vw; max-width: 1100px; aspect-ratio: 16/9;' 
+                            : 'height: 85vh; aspect-ratio: 9/16;';
+
+                        modalContainer.innerHTML = `
+                            <div class="local-video-frame" style="${frameStyle}">
+                                <video controls autoplay playsinline style="width:100%; height:100%; object-fit: cover; display:block;">
+                                    <source src="${src}" type="video/mp4">
+                                </video>
+                            </div>
+                        `;
+                    } else {
+                        const vidId = this.getAttribute('data-video-id');
+                        modalContainer.innerHTML = `<div class="ratio ratio-16x9" style="width:80vw;"><iframe src="https://www.youtube.com/embed/${vidId}?autoplay=1" allowfullscreen></iframe></div>`;
+                    }
+
+                    modal.classList.add('active');
+                });
+            });
+
+            closeModal.onclick = () => {
+                modal.classList.remove('active');
+                modalContainer.innerHTML = '';
+            };
+            modal.onclick = (e) => {
+                if(e.target === modal) {
+                    modal.classList.remove('active');
+                    modalContainer.innerHTML = '';
+                }
+            };
+        });
+    </script>
 </body>
 </html>
