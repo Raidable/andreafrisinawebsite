@@ -6,8 +6,13 @@ A custom-built, lightweight, and dynamic portfolio developed for filmmaker and D
 
 ## Video Preview
 
-<video src="https://github.com/Raidable/andreafrisinawebsite/preview-website.mp4" width="100%" muted autoplay loop playsinline></video>
----
+
+https://github.com/user-attachments/assets/0c0474cd-bad2-42be-9f67-82aef8429948
+
+
+
+<img width="1912" height="907" alt="immagine" src="https://github.com/user-attachments/assets/e9fcd0b0-d148-45b3-ae62-51711281d595" />
+
 
 ## Key Features
 
@@ -39,5 +44,6 @@ A custom-built, lightweight, and dynamic portfolio developed for filmmaker and D
 ├── dynamic/            # JSON data sources (recent_works, photography, etc.)
 ├── media/              # Locally hosted assets and posters
 └── index.html          # Main landing entry point
+
 
 
