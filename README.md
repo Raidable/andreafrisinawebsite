@@ -6,11 +6,7 @@ A custom-built, lightweight, and dynamic portfolio developed for filmmaker and D
 
 ## Video Preview
 
-<div align="center">
-  <video src="preview-website.mp4" width="100%" controls autoplay muted loop>
-    Your browser does not support the video tag.
-  </video>
-</div>
+<video src="https://github.com/Raidable/andreafrisinawebsite/preview-website.mp4" width="100%" muted autoplay loop playsinline></video>
 ---
 
 ## Key Features
@@ -43,4 +39,5 @@ A custom-built, lightweight, and dynamic portfolio developed for filmmaker and D
 ├── dynamic/            # JSON data sources (recent_works, photography, etc.)
 ├── media/              # Locally hosted assets and posters
 └── index.html          # Main landing entry point
+
 
