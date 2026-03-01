@@ -12,6 +12,8 @@ https://github.com/user-attachments/assets/0c0474cd-bad2-42be-9f67-82aef8429948
 
 
 <img width="1912" height="907" alt="immagine" src="https://github.com/user-attachments/assets/e9fcd0b0-d148-45b3-ae62-51711281d595" />
+<img width="1877" height="900" alt="immagine" src="https://github.com/user-attachments/assets/bf598a5a-2252-4404-b667-9b771f9e0f6b" />
+<img width="1840" height="848" alt="immagine" src="https://github.com/user-attachments/assets/ce5ebe8b-e697-46c1-8bb7-c2cdbb95fd0c" />
 
 
 ## Key Features
@@ -44,6 +46,7 @@ https://github.com/user-attachments/assets/0c0474cd-bad2-42be-9f67-82aef8429948
 ├── dynamic/            # JSON data sources (recent_works, photography, etc.)
 ├── media/              # Locally hosted assets and posters
 └── index.html          # Main landing entry point
+
 
 
 
