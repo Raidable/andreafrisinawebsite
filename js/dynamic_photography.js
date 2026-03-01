@@ -1,7 +1,12 @@
+let allImages = []; // Array globale per navigare tra le foto
+let currentIndex = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
     fetch('../dynamic/photography.json')
         .then(res => res.json())
         .then(data => {
+            allImages = [...data.row1, ...data.row2, ...data.row3];
+
             renderRow('row1', data.row1, 'row-slow');
             renderRow('row2', data.row2, 'row-fast');
             renderRow('row3', data.row3, 'row-mid');
@@ -26,11 +31,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
 function openLightbox(src) {
-    lightboxImg.src = src;
+    // Troviamo la posizione della foto cliccata nell'array globale
+    currentIndex = allImages.indexOf(src);
+    updateLightboxContent();
     lightbox.classList.add('active');
 }
-document.getElementById('closeLightbox').onclick = () => lightbox.classList.remove('active');
-lightbox.onclick = (e) => { if(e.target !== lightboxImg) lightbox.classList.remove('active'); }
+
+function updateLightboxContent() {
+    lightboxImg.src = allImages[currentIndex];
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % allImages.length;
+    updateLightboxContent();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+    updateLightboxContent();
+}
+
+// GESTIONE EVENTI (CORRETTA PER LE FRECCE)
+document.getElementById('nextBtn').addEventListener('click', (e) => {
+    e.stopPropagation(); // Evita che il click arrivi al lightbox (chiudendolo)
+    nextImage();
+});
+
+document.getElementById('prevBtn').addEventListener('click', (e) => {
+    e.stopPropagation(); // Evita che il click arrivi al lightbox (chiudendolo)
+    prevImage();
+});
+
+document.getElementById('closeLightbox').onclick = () => {
+    lightbox.classList.remove('active');
+};
+
+// Chiudi solo se clicchi sullo sfondo nero e NON sulle frecce o sull'immagine
+lightbox.onclick = (e) => {
+    const isArrow = e.target.closest('.lightbox-nav');
+    if (e.target !== lightboxImg && !isArrow) {
+        lightbox.classList.remove('active');
+    }
+};
+
+// Supporto Tastiera
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+    if (e.key === "Escape") lightbox.classList.remove('active');
+});
