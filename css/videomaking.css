@@ -365,3 +365,75 @@ body {
     50% { opacity: 0.8; transform: translateX(5px); }
     100% { opacity: 0.3; transform: translateX(-5px); }
 }
+
+
+        /* Video Background Locale */
+        .local-bg-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; overflow: hidden; background-color: #000;
+        }
+        .local-bg-video { width: 100%; height: 100%; object-fit: cover; }
+        .local-bg-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); z-index: -1;
+        }
+
+        /* Forza Miniature Orizzontali nella griglia */
+        .video-grid .ratio-16x9 {
+            --bs-aspect-ratio: 56.25%;
+            background-color: #111;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .video-grid img { object-fit: cover; width: 100%; height: 100%; }
+
+        /* Ratio per Modale (Verticale) */
+        .ratio-9x16 { --bs-aspect-ratio: 177.77%; }
+
+        /* Cartelle Main */
+        .folder-card {
+            display: block; position: relative; height: 350px; 
+            background-color: #111; background-size: cover; background-position: center;
+            border-radius: 4px; overflow: hidden; cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .folder-card:hover { transform: scale(1.02); }
+        .folder-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); display: flex; flex-direction: column;
+            justify-content: center; align-items: center; padding: 30px;
+        }
+        .folder-title { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: white; margin-bottom: 10px; }
+        .folder-desc { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 300; color: #ddd; text-align: center; line-height: 1.4; }
+
+        /* Finestre Categorie */
+        .category-window {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0a0a0a; z-index: 1040;
+            opacity: 0; visibility: hidden; transition: 0.4s;
+            overflow-y: auto; padding-top: 80px;
+        }
+        .category-window.active { opacity: 1; visibility: visible; }
+        .close-cat-btn { position: fixed; top: 30px; right: 30px; font-size: 3rem; color: white; cursor: pointer; z-index: 1050; }
+
+        /* Modale Video */
+        .modal-custom-backdrop {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); z-index: 2000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: 0.4s;
+        }
+        .modal-custom-backdrop.active { opacity: 1; visibility: visible; }
+        .close-custom-modal { position: absolute; top: 30px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
+        
+        .play-button-circle {
+            background: rgba(255,255,255,0.1); width: 60px; height: 60px; 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid white;
+        }
+        .video-title-grid {
+            font-family: 'Montserrat', sans-serif; font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 1px; color: #fff; margin-top: 10px; opacity: 0.8;
+            height: 2.5em; overflow: hidden; text-align: center;
+        }

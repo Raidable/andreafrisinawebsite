@@ -207,3 +207,35 @@ body {
     .next-page-link { right: 20px; }
     .back-link { left: 20px; }
 }
+
+
+        /* Stili coerenza */
+        .ratio-9x16 { --bs-aspect-ratio: 177.77%; }
+        .folder-card {
+            display: block; position: relative; height: 400px;
+            background-color: #111; background-size: cover; background-position: center;
+            border-radius: 4px; overflow: hidden; cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .folder-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: background 0.4s ease; padding: 20px;
+        }
+        .folder-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: white; text-align: center; }
+        .folder-desc { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 300; color: #ddd; text-align: center; max-width: 90%; line-height: 1.5; }
+        .category-window { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0a0a0a; z-index: 1040; opacity: 0; visibility: hidden; transition: 0.4s; overflow-y: auto; padding-top: 80px; }
+        .category-window.active { opacity: 1; visibility: visible; }
+        .close-cat-btn { position: fixed; top: 30px; right: 30px; font-size: 3rem; color: white; cursor: pointer; z-index: 1050; }
+        
+        /* Modale */
+        .modal-custom-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; }
+        .modal-custom-backdrop.active { opacity: 1; visibility: visible; }
+        .modal-custom-content { width: 90%; max-width: 1200px; text-align: center; color: white; }
+        .close-custom-modal { position: absolute; top: 30px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
+        .modal-info { margin-top: 20px; font-family: 'Montserrat', sans-serif; }
+        .modal-title-display { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .modal-desc-display { font-weight: 300; color: #ccc; margin-top: 10px; }
+        
+        .play-button-circle { background: rgba(255,255,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid white; }
+   

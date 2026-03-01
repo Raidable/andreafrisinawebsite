@@ -419,3 +419,37 @@ body {
         flex: 0 0 85% !important; width: 85% !important; max-width: 85% !important; margin-top: 0 !important;    
     }
 }
+
+/* Rende il fondo della modale trasparente per evitare il riquadro nero */
+.modal-content.bg-transparent {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Assicurati che l'iframe non abbia bordi */
+#modalVideoIframe {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Stile pulito per le info sotto il video */
+.modal-video-info {
+    padding-top: 20px;
+    background: transparent !important; /* Forza la rimozione di ogni sfondo */
+}
+
+#modalTitle {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+#modalDescription {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 800px;
+    margin: 10px auto 0;
+}

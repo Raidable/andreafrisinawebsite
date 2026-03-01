@@ -7,157 +7,24 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css"> 
-    <link rel="stylesheet" href="../css/videomaking.css"> 
+    
+    <link rel="stylesheet" href="../css/photography.css">
 
-    <style>
-        /* --- POSIZIONAMENTO SOCIAL AL CENTRO IN ALTO --- */
-        .top-social-center {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        .top-social-center a {
-            color: white;
-            font-size: 1.5rem;
-            opacity: 0.7;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .top-social-center a:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        /* --- GRIGLIA FLEX CON SPAZI LATERALI --- */
-        .photo-flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 10%; /* Spazio a dx e sx */
-        }
-
-        @media (max-width: 1200px) {
-            .photo-flex-container { padding: 0 5%; }
-        }
-        @media (max-width: 768px) {
-            .photo-flex-container { padding: 0 15px; }
-        }
-
-        .photo-column {
-            flex: 33.33%;
-            max-width: 33.33%;
-            padding: 0 10px;
-        }
-
-        @media (max-width: 992px) {
-            .photo-column { flex: 50%; max-width: 50%; }
-        }
-
-        @media (max-width: 600px) {
-            .photo-column { flex: 100%; max-width: 100%; }
-        }
-
-        .photo-item {
-            width: 100%;
-            margin-bottom: 20px;
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: 4px;
-            transition: transform 0.4s ease;
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: filter 0.4s ease, transform 0.6s ease;
-        }
-
-        .photo-item:hover img {
-            filter: brightness(0.8);
-            transform: scale(1.03);
-        }
-
-        /* --- LIGHTBOX --- */
-        .lightbox-backdrop {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            padding: 20px;
-        }
-        .lightbox-backdrop.active { opacity: 1; visibility: visible; }
-        .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
-        .close-lightbox { position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; z-index: 3100; }
-    </style>
 </head>
 <body>
 
     <div class="top-social-center">
         <a href="https://vimeo.com/andreafrisinafilms" target="_blank"><i class="bi bi-vimeo"></i></a>
-        <a href="https://www.instagram.com/andreafrisinafilms/" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.instagram.com/andreafrisinastories/" target="_blank"><i class="bi bi-instagram"></i></a>
     </div>
 
     <a href="portfolio-selection.html" class="back-link">&larr; Indietro</a>
 
-    <header class="page-header container" style="padding: 120px 0 60px 0; text-align:center; color:white;">
-        <h1 class="page-title" style="font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300;">Photography</h1>
-        <p class="page-subtitle" style="font-family: 'Montserrat', sans-serif; font-weight: 300; color: #ccc; font-size: 1.1rem; max-width: 700px; margin: 20px auto 0;">
-            Capturing moments through a cinematic and narrative lens.
-        </p>
-    </header>
-
-    <div class="container-fluid pb-5">
-        <div class="photo-flex-container">
-            
-            <div class="photo-column">
-                <div class="photo-item" onclick="openLightbox('../media/photography/1.jpg')">
-                    <img src="../media/photography/1.jpg" alt="Photography">
-                </div>
-                <div class="photo-item" onclick="openLightbox('../media/photography/4.jpg')">
-                    <img src="../media/photography/4.jpg" alt="Photography">
-                </div>
-                <div class="photo-item" onclick="openLightbox('../media/photography/7.jpg')">
-                    <img src="../media/photography/7.jpg" alt="Photography">
-                </div>
-            </div>
-
-            <div class="photo-column">
-                <div class="photo-item" onclick="openLightbox('../media/photography/2.jpg')">
-                    <img src="../media/photography/2.jpg" alt="Photography">
-                </div>
-                <div class="photo-item" onclick="openLightbox('../media/photography/5.jpg')">
-                    <img src="../media/photography/5.jpg" alt="Photography">
-                </div>
-                <div class="photo-item" onclick="openLightbox('../media/photography/8.jpg')">
-                    <img src="../media/photography/8.jpg" alt="Photography">
-                </div>
-            </div>
-
-            <div class="photo-column">
-                <div class="photo-item" onclick="openLightbox('../media/photography/3.jpg')">
-                    <img src="../media/photography/3.jpg" alt="Photography">
-                </div>
-                <div class="photo-item" onclick="openLightbox('../media/photography/6.jpg')">
-                    <img src="../media/photography/6.jpg" alt="Photography">
-                </div>
-                <div class="photo-item" onclick="openLightbox('../media/photography/9.jpg')">
-                    <img src="../media/photography/9.jpg" alt="Photography">
-                </div>
-            </div>
-
-        </div>
+    <div class="marquee-container" id="photography-container">
+        <div class="marquee-row" id="row1"></div>
+        <div class="marquee-row reverse" id="row2"></div>
+        <div class="marquee-row" id="row3"></div>
     </div>
 
     <div class="lightbox-backdrop" id="lightbox">
@@ -165,32 +32,6 @@
         <img src="" class="lightbox-img" id="lightboxImg">
     </div>
 
-    <footer class="text-center py-5 text-secondary">
-        <p class="small m-0">ANDREA FRISINA &copy; 2026</p>
-    </footer>
-
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const closeBtn = document.getElementById('closeLightbox');
-
-        function openLightbox(src) {
-            lightboxImg.src = src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        closeBtn.onclick = function() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        lightbox.onclick = function(e) {
-            if(e.target !== lightboxImg) {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-    </script>
+    <script src="../js/dynamic_photography.js"></script>
 </body>
 </html>

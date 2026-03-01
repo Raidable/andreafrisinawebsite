@@ -316,3 +316,33 @@
     transition: all 0.3s; cursor: pointer;
 }
 .btn-luxury:hover { background: white; color: black; }
+
+
+/* STILI SPECIFICI PER IL VIDEO BACKGROUND LOCALE */
+.local-bg-wrapper {
+    position: fixed; /* Fissa il video sullo sfondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Lo manda dietro a tutto il contenuto */
+    overflow: hidden;
+    background-color: #000; /* Fondo nero mentre carica */
+}
+
+.local-bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Copre tutto lo schermo senza deformarsi */
+}
+
+/* L'overlay scuro per leggere i testi sopra il video */
+.page-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Oscura il video del 60% */
+    z-index: 1;
+}

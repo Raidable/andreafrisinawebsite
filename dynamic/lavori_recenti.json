@@ -1,0 +1,29 @@
+[
+    {
+        "id": "bePmeUZBT7I",
+        "type": "youtube",
+        "title": "Senza un perche'",
+        "description": "Questo video si aprirà su YouTube",
+        "thumb": "maxresdefault",
+        "external_link": false
+    },
+    {
+        "id": "1091598477",
+        "type": "vimeo",
+        "title": "Omar",
+        "description": "Questo si apre nella modale",
+        "poster": "../media/vimeo-thumbnails/omar.jpg",
+        "external_link": false
+    },
+
+    {
+        "id": "SnOZWgnzGrU",
+        "type": "youtube",
+        "title": "The art of being",
+        "description": "Not being able to find ourselves, to truly know who we are...",
+        "thumb": "maxresdefault",
+        "external_link": true
+
+    }
+
+]

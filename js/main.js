@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     // 1. GESTIONE VIDEO HERO (HOMEPAGE)
     // ============================================================
+    if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
+        location.reload();
+    }
+    
     var video = document.getElementById('hero-video');
     var slider = document.getElementById('volumeSlider');
     var icon = document.getElementById('audioIcon');
