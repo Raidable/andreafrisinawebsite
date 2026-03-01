@@ -42,10 +42,10 @@ https://github.com/user-attachments/assets/0c0474cd-bad2-42be-9f67-82aef8429948
 ```text
 ├── css/                # Custom UI components and responsive layouts
 ├── js/                 # Content fetch engines and modal logic
-├── pages/              # Dedicated views (Videomaking, Filmmaking, Photography)
+├── html/               # Entire HTML
 ├── dynamic/            # JSON data sources (recent_works, photography, etc.)
 ├── media/              # Locally hosted assets and posters
-└── index.html          # Main landing entry point
+
 
 
 
