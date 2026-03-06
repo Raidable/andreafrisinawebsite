@@ -1,40 +1,89 @@
 {
-  "row1": [
-    "../media/photography/food/1.jpg",
-    "../media/photography/food/2.jpg",
-    "../media/photography/food/3.jpg",
-    "../media/photography/food/4.jpg",
-    "../media/photography/food/5.jpg",
-    "../media/photography/food/6.jpg",
-    "../media/photography/food/7.jpg",
-    "../media/photography/food/8.jpg",
-    "../media/photography/food/9.jpg",
-    "../media/photography/food/10.jpg",
-    "../media/photography/food/11.jpg",
-    "../media/photography/food/12.jpg",
-    "../media/photography/food/13.jpg",
-    "../media/photography/food/14.jpg",
-    "../media/photography/food/15.jpg",
-    "../media/photography/food/16.jpg"
-  ],
-  "row2": [
-    "../media/photography/paesaggi/1.jpg",
-    "../media/photography/paesaggi/2.jpg",
-    "../media/photography/paesaggi/3.jpg",
-    "../media/photography/paesaggi/4.jpg",
-    "../media/photography/paesaggi/5.jpg",
-    "../media/photography/paesaggi/6.jpg",
-    "../media/photography/paesaggi/7.jpg",
-    "../media/photography/paesaggi/8.jpg",
-    "../media/photography/paesaggi/9.jpg"
-  ],
-  "row3": [
-    "../media/photography/altro/1.jpg",
-    "../media/photography/altro/2.jpg",
-    "../media/photography/altro/3.jpg",
-    "../media/photography/altro/4.jpg",
-    "../media/photography/altro/5.jpg",
-    "../media/photography/altro/6.jpg",
-    "../media/photography/altro/7.jpg"
-  ]
+  "staticTop": {
+    "images": [
+      "../media/photography/food/1.jpg",
+      "../media/photography/food/2.jpg",
+      "../media/photography/food/3.jpg",
+      "../media/photography/food/4.jpg",
+      "../media/photography/food/5.jpg",
+      "../media/photography/food/6.jpg",
+      "../media/photography/food/7.jpg",
+      "../media/photography/food/8.jpg",
+      "../media/photography/food/9.jpg",
+      "../media/photography/food/10.jpg",
+      "../media/photography/food/11.jpg",
+      "../media/photography/food/12.jpg",
+      "../media/photography/food/13.jpg",
+      "../media/photography/food/14.jpg",
+      "../media/photography/food/15.jpg",
+      "../media/photography/food/16.jpg"
+    ]
+  },
+  "staticBottom": {
+    "images": [
+      "../media/photography/paesaggi/1.jpg",
+      "../media/photography/paesaggi/2.jpg",
+      "../media/photography/paesaggi/3.jpg",
+      "../media/photography/paesaggi/4.jpg",
+      "../media/photography/paesaggi/5.jpg",
+      "../media/photography/paesaggi/6.jpg",
+      "../media/photography/paesaggi/7.jpg",
+      "../media/photography/paesaggi/8.jpg",
+      "../media/photography/paesaggi/9.jpg"
+    ]
+  },
+  "alma": {
+    "title": "ALMA SCUOLA DI CUCINA ITALIANA",
+    "description": "Collaborazioni con l'eccellenza della cucina italiana.",
+    "rows": {
+      "row1": ["../media/photography/alma/1.jpg", "../media/photography/alma/2.jpg"],
+      "row2": ["../media/photography/alma/3.jpg", "../media/photography/alma/4.jpg"],
+      "row3": ["../media/photography/alma/5.jpg", "../media/photography/alma/6.jpg"]
+    }
+  },
+  "coppini": {
+    "title": "COPPINI ARTE OLEARIA",
+    "description": "Racconti visivi legati alla terra e all'arte olearia.",
+    "rows": {
+      "row1": ["../media/photography/coppini/1.jpg", "../media/photography/coppini/2.jpg"],
+      "row2": ["../media/photography/coppini/3.jpg", "../media/photography/coppini/4.jpg"],
+      "row3": ["../media/photography/coppini/5.jpg", "../media/photography/coppini/6.jpg"]
+    }
+  },
+  "riserva": {
+    "title": "RISERVA SAN MASSIMO",
+    "description": "Scatti commerciali e paesaggistici realizzati per Riserva San Massimo.",
+    "rows": {
+      "row1": [],
+      "row2": [],
+      "row3": []
+    }
+  },
+  "vanilla": {
+    "title": "DON VANILLA",
+    "description": "Progetti fotografici commerciali per Don Vanilla.",
+    "rows": {
+      "row1": [],
+      "row2": [],
+      "row3": []
+    }
+  },
+  "eventi": {
+    "title": "CERIMONIE / EVENTI",
+    "description": "Reportage di eventi e momenti unici.",
+    "rows": {
+      "row1": [],
+      "row2": [],
+      "row3": []
+    }
+  },
+  "backstage": {
+    "title": "BACKSTAGE FILM \"Sulla Stessa Barca\"",
+    "description": "Fotografia di scena e dietro le quinte.",
+    "rows": {
+      "row1": [],
+      "row2": [],
+      "row3": []
+    }
+  }
 }

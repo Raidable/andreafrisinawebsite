@@ -33,5 +33,12 @@
   "overlayFashion": [
     { "type": "local", "title": "Sfilata - LV", "src": "../media/videomaking/fashionfilms/Sfilata Lv.mp4", "poster": "../media/videomaking/fashionfilms/sfilata.jpg", "aspect": "16x9" }
   ],
-  "overlayMusic": []
+    "overlayBelmonte": [
+  ],
+  "overlayMusic": [],
+  "overlayAlma": [
+
+  ]
+
+  
 }

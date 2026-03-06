@@ -1,84 +1,89 @@
-let allImages = []; // Array globale per navigare tra le foto
-let currentIndex = 0;
+let photoData = {};
+let currentImages = []; 
+let currentIndex = 0;   
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('../dynamic/photography.json')
+    fetch('../dynamic/photography.json') 
         .then(res => res.json())
         .then(data => {
-            allImages = [...data.row1, ...data.row2, ...data.row3];
+            photoData = data;
+            
+            // Inizializza i rullini statici
+            if (data.staticTop) {
+                renderMarqueeRow('marqueeFoodTop', data.staticTop.images, 'row-slow', 'staticTop');
+            }
+            if (data.staticBottom) {
+                renderMarqueeRow('marqueeLandscapeBottom', data.staticBottom.images, 'row-mid', 'staticBottom');
+            }
+        })
+        .catch(err => console.error("Errore caricamento JSON:", err));
 
-            renderRow('row1', data.row1, 'row-slow');
-            renderRow('row2', data.row2, 'row-fast');
-            renderRow('row3', data.row3, 'row-mid');
-        });
+    // Navigazione frecce Lightbox
+    document.getElementById('prevBtn').addEventListener('click', (e) => { 
+        e.stopPropagation(); 
+        navigateLightbox(-1); 
+    });
+    document.getElementById('nextBtn').addEventListener('click', (e) => { 
+        e.stopPropagation(); 
+        navigateLightbox(1); 
+    });
+    document.getElementById('closeLightbox').onclick = () => {
+        document.getElementById('lightbox').classList.remove('active');
+    };
+});
 
-    function renderRow(rowId, images, speedClass) {
-        const rowElement = document.getElementById(rowId);
-        if (!images || images.length === 0) return;
+function renderMarqueeRow(containerId, images, speedClass, categoryKey = null) {
+    const row = document.getElementById(containerId);
+    if (!row || !images || images.length === 0) return;
 
-        // Creiamo il contenuto delle foto
-        const photoHTML = images.map(src => `
-            <div class="photo-item" onclick="openLightbox('${src}')">
-                <img src="${src}" loading="lazy">
-            </div>
-        `).join('');
+    const html = images.map(src => `
+        <div class="photo-item" onclick="openLightbox('${src}', '${categoryKey}')">
+            <img src="${src}" loading="lazy">
+        </div>
+    `).join('');
 
-        // Iniettiamo due blocchi identici per il loop infinito
-        rowElement.innerHTML = `
-            <div class="marquee-content ${speedClass}">${photoHTML}</div>
-            <div class="marquee-content ${speedClass}">${photoHTML}</div>
-        `;
+    row.innerHTML = `
+        <div class="marquee-content ${speedClass}">${html}</div>
+        <div class="marquee-content ${speedClass}">${html}</div>
+    `;
+}
+
+function openPhotoCategory(key) {
+    const cat = photoData[key];
+    if (!cat) return;
+    document.getElementById('catTitle').innerText = cat.title;
+    currentImages = [...cat.rows.row1, ...cat.rows.row2, ...cat.rows.row3];
+    renderMarqueeRow('photoRow1', cat.rows.row1, 'row-slow', key);
+    renderMarqueeRow('photoRow2', cat.rows.row2, 'row-fast', key);
+    renderMarqueeRow('photoRow3', cat.rows.row3, 'row-mid', key);
+    document.getElementById('photoCategoryOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function openLightbox(src, key) {
+    if (key === 'staticTop') {
+        currentImages = photoData.staticTop.images;
+    } else if (key === 'staticBottom') {
+        currentImages = photoData.staticBottom.images;
+    } else if (photoData[key]) {
+        currentImages = [...photoData[key].rows.row1, ...photoData[key].rows.row2, ...photoData[key].rows.row3];
     }
-});
-
-function openLightbox(src) {
-    // Troviamo la posizione della foto cliccata nell'array globale
-    currentIndex = allImages.indexOf(src);
-    updateLightboxContent();
-    lightbox.classList.add('active');
+    currentIndex = currentImages.indexOf(src);
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
 }
 
-function updateLightboxContent() {
-    lightboxImg.src = allImages[currentIndex];
+function updateLightbox() {
+    document.getElementById('lightboxImg').src = currentImages[currentIndex];
 }
 
-function nextImage() {
-    currentIndex = (currentIndex + 1) % allImages.length;
-    updateLightboxContent();
+function navigateLightbox(direction) {
+    if (currentImages.length === 0) return;
+    currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+    updateLightbox();
 }
 
-function prevImage() {
-    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-    updateLightboxContent();
+function closePhotoCategory() {
+    document.getElementById('photoCategoryOverlay').classList.remove('active');
+    document.body.style.overflow = '';
 }
-
-// GESTIONE EVENTI (CORRETTA PER LE FRECCE)
-document.getElementById('nextBtn').addEventListener('click', (e) => {
-    e.stopPropagation(); // Evita che il click arrivi al lightbox (chiudendolo)
-    nextImage();
-});
-
-document.getElementById('prevBtn').addEventListener('click', (e) => {
-    e.stopPropagation(); // Evita che il click arrivi al lightbox (chiudendolo)
-    prevImage();
-});
-
-document.getElementById('closeLightbox').onclick = () => {
-    lightbox.classList.remove('active');
-};
-
-// Chiudi solo se clicchi sullo sfondo nero e NON sulle frecce o sull'immagine
-lightbox.onclick = (e) => {
-    const isArrow = e.target.closest('.lightbox-nav');
-    if (e.target !== lightboxImg && !isArrow) {
-        lightbox.classList.remove('active');
-    }
-};
-
-// Supporto Tastiera
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === "ArrowRight") nextImage();
-    if (e.key === "ArrowLeft") prevImage();
-    if (e.key === "Escape") lightbox.classList.remove('active');
-});
