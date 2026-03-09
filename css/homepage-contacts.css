@@ -132,3 +132,77 @@
         padding: 80px 0;
     }
 }
+
+#chi-sono {
+    position: relative;
+    background-color: #0a0a0a;
+}
+
+#chi-sono::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Altezza della sfumatura */
+    background: linear-gradient(to bottom, transparent, #050505); /* Sfuma verso il colore dei contatti */
+    z-index: 1;
+}
+
+#contatti {
+    background-color: #050505; /* Un nero leggermente diverso per dare profondità */
+    position: relative;
+    z-index: 2;
+}
+
+strong {
+    font-weight: 700 !important; /* Aumenta lo spessore delle lettere */
+    color: #ffffff !important;   /* Forza il bianco puro per farlo brillare */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Opzionale: un leggerissimo alone per dare rilievo */
+}
+
+
+/* Riduzione spazi vuoti su Mobile */
+@media (max-width: 768px) {
+    /* Riduce il padding della sezione Chi Sono */
+    #chi-sono {
+        padding-top: 50px !important;
+        padding-bottom: 20px !important;
+    }
+
+    /* Riduce il padding del contenitore interno dei Contatti */
+    #contatti .fade-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+
+    /* Accorcia la sfumatura di transizione per non creare un "buco" visivo */
+    #contatti div[style*="height: 150px"] {
+        height: 80px !important;
+        top: -80px !important;
+    }
+}
+
+
+@media (max-width: 991px) {
+    /* Seleziona il wrapper della miniatura caricata dinamicamente */
+    #recent-works-grid .video-thumb-wrapper {
+        /* Aggiunge un alone morbido e diffuso */
+        box-shadow: 0 0 15px rgba(20, 20, 20, 0.15) !important;
+        
+        /* Opzionale: aggiunge un leggerissimo bordo per definire meglio lo stacco */
+        border: 1px solid rgba(26, 24, 24, 0.05);
+        
+        /* Assicura che l'effetto sia visibile anche durante lo scroll */
+        transition: box-shadow 0.3s ease;
+        
+        /* Rimuove eventuali border-radius se preferisci il taglio netto */
+        border-radius: 0; 
+    }
+
+    /* Rende l'alone leggermente più intenso quando la miniatura è al centro o toccata */
+    #recent-works-grid .video-trigger:active .video-thumb-wrapper,
+    #recent-works-grid .video-trigger:hover .video-thumb-wrapper {
+        box-shadow: 0 0 20px rgba(46, 45, 45, 0.25) !important;
+    }
+}

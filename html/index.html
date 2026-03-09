@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrea Frisina - Director of Photography</title>
@@ -10,8 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/photo-showreel.css">
     <link rel="stylesheet" href="../css/homepage-contacts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
 </head>
 
 <body style="background-color: #0a0a0a;">
@@ -40,19 +43,28 @@
 
     <header id="home" class="hero-section">
         <div class="local-video-wrapper">
-            <video id="hero-video" autoplay muted loop playsinline preload="auto">
+            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
                 <source src="../media/homepage-videos-running-in-background/showreel.mp4" type="video/mp4">
             </video>
         </div>
         <div class="video-overlay"></div>
+
         <div class="hero-content text-center">
             <h1 class="main-title">ANDREA FRISINA</h1>
-            <div class="hero-manifesto">
-                <p>Vedo la mia vita come una collezione di <strong>storie</strong> da percorrere e <strong>vivere</strong>, una dopo l’altra.</p>
-                <p>Da qui <strong>nasce</strong> la mia creatività e il mio sguardo</p>
-                <p>Attraverso una camera <strong>racconto</strong> storie, <strong>frammenti</strong> di vita che meritano di essere conservati e <strong>vissuti</strong>.</p>
+            
+            <div class="hero-manifesto section-main-content">
+                <p class="highlight-text">
+                    Vedo la mia vita come una collezione di <strong>storie</strong> da percorrere e <strong>vivere</strong>, una dopo l’altra
+                </p>
+                <p>Da qui <strong>nasce</strong> la mia <strong>creatività</strong> e il mio sguardo</p>
+                <p>
+                    Attraverso una camera <strong>racconto</strong> storie, <strong>frammenti</strong> di vita che meritano di essere conservati e <strong>vissuti.</strong>
+                </p>
             </div>
         </div>
+
+
+
         <a href="#varieta" class="scroll-down"><i class="bi bi-chevron-down"></i></a>
         <div class="hero-bottom-fade"></div>
     </header>
@@ -61,85 +73,120 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-12 col-lg-8">
-                    <h2 class="about-heading">Varietà</h2>
-                    <div class="about-content">
-                        <p style="font-size: 1.4rem; color: white; margin-bottom: 30px;">È ciò che in questo momento mi tiene vivo</p>
-                        <p>Non mi piace limitarmi a qualcosa in particolare, credo che ogni <strong>storia</strong> meriti di essere raccontata.</p>
-                        <p>È per questo che nel mio percorso ho realizzato (e non ho intenzione di smettere) lavori per <strong>realtà molto diverse</strong> tra loro.</p>
-                        <p>Non chiudere alcuna porta è stata una modalità a me molto utile per <strong>crescere</strong>, scoprire e soprattutto <strong>vivere</strong> storie diverse.</p>
-                        <div class="mt-5">
-                            <span class="signature" style="letter-spacing: 4px; font-size: 0.8rem; text-transform: uppercase; border: none; color: #888;">Welcome to my stories</span>
-                        </div>
+                    <h2 class="section-main-heading">Varietà</h2>
+                    <div class="section-main-content">
+                        <p class="highlight-text">È ciò che in questo momento mi tiene vivo</p>
+                        <p>Non mi piace limitarmi a qualcosa in particolare, credo che ogni storia meriti di essere raccontata</p>
+                        <p>Non chiudere alcuna porta è stata una modalità a me molto utile per crescere, scoprire e soprattutto <strong>vivere</strong> storie diverse.</p>
+                        <p>È per questo che nel mio percorso ho realizzato lavori per realtà molto diverse tra loro, e non ho intenzione di smettere.</p>
                     </div>
+                </div>
+
+                <div class="col-12 mt-5 pt-3 signature-container">
+                    <span class="welcome-signature" id="shatter-text">
+                        Welcome to my stories
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio-section position-relative" style="padding: 200px 0; overflow: hidden; background-color: #0a0a0a;">
+    <section id="portfolio" class="portfolio-section position-relative" style="padding: 200px 0; overflow: hidden !important; background-color: #0a0a0a; clip-path: inset(0 0 0 0);">
         
-        <div class="bg-video-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-            <div class="photo-top-fade" style="position: absolute; top: 0; left: 0; width: 100%; height: 200px; background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10, 10, 10, 0.9) 40%, transparent 100%); z-index: 3;"></div>
-            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
-                <source src="../media/homepage-videos-running-in-background/secondvideo.mp4" type="video/mp4">
-            </video>
-            <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 2;"></div>
-            <div class="photo-bottom-fade" style="position: absolute; bottom: -1px; left: 0; width: 100%; height: 200px; background: linear-gradient(to top, #0a0a0a 0%, #0a0a0a 15%, rgba(10, 10, 10, 0.9) 40%, transparent 100%); z-index: 3;"></div>
-        </div>
+        <div class="bg-video-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden; opacity: 0; transition: opacity 0.5s ease;">
+            <div class="photo-top-fade" style="position: absolute; top: -1px; left: 0; width: 100%; height: 202px; background: linear-gradient(to bottom, #0a0a0a 0%, rgba(10, 10, 10, 0.9) 40%, transparent 100%); z-index: 3;"></div>            
+                <video id="lazy-portfolio-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;">
+                    <source data-src="../media/homepage-videos-running-in-background/secondvideo.mp4" type="video/mp4">
+                </video>
+            <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 2;"></div>            
+<div class="photo-bottom-fade" style="position: absolute; bottom: -1px; left: 0; width: 100%; height: 202px; background: linear-gradient(to top, #0a0a0a 0%, #0a0a0a 15%, rgba(10, 10, 10, 0.9) 40%, transparent 100%); z-index: 3;"></div>        </div>
 
         <div class="container position-relative" style="z-index: 4;">
             <div class="row mb-5 text-center justify-content-center">
                 <div class="col-12 col-lg-8 mx-auto"> 
-                    <h2 class="portfolio-heading text-white">I MIEI RECENTI LAVORI</h2>
-                    <p class="portfolio-subheading text-white">Frammenti di vita, mia e altrui, raccontati attraverso uno sguardo intimo.</p>
+                    <h2 class="portfolio-heading text-white">I MIEI ULTIMI LAVORI</h2>
                 </div>
             </div>
 
             <div class="row g-4 mobile-scroll-row justify-content-center" id="recent-works-grid"></div> 
+
+            <div class="mobile-scroll-indicator d-lg-none text-center mt-4">
+                <i class="bi bi-chevron-left mx-1"></i>
+                <span style="font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.6; font-weight: 300;">Scorri</span>
+                <i class="bi bi-chevron-right mx-1"></i>
+            </div>
         </div>
+        
     </section>
 
-    <section id="chi-sono" class="about-section fade-section" style="padding: 100px 0;">
-        <div class="container">
+    <section id="chi-sono" class="about-section fade-section" style="padding: 100px 0 0 0; position: relative; background-color: #0a0a0a;">
+        <div class="container" style="padding-bottom: 100px;">
             <div class="row justify-content-center text-center">
                 <div class="col-12 col-lg-8">
-                    <h2 class="about-heading">Frammenti di me</h2>
-                    <div class="about-content">
-                        <p>Nato a Reggio Calabria, dove il mare e il vento hanno <strong>plasmato</strong> la mia <strong>sensibilità</strong>, ho affinato il mio linguaggio visivo con una <strong>laurea magistrale</strong> in Cinema alla <strong>IULM di Milano</strong>.</p>
-                        <div class="mt-5">
+                    <h2 class="section-main-heading">Frammenti di me</h2>
+                    <div class="section-main-content">
+                        <p>
+                            Nato a Reggio Calabria, dove il mare e il vento hanno <strong>plasmato</strong> la mia <strong>sensibilità</strong>, ho affinato il mio linguaggio visivo con una <strong>laurea magistrale</strong> in <strong>Cinema</strong> alla IULM di Milano.
+                        </p>
+                        <div class="mt-5 pt-3">
                             <span class="signature">Andrea</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="contatti" class="contact-section fade-section" style="padding: 100px 0;">
-        <div class="container">
-            <div class="row justify-content-between align-items-start">
-                <div class="col-12 col-lg-5 mb-5 mb-lg-0 info-column">
-                    <h2 class="contact-heading">CREIAMO<br>QUALCOSA DI<br>UNICO.</h2>
-                    <p class="contact-sub mt-4">Disponibile per commissioni in Italia e all'estero.<br>Raccontami la tua visione.</p>
-                    <div class="contact-details mt-5">
-                        <div class="detail-item mb-4">
-                            <span class="label">EMAIL</span>
-                            <a href="mailto:contact@andreafrisina.it" class="value link-hover">contact@andreafrisina.it</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <form action="#" method="POST" class="luxury-form">
-                        <div class="row g-3">
-                            <div class="col-md-6"><input type="text" name="name" class="luxury-input" placeholder="Il tuo nome" required></div>
-                            <div class="col-md-6"><input type="email" name="email" class="luxury-input" placeholder="La tua email" required></div>
-                            <div class="col-12"><input type="text" name="subject" class="luxury-input" placeholder="Oggetto del progetto"></div>
-                            <div class="col-12"><textarea name="message" class="luxury-input" rows="5" placeholder="Raccontami i dettagli..." required></textarea></div>
-                            <div class="col-12 mt-4 text-end">
-                                <button type="submit" class="btn-luxury">INVIA MESSAGGIO <span class="arrow">→</span></button>
+        <div style="height: 150px; background: linear-gradient(to bottom, #0a0a0a, #050505); width: 100%; position: absolute; bottom: 0; left: 0; z-index: 99; opacity: 1 !important; visibility: visible !important;"></div>
+    </section>
+    
+        
+    <section id="contatti" style="background-color: #050505; position: relative; padding: 0; margin-top: -1px;">
+        
+        <div style="height: 150px; background: linear-gradient(to bottom, #0a0a0a, #050505); width: 100%; position: absolute; top: -150px; left: 0; z-index: 10;"></div>
+
+        <div class="fade-section" style="padding: 150px 0;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-12 col-lg-5 mb-5 mb-lg-0 info-column">
+                        <h2 class="contact-heading">PARLAMI <br>DELLA TUA IDEA</h2>
+                        <p class="contact-sub mt-4">
+                            Sono disponibile per commissioni in Italia o all’estero<br>
+                            Compila il form per raccontarmi la tua idea e costruire qualcosa di magnifico insieme.
+                        </p>
+                        <div class="contact-details mt-5">
+                            <div class="detail-item mb-4">
+                                <span class="label">EMAIL</span>
+                                <a href="mailto:info@andreafrisinastories.com" class="value link-hover">info@andreafrisinastories.com</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <form action="https://formspree.io/f/mbdzlwqb" method="POST" class="luxury-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="luxury-input" placeholder="Il tuo nome" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="luxury-input" placeholder="La tua email" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="subject" class="luxury-input" placeholder="Oggetto del progetto">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="luxury-input" rows="5" placeholder="Raccontami i dettagli..." required></textarea>
+                                </div>
+                                
+                                <input type="hidden" name="_subject" value="Nuovo contatto dal sito web Andrea Frisina">
+                                
+                                <div class="col-12 mt-4 text-end">
+                                    <button type="submit" class="btn-luxury">INVIA MESSAGGIO <span class="arrow">→</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -148,9 +195,11 @@
     <footer class="text-center py-5 text-muted small" style="background-color: #050505;">
         <div class="container">
             <p>ANDREA FRISINA</p>
-            <p><a href="mailto:info@andreafrisina.it" class="text-decoration-none text-white">info@andreafrisina.it</a></p>
+            <p><a href="mailto:info@andreafrisinastories.com" class="text-decoration-none text-white">info@andreafrisinastories.com</a></p>
         </div>
     </footer>
+
+    
 
     <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl"> 
@@ -172,5 +221,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/dynamic_recenti_lavori.js"></script>
+    <script src="../js/fade.js"></script>
 </body>
+
 </html>

@@ -1,155 +1,25 @@
 /* =========================================
-    STILI PAGINA FILMMAKING (Specifici)
-    ========================================= */
+   1. STILI GENERALI E RESET
+   ========================================= */
 body {
     background-color: #0a0a0a;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
 }
-
-/* Header */
-.page-header { padding: 100px 0 60px 0; text-align: center; }
-.page-title {
-    font-size: 3rem; letter-spacing: 5px; text-transform: uppercase;
-    font-weight: 300; margin-bottom: 10px;
-}
-.page-subtitle {
-    font-family: 'Playfair Display', serif; font-style: italic;
-    color: #888; font-size: 1.2rem;
-}
-
-/* Navigazione "Torna indietro" */
-.back-link {
-    position: absolute; top: 30px; left: 30px;
-    color: rgba(255,255,255,0.6); text-decoration: none; text-transform: uppercase;
-    font-size: 0.8rem; letter-spacing: 2px; transition: color 0.3s;
-}
-.back-link:hover { color: white; }
-
 
 /* =========================================
-    STILE VIDEO TRIGGER (Identico alla Home)
-    ========================================= */
-.video-trigger {
-    cursor: pointer;
-    display: block;
-    position: relative;
-    transition: transform 0.3s ease;
-}
+   2. NAVIGAZIONE (Social, Back, Contatti)
+   ========================================= */
 
-.video-trigger:hover {
-    transform: translateY(-5px); /* Leggero lift all'hover */
-}
-
-/* Immagine Thumbnail */
-.video-thumb-wrapper {
-    overflow: hidden;
-    position: relative;
-    background-color: #000;
-}
-
-/* Arrotondamento (Se lo usi nella home) */
-.rounded-video { border-radius: 8px; }
-
-.video-thumb {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease, filter 0.3s ease;
-    filter: brightness(0.8);
-}
-
-.video-trigger:hover .video-thumb {
-    transform: scale(1.05);
-    filter: brightness(1);
-}
-
-/* Icona Play Overlay */
-.play-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.2);
-    transition: background 0.3s;
-}
-.play-overlay i {
-    font-size: 3rem; color: white; opacity: 0.8;
-    transition: transform 0.3s, color 0.3s;
-}
-
-.video-trigger:hover .play-overlay { background: rgba(0,0,0,0); }
-.video-trigger:hover .play-overlay i {
-    transform: scale(1.2); color: white; opacity: 1;
-}
-
-/* Titolo sotto il video */
-.video-title {
-    margin-top: 15px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: white;
-    text-align: left; /* O center se preferisci */
-}
-
-
-
-
-/* =========================================
-    MODALE VIDEO (POPUP)
-    ========================================= */
-.modal-custom-backdrop {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.95); z-index: 9999;
-    display: none; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.4s ease;
-}
-.modal-custom-backdrop.active { display: flex; opacity: 1; }
-
-.modal-custom-content {
-    width: 90%; max-width: 1200px;
-    position: relative;
-}
-
-/* Close Button */
-.close-custom-modal {
-    position: absolute; top: -50px; right: 0;
-    color: white; font-size: 2rem; cursor: pointer;
-    transition: transform 0.3s;
-}
-.close-custom-modal:hover { transform: rotate(90deg); color: #ccc; }
-
-/* Contenitore Video 16:9 */
-.modal-video-container {
-    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-    background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
-.modal-video-container iframe {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-}
-
-/* Info Testo Modale */
-.modal-info { text-align: center; margin-top: 30px; color: white; }
-.modal-title-display {
-    font-family: 'Montserrat', sans-serif; font-size: 2rem;
-    text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px;
-}
-.modal-desc-display {
-    font-family: 'Montserrat', serif;
-    font-size: 1.1rem; color: #ccc; max-width: 700px; margin: 0 auto;
-}
-
-
-/* =========================================
-    STILE NAVIGAZIONE HEADER
-    ========================================= */
-
-/* 1. Icone Social (Alto Centro) */
+/* Social al centro */
 .top-social-center {
-    position: absolute;
-    top: 40px; 
+    position: fixed;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     gap: 25px;
     align-items: center;
@@ -159,7 +29,7 @@ body {
     color: rgba(255, 255, 255, 0.6);
     font-size: 1.4rem;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s ease;
 }
 
 .top-social-center a:hover {
@@ -168,74 +38,239 @@ body {
     filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
 }
 
-/* 2. Link "Successivo" (Alto Destra) */
-.next-page-link {
-    position: absolute;
-    top: 40px; /* Allineato con gli altri */
+/* Tasto Contattami (Alto a DX) */
+.contact-top-right {
+    position: fixed;
+    top: 30px;
     right: 40px;
-    color: rgba(255,255,255,0.6);
+    z-index: 1000;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
     letter-spacing: 2px;
-    z-index: 100;
-    transition: color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Spazio tra testo e freccia */
-}
-.next-page-link:hover {
-    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 10px 25px;
+    transition: all 0.3s ease;
 }
 
-/* 3. Back Link (Già esistente, ma assicuriamoci sia allineato) */
-.back-link {
+.contact-top-right:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
+/* Tasto Indietro (Alto a SX) */
+.back-link-top {
+    position: fixed;
     top: 40px;
     left: 40px;
+    z-index: 1000;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: color 0.3s;
 }
 
-/* Adattamento Mobile: Spostiamo le icone giù per non sovrapporsi */
+.back-link-top:hover { color: white; }
+
+/* =========================================
+   3. HEADER E DESCRIZIONI
+   ========================================= */
+header.container {
+    padding: 150px 0 80px 0;
+    text-align: center;
+}
+
+.section-main-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 50px;
+    opacity: 0.9;
+}
+
+.description-content {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.description-content p {
+    font-size: 1rem;
+    line-height: 1.9 !important;    /* Distanza tra le righe cinema-style */
+    margin-bottom: 15px !important;  /* Distanza tra i blocchi di testo */
+}
+
+/* Primo paragrafo in evidenza */
+.description-content p:first-child {
+    font-size: 1.1rem !important;
+    color: white !important;
+    font-weight: 400 !important;
+    margin-bottom: 30px !important;
+}
+
+/* =========================================
+   4. FOLDER CARDS (Le cartelle)
+   ========================================= */
+.folder-card {
+    display: block;
+    position: relative;
+    height: 450px;
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.folder-card:hover { transform: translateY(-10px); }
+
+.folder-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background 0.4s ease;
+}
+
+.folder-card:hover .folder-overlay { background: rgba(0,0,0,0.3); }
+
+/* =========================================
+   5. OVERLAY (Le finestre che si aprono)
+   ========================================= */
+.category-window {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #0a0a0a;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+    overflow-y: auto;
+}
+
+.category-window.active { opacity: 1; visibility: visible; }
+
+.close-cat-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    z-index: 2100;
+    line-height: 1;
+}
+
+/* =========================================
+   6. MEDIA QUERY MOBILE (< 768px)
+   ========================================= */
 @media (max-width: 768px) {
-    .top-social-center {
-        top: 85px; 
+    /* Header principale */
+    header.container { padding: 120px 0 40px 0 !important; }
+
+    .section-main-heading { font-size: 1.3rem !important; }
+    
+    .description-content p {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
     }
-    .next-page-link, .back-link {
-        top: 30px;
-        font-size: 0.7rem; /* Testo più piccolo su mobile */
+    
+
+    /* Navigazione mobile */
+    .top-social-center { top: 85px; position: absolute !important; }
+    .contact-top-right { top: 20px; right: 20px; padding: 6px 12px; font-size: 0.7rem; }
+    .back-link-top { top: 25px; left: 20px; font-size: 0.7rem; }
+
+    /* Cartelle piccole */
+    .folder-card { height: 280px !important; margin-bottom: 15px !important; }
+    .folder-title { font-size: 1.6rem !important; }
+
+    /* Fix Overlay Mobile */
+    .category-window .cat-content { padding-top: 140px !important; }
+    
+    .category-window header {
+        padding: 0 !important;
+        margin-top: 50px !important; /* Spazio per la X */
+        margin-bottom: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
-    .next-page-link { right: 20px; }
-    .back-link { left: 20px; }
+}
+
+/* Animazione Freccia */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }
 
 
-        /* Stili coerenza */
-        .ratio-9x16 { --bs-aspect-ratio: 177.77%; }
-        .folder-card {
-            display: block; position: relative; height: 400px;
-            background-color: #111; background-size: cover; background-position: center;
-            border-radius: 4px; overflow: hidden; cursor: pointer;
-            transition: transform 0.4s ease;
-        }
-        .folder-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: background 0.4s ease; padding: 20px;
-        }
-        .folder-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: white; text-align: center; }
-        .folder-desc { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 300; color: #ddd; text-align: center; max-width: 90%; line-height: 1.5; }
-        .category-window { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0a0a0a; z-index: 1040; opacity: 0; visibility: hidden; transition: 0.4s; overflow-y: auto; padding-top: 80px; }
-        .category-window.active { opacity: 1; visibility: visible; }
-        .close-cat-btn { position: fixed; top: 30px; right: 30px; font-size: 3rem; color: white; cursor: pointer; z-index: 1050; }
-        
-        /* Modale */
-        .modal-custom-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; }
-        .modal-custom-backdrop.active { opacity: 1; visibility: visible; }
-        .modal-custom-content { width: 90%; max-width: 1200px; text-align: center; color: white; }
-        .close-custom-modal { position: absolute; top: 30px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
-        .modal-info { margin-top: 20px; font-family: 'Montserrat', sans-serif; }
-        .modal-title-display { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
-        .modal-desc-display { font-weight: 300; color: #ccc; margin-top: 10px; }
-        
-        .play-button-circle { background: rgba(255,255,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid white; }
-   
+/* --- FIX MODAL VIDEO FILMMAKING --- */
+.modal-custom-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: none; /* Di base è nascosto */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999 !important; /* SOPRA LE CARTELLE */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Questa è la regola che mancava per farlo apparire */
+.modal-custom-backdrop.active {
+    display: flex !important;
+    opacity: 1;
+}
+
+.modal-custom-content {
+    width: 90%;
+    max-width: 1100px;
+    position: relative;
+    z-index: 10000;
+}
+
+.close-custom-modal {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.modal-info {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-title-display {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}

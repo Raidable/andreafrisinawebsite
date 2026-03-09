@@ -1,6 +1,61 @@
 /* =========================================
    1. STILI GENERALI E RESET
    ========================================= */
+   /* Caricamento del font personalizzato */
+@font-face {
+    font-family: 'Sparkling'; 
+    src: url('../fonts/sparkling-valentine.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.signature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    perspective: 1000px;
+    overflow: visible !important;
+}
+
+
+/* Ogni singola lettera diventerà uno span gestito da JS */
+#shatter-text span {
+    display: inline-block;
+    will-change: transform, opacity, filter;
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out, filter 0.1s ease-out;
+}
+
+.welcome-signature {
+    display: inline-block;
+    font-family: 'Sparkling', serif !important;
+    font-style: italic;
+    font-size: 5rem;
+    color: white;
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: center;
+    white-space: nowrap;     /* Forza la riga singola su PC */
+    
+    /* Correzione ottica per il corsivo: 
+       il corsivo pende a destra, aggiungiamo un filo di padding a sinistra 
+       per bilanciare visivamente il peso */
+    padding-left: 0.2em; 
+}
+
+/* --- ADATTAMENTO MOBILE --- */
+@media (max-width: 992px) {
+    .welcome-signature {
+        font-size: 10vw !important; /* Si ridimensiona in base alla larghezza schermo */
+        white-space: normal !important; /* Su mobile permettiamo il ritorno a capo */
+        padding-left: 0;
+        line-height: 1.2;
+        width: 90%; /* Lascia un po' di margine ai bordi del telefono */
+    }
+}
+
+
 html { 
     scroll-behavior: smooth; 
 }
@@ -41,13 +96,11 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover; 
-    opacity: 0; 
+    opacity: 1 !important;
     transition: opacity 1s ease-in;
 }
 
-.local-video-wrapper video.visible {
-    opacity: 1;
-}
+
 
 .video-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -73,6 +126,10 @@ body {
     text-shadow: 0 5px 20px rgba(0,0,0,0.8); 
 }
 
+
+
+
+
 /* STILE MANIFESTO */
 .hero-manifesto {
     font-family: 'Montserrat', sans-serif !important;
@@ -87,7 +144,8 @@ body {
 }
 
 .hero-manifesto p {
-    margin-bottom: 8px; 
+    line-height: 1.9 !important;   /* Spazio tra le righe dello stesso paragrafo */
+    margin-bottom: 10px !important; /* Spazio tra un paragrafo e l'altro */
 }
 
 .hero-manifesto strong {
@@ -175,6 +233,8 @@ body {
     font-family: 'Montserrat', sans-serif; /* Prima era Playfair */
     font-weight: 300; /* Light */
     font-size: 1.1rem;
+    line-height: 1.9 !important;   /* Stessa distanza tra le righe della Hero */
+    margin-bottom: 10px !important; /* Stessa distanza tra un paragrafo e l'altro della Hero */
     color: #bbb;
     line-height: 1.6;
     max-width: 800px;
@@ -452,4 +512,85 @@ body {
     color: rgba(255, 255, 255, 0.7);
     max-width: 800px;
     margin: 10px auto 0;
+}
+
+
+/* =========================================
+   UNIFORMITÀ SEZIONI (Varietà, Lavori, Chi Sono)
+   ========================================= */
+
+/* Titoli delle sezioni */
+.section-main-heading, 
+.portfolio-heading, 
+.about-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    font-size: 2rem; /* Dimensione base Desktop */
+    text-align: center;
+}
+
+/* Contenuto dei paragrafi */
+.section-main-content p, 
+.about-content p, 
+.portfolio-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 1rem; /* Dimensione base Desktop */
+    line-height: 1.9 !important;   /* Stessa distanza tra le righe della Hero */
+    margin-bottom: 10px !important; /* Stessa distanza tra un paragrafo e l'altro della Hero */
+    line-height: 1.8;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+/* Testo in rilievo (es. "È ciò che mi tiene vivo") */
+.highlight-text {
+    font-size: 1rem !important;
+    color: white !important;
+    margin-bottom: 30px !important;
+}
+
+/* =========================================
+   OTTIMIZZAZIONE MOBILE (Testo non troppo grande)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Riduciamo i titoli per non occupare tutto lo schermo */
+    .section-main-heading, 
+    .portfolio-heading, 
+    .about-heading {
+        font-size: 1.5rem; 
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+    }
+
+    /* Riduciamo leggermente il testo dei paragrafi */
+    .section-main-content p, 
+    .about-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 15px; /* Margine per non toccare i bordi */
+    }
+
+    .highlight-text {
+        font-size: 1.15rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    
+}
+
+#portfolio video {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    /* Forza il posizionamento centrale perfetto */
+    object-position: center; 
+    /* Elimina eventuali bordi fantasma */
+    border: none !important;
+    outline: none !important;
 }

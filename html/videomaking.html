@@ -20,31 +20,59 @@
             <a href="https://www.instagram.com/andreafrisinastories/" target="_blank" style="color: white; font-size: 1.5rem; opacity: 0.7; transition: 0.3s;"><i class="bi bi-instagram"></i></a>
         </div>
 
-        <a href="index.html#contatti" class="contact-link" style="position: fixed; top: 35px; right: 30px; z-index: 1000; color: white; text-decoration: none; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; transition: 0.3s;">Contatti</a>
+        <a href="index.html#contatti" class="contact-link" style="position: fixed; top: 35px; right: 30px; z-index: 1000; color: white; text-decoration: none; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; transition: 0.3s;">Contattami</a>
 
         <a href="portfolio-selection.html" class="back-link" style="color: white; text-decoration: none; position: fixed; top: 35px; left: 30px; z-index: 1000; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; transition: 0.3s;">&larr; Indietro</a>
 
-        <header class="container" style="padding: 150px 0 80px 0; text-align:center; color:white;">
-            <h1 style="font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 40px;">Videomaking</h1>
-            
-            <div style="font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 2; font-size: 1.15rem; color: #ddd; max-width: 850px; margin: 0 auto;">
-                <p style="font-size: 1.4rem; color: white; margin-bottom: 30px; font-weight: 400; letter-spacing: -0.5px;">
-                    Trasformo la mia visione in progetti per clienti, sempre coerenti con il mio modo di comunicare ed emozionarmi.
-                </p>
+        <header class="container" style="padding: 150px 0 80px 0; text-align:center; color:white; position: relative;">
+                <h1 class="section-main-heading" style="font-family: 'Montserrat', sans-serif; font-size: 2rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; margin-bottom: 50px; opacity: 0.9;">
+                    Videomaking
+                </h1>
                 
-                <p>Il <strong>videomaking</strong> è la mia sfida più grande.</p>
-                
-                <p>I <strong>rapporti umani</strong> sono centrali nel mio modo di vivere, ed è per questo che sento mio ogni progetto che realizzo.</p>
-                
-                <p style="margin-top: 25px;">
-                    Alla base di ogni collaborazione metto ciò che in un rapporto non dovrebbe mai mancare: <strong>ascolto, presenza e interesse</strong>. Il tutto con un immancabile <strong>look cinematografico</strong>.
-                </p>
+                <div class="description-content">
+                    <p>
+                        Trasformo la mia visione in progetti per clienti, sempre coerenti con il mio modo di comunicare ed emozionarmi
+                    </p>
+                    
+                    <p>
+                        I <strong>rapporti umani</strong> sono centrali nel mio modo di vivere, ed è per questo che <strong>sento mio</strong> ogni progetto che realizzo
+                    </p>
+                    
+                    <p>
+                        Alla base di ogni collaborazione metto ciò che in un rapporto non dovrebbe mai mancare: <strong>ascolto, presenza e interesse</strong>. Il tutto con un immancabile <strong>look cinematografico</strong>
+                    </p>
 
-                <p style="margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: white; font-weight: 500;">
-                    Non sono semplici video su commissione, sono storie da scrivere insieme.
-                </p>
-            </div>
-        </header>
+                    <p>
+                        Non sono semplici video su commissione, sono storie da scrivere insieme.
+                    </p>
+                </div>
+                <div class="mobile-scroll-arrow d-lg-none" style="margin-top: 60px; animation: bounce 2s infinite;">
+                    <i class="bi bi-chevron-down" style="font-size: 1.5rem; color: rgba(255,255,255,0.5);"></i>
+                </div>
+            </header>
+
+            <style>
+                /* Animazione Freccia */
+                @keyframes bounce {
+                    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                    40% { transform: translateY(-10px); }
+                    60% { transform: translateY(-5px); }
+                }
+
+                @media (max-width: 992px) {
+                    header { padding: 120px 0 40px 0 !important; }
+                    .section-main-heading { font-size: 1.5rem !important; margin-bottom: 30px !important; }
+                    .description-content { font-size: 1rem !important; line-height: 1.6 !important; }
+                    .description-content p:first-child { font-size: 1.15rem !important; margin-bottom: 25px !important; }
+                    .description-content p:last-child { font-size: 0.75rem !important; margin-top: 40px !important; }
+                    
+                    /* Assicuriamoci che la freccia sia ben spaziata */
+                    .mobile-scroll-arrow { display: none !important; }
+
+                }
+
+                
+            </style>
 
     <div class="container pb-5">
         <div class="row g-4 justify-content-center">
@@ -67,14 +95,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openCategory('overlayFood')" style="background-image: url('../media/foodfilms.png');">
-                    <div class="folder-overlay">
-                        <span class="folder-title">Food Films</span>
-                        <p class="folder-desc">Visual narratives centered around food.</p>
-                    </div>
-                </div>
-            </div>
+           
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="folder-card" onclick="openCategory('overlayEvent')" style="background-image: url('../media/eventfilms.png');">
@@ -95,14 +116,14 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openCategory('overlayTeaser')" style="background-image: url('../media/cinematicfilms.png');">
+                <div class="folder-card" onclick="openCategory('overlayStorytelling')" style="background-image: url('../media/cinematicfilms.png');">
                     <div class="folder-overlay">
-                        <span class="folder-title">Cinematic Teasers</span>
+                        <span class="folder-title">Storytelling Films</span>
                         <p class="folder-desc">La mia sezione preferita. Qui approfondisco il mio sguardo cinematografico in progetti per clienti e amici. Il cinema può essere ovunque.</p>
                     </div>
                 </div>
             </div>
-
+        <!--
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="folder-card" onclick="openCategory('overlayFashion')" style="background-image: url('../media/fashionfilms.png');">
                     <div class="folder-overlay">
@@ -111,12 +132,23 @@
                     </div>
                 </div>
             </div>
+        -->
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="folder-card" onclick="openCategory('overlayBelmonte')" style="background-image: url('../media/belmontefilms.png');">
                     <div class="folder-overlay">
                         <span class="folder-title">Chef Fabio Belmonte</span>
                         <p class="folder-desc">Ricetta dopo ricetta, storia dopo storia. Solo alcuni video nati dalla collaborazione con lo Chef Fabio Belmonte</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openCategory('overlayNightlife')" style="background-image: url('../media/cover-riquadri-portfolio/filmmaking.webp');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Nightlife Films</span>
+                        <p class="folder-desc">Nightlife Films</p>
                     </div>
                 </div>
             </div>
@@ -131,6 +163,16 @@
             </div>
 
 
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openCategory('overlayCeremonies')" style="background-image: url('../media/ceremoniesfilms.jpg');">
+                    <div class="folder-overlay">
+                        <span class="folder-title">Wedding & Ceremonies Films</span>
+                        <p class="folder-desc">Fermare il tempo in un giorno indimenticabile</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -139,7 +181,7 @@
         <div class="container cat-content pb-5">
             <header class="text-center mb-5">
                 <h2 class="folder-title">Sport Films</h2>
-                <p class="text-white-50 px-3">Cinematic stories centered on sport itself, capturing intensity, rhythm, and emotion through a narrative lens.</p>
+                <p class="text-white-50 px-3">Siamo proprio sicuri che una partita di calcio non possa emozionare?</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlaySport"></div>
         </div>
@@ -150,29 +192,20 @@
         <div class="container cat-content pb-5">
             <header class="text-center mb-5">
                 <h2 class="folder-title">Music Films</h2>
-                <p class="text-white-50 px-3">Narrative-driven music videos built around the artist’s vision, connecting music, emotion, and visual storytelling.</p>
+                <p class="text-white-50 px-3">Una delle mie più grandi passioni, la musica, raccontata attraverso la mia più grande passione
+Cosa c’è di meglio?</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayMusic"></div>
         </div>
     </div>
 
-    <div id="overlayFood" class="category-window">
-        <div class="close-cat-btn" onclick="closeCategory('overlayFood')">&times;</div>
-        <div class="container cat-content pb-5">
-            <header class="text-center mb-5">
-                <h2 class="folder-title">Food Films</h2>
-                <p class="text-white-50 px-3">Visual narratives centered around food.</p>
-            </header>
-            <div class="row g-4 video-grid" data-category="overlayFood"></div>
-        </div>
-    </div>
-
+   
     <div id="overlayEvent" class="category-window">
         <div class="close-cat-btn" onclick="closeCategory('overlayEvent')">&times;</div>
         <div class="container cat-content pb-5">
             <header class="text-center mb-5">
                 <h2 class="folder-title">Event Films</h2>
-                <p class="text-white-50 px-3">Condensed narratives that transform hours or days into a short cinematic experience, preserving the energy and emotion of an event.</p>
+                <p class="text-white-50 px-3">Ogni evento merita di essere raccontato con molta cura, ma a modo mio.</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayEvent"></div>
         </div>
@@ -183,23 +216,25 @@
         <div class="container cat-content pb-5">
             <header class="text-center mb-5">
                 <h2 class="folder-title">Commercial Films</h2>
-                <p class="text-white-50 px-3">Story-driven visual pieces where products are introduced through mood, light, and narrative.</p>
+                <p class="text-white-50 px-3">Spot pensati per valorizzare un brand, raccontandolo nel modo più originale e autentico possibile.</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayCommercial"></div>
         </div>
     </div>
 
-    <div id="overlayTeaser" class="category-window">
-        <div class="close-cat-btn" onclick="closeCategory('overlayTeaser')">&times;</div>
+    <div id="overlayStorytelling" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayStorytelling')">&times;</div>
         <div class="container cat-content pb-5">
             <header class="text-center mb-5">
-                <h2 class="folder-title">Cinematic Teasers</h2>
-                <p class="text-white-50 px-3">Highly cinematic short films created to introduce an idea, an event, or a beginning, with actors and strong visual imagination.</p>
+                <h2 class="folder-title">Storytelling Films</h2>
+                <p class="text-white-50 px-3">La mia sezione preferita. Qui approfondisco il mio sguardo cinematografico in progetti per clienti e
+amici. Il cinema può essere ovunque.</p>
             </header>
-            <div class="row g-4 video-grid" data-category="overlayTeaser"></div>
+            <div class="row g-4 video-grid" data-category="overlayStorytelling"></div>
         </div>
     </div>
 
+    <!--
     <div id="overlayFashion" class="category-window">
         <div class="close-cat-btn" onclick="closeCategory('overlayFashion')">&times;</div>
         <div class="container cat-content pb-5">
@@ -208,6 +243,18 @@
                 <p class="text-white-50 px-3">Cinematic portrayals of fashion focused on presence, movement, and atmosphere.</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayFashion"></div>
+        </div>
+    </div>
+    -->
+
+    <div id="overlayNightlife" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayNightlife')">&times;</div>
+        <div class="container cat-content pb-5">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Nightlife Films</h2>
+                <p class="text-white-50 px-3">Cinematic portrayals of nightlife focused on presence, movement, and atmosphere.</p>
+            </header>
+            <div class="row g-4 video-grid" data-category="overlayNightlife"></div>
         </div>
     </div>
 
@@ -227,9 +274,22 @@
         <div class="container cat-content pb-5">
             <header class="text-center mb-5">
                 <h2 class="folder-title">ALMA Scuola di Cucina Italiana</h2>
-                <p class="text-white-50 px-3">Una selezione di video realizzati durante il mio viaggio in una delle migliori scuole culinarie d'Europa.</p>
+                <p class="text-white-50 px-3">Una selezione di video realizzati durante il mio viaggio in una delle migliori scuole culinarie d’Europa.</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayAlma"></div>
+        </div>
+    </div>
+
+
+
+    <div id="overlayCeremonies" class="category-window">
+        <div class="close-cat-btn" onclick="closeCategory('overlayCeremonies')">&times;</div>
+        <div class="container cat-content pb-5">
+            <header class="text-center mb-5">
+                <h2 class="folder-title">Wedding & Ceremonies Films</h2>
+                <p class="text-white-50 px-3">Fermare il tempo in un giorno indimenticabile</p>
+            </header>
+            <div class="row g-4 video-grid" data-category="overlayCeremonies"></div>
         </div>
     </div>
 
@@ -249,5 +309,41 @@
         function openCategory(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeCategory(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
     </script>
+
+
+    <style>
+        /* --- FIX SPAZIATURA OVERLAY VIDEOMAKING (PC) --- */
+
+        /* 1. Crea lo spazio bianco reale dal bordo superiore del browser */
+        .category-window .cat-content {
+            padding-top: 140px !important; 
+        }
+
+        /* 2. Rimuove eventuali margini dell'header che potrebbero contrastare */
+        .category-window header {
+            margin-top: 0 !important;
+            margin-bottom: 60px !important; /* Distanza tra titolo e i video */
+        }
+
+        /* 3. Rende il titolo più elegante e arioso */
+        .category-window .folder-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem !important;
+            letter-spacing: 5px !important;
+            font-weight: 300 !important;
+            margin-bottom: 15px !important;
+        }
+
+        /* 4. Gestione della descrizione sotto il titolo */
+        .category-window .text-white-50 {
+            font-size: 0.9rem !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase;
+            opacity: 0.5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+    </style>
 </body>
 </html>

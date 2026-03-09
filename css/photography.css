@@ -1,207 +1,209 @@
+/* --- RESET E BASE --- */
 body { 
     background-color: #0a0a0a; 
+    color: white;
     overflow-y: auto; 
     overflow-x: hidden; 
     margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* --- SOCIAL & BACK LINK --- */
+/* --- NAVIGAZIONE FISSA --- */
 .top-social-center { 
-    position: fixed; 
-    top: 30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    display: flex; 
-    gap: 20px; 
-    z-index: 1000; 
+    position: absolute !important; top: 40px; left: 50%; transform: translateX(-50%); 
+    display: flex; gap: 25px; z-index: 1000; 
 }
-.top-social-center a { 
-    color: white; 
-    font-size: 1.5rem; 
-    opacity: 0.7; 
-    transition: 0.3s; 
-}
-.back-link { 
-    position: fixed; 
-    top: 30px; 
-    left: 30px; 
-    z-index: 1000; 
-    color: white; 
-    text-decoration: none; 
-    letter-spacing: 2px; 
-    font-size: 0.8rem; 
-}
+.top-social-center a { color: white; font-size: 1.4rem; opacity: 0.6; transition: 0.3s; text-decoration: none; }
+.top-social-center a:hover { opacity: 1; transform: scale(1.1); }
 
-/* --- RULLINI STATICI (CONTENITORI) --- */
-.marquee-static-top, 
-.marquee-static-bottom {
-    width: 100%;
-    overflow: hidden;
-    padding: 40px 0;
-    min-height: 250px; 
-    position: relative;
+.contact-link-top {
+    position: fixed; top: 30px; right: 40px; z-index: 1000;
+    color: white !important; text-decoration: none !important; text-transform: uppercase;
+    font-size: 0.8rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.3);
+    padding: 10px 25px; transition: 0.3s; background: transparent;
+}
+.contact-link-top:hover { background: white !important; color: black !important; border-color: white !important; }
+
+.back-link-top { 
+    position: fixed; top: 40px; left: 40px; z-index: 1000; 
+    color: white !important; text-decoration: none !important; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; transition: 0.3s;
+}
+.back-link-top:hover { opacity: 1; }
+
+/* --- HEADER PREMIUM --- */
+.header-premium { padding: 150px 0 80px 0; text-align:center; position: relative; }
+.section-main-heading { font-size: 2rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; margin-bottom: 50px; opacity: 0.9; }
+.description-content { max-width: 800px; margin: 0 auto; line-height: 1.8; color: #ccc; font-weight: 300; }
+.text-highlight { font-size: 1.3rem; color: white; margin-bottom: 35px; font-weight: 400; }
+.closing-text { margin-top: 50px; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: white; font-weight: 500; opacity: 0.8; }
+
+/* --- MARQUEE (RULLINI STATICI HOME) --- */
+.marquee-static-top, .marquee-static-bottom {
+    width: 100%; overflow: hidden; padding: 40px 0; min-height: 250px; position: relative; z-index: 1;
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
+.marquee-row { display: flex !important; white-space: nowrap !important; width: 100%; margin-bottom: 30px !important; }
+.marquee-content { display: flex !important; gap: 30px !important; padding-right: 30px; flex-shrink: 0; animation: scroll-left 90s linear infinite; }
+.marquee-row.reverse .marquee-content { animation: scroll-right 90s linear infinite !important; }
 
-.marquee-row { 
-    display: flex !important; 
-    white-space: nowrap !important; 
-    width: 100%;
-}
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-/* Animazione base per tutti i marquee-content */
-.marquee-content { 
-    display: flex !important; 
-    gap: 20px; 
-    padding-right: 20px; 
-    flex-shrink: 0;
-    animation: scroll-left 90s linear infinite;
-}
-
-/* Reverse: sovrascrive animazione completa per ogni velocità */
-.marquee-row.reverse .marquee-content { 
-    animation: scroll-right 90s linear infinite !important; 
-}
-.marquee-row.reverse .marquee-content.row-slow { 
-    animation: scroll-right 90s linear infinite !important; 
-}
-.marquee-row.reverse .marquee-content.row-mid  { 
-    animation: scroll-right 75s linear infinite !important; 
-}
-.marquee-row.reverse .marquee-content.row-fast { 
-    animation: scroll-right 60s linear infinite !important; 
-}
-
-/* Classi di velocità (solo per direzione normale) */
-.marquee-content.row-slow { animation-duration: 90s !important; }
-.marquee-content.row-mid  { animation-duration: 75s !important; }
-.marquee-content.row-fast { animation-duration: 60s !important; }
-
-/* Definizione dei movimenti */
-@keyframes scroll-left { 
-    from { transform: translateX(0); } 
-    to   { transform: translateX(-50%); } 
-}
-@keyframes scroll-right { 
-    from { transform: translateX(-50%); } 
-    to   { transform: translateX(0); } 
-}
-
-/* --- DIMENSIONI FOTO --- */
-.photo-item { 
-    flex: 0 0 auto !important; 
-    width: 380px; 
-    height: 250px; 
-}
+/* --- FOTO ITEM (BASE HOME) --- */
+.photo-item { flex: 0 0 auto !important; width: 380px; height: 250px; }
 .photo-item img { 
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
-    filter: brightness(0.7); 
-    transition: 0.5s; 
+    opacity: 0.8; /* Più leggero del filtro brightness */
+    transition: transform 0.5s ease, opacity 0.5s ease; 
 }
 .photo-item:hover img { 
-    filter: brightness(1); 
+    opacity: 1; 
     transform: scale(1.05); 
 }
 
-/* --- GRIGLIA CARTELLE --- */
-.folder-card {
-    height: 350px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 4px;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    transition: 0.4s;
-}
-.folder-overlay {
-    background: rgba(0,0,0,0.6);
-    width: 100%; 
-    height: 100%;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-}
-.folder-title { 
-    color: white; 
-    letter-spacing: 4px; 
-    text-transform: uppercase; 
-    font-size: 0.9rem; 
-    text-align: center; 
-}
+/* --- CARTELLE --- */
+.folder-card { height: 350px; background-size: cover; background-position: center; border-radius: 4px; position: relative; cursor: pointer; overflow: hidden; transition: 0.4s; border: none !important; background-color: #1a1a1a; }
+.folder-overlay { background: rgba(0, 0, 0, 0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.folder-card:hover { transform: translateY(-10px); }
+.folder-title { color: white; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; text-align: center; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 
-/* --- OVERLAY CATEGORIA --- */
+/* --- OVERLAY CATEGORIA (WEB) --- */
 .category-window { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: #0a0a0a; 
-    z-index: 2000; 
-    display: none; 
-    flex-direction: column; 
-    justify-content: center; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: #0a0a0a; z-index: 5000 !important; display: none; 
+    flex-direction: column; justify-content: center;
 }
-.category-window.active { 
-    display: flex; 
+.category-window.active { display: flex; }
+.folder-title-overlay { font-size: 2rem; text-transform: uppercase; letter-spacing: 4px; color: white; }
+.close-cat-btn { position: absolute; top: 30px; right: 40px; color: white; font-size: 3rem; cursor: pointer; z-index: 2100; }
+
+/* --- FOTO GRANDI NELL'OVERLAY (WEB) --- */
+.category-window .photo-item {
+    height: 700px !important; /* ALTEZZA WEB */
+    width: auto !important;
+    flex: 0 0 auto !important;
+    display: block !important;
+    margin-right: 40px;
 }
-.close-cat-btn { 
-    position: absolute; 
-    top: 30px; 
-    right: 40px; 
-    color: white; 
-    font-size: 3rem; 
-    cursor: pointer; 
-    z-index: 2100; 
+.category-window .photo-item img {
+    height: 100% !important;
+    width: auto !important;
+    object-fit: contain !important; /* Mantiene proporzioni senza tagliare */
+    filter: brightness(0.8);
+    transition: 0.5s ease;
 }
+.category-window .photo-item:hover img { filter: brightness(1); transform: scale(1.03); }
 
 /* --- LIGHTBOX --- */
-.lightbox-backdrop { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0,0,0,0.95); 
-    z-index: 3000; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    opacity: 0; 
-    visibility: hidden; 
-    transition: 0.4s; 
-}
-.lightbox-backdrop.active { 
-    opacity: 1; 
-    visibility: visible; 
-}
-.lightbox-img { 
-    max-width: 90vw; 
-    max-height: 90vh; 
-    object-fit: contain; 
-}
-.close-lightbox { 
-    position: fixed; 
-    top: 20px; 
-    right: 30px; 
-    color: white; 
-    font-size: 3rem; 
-    cursor: pointer; 
-}
-.lightbox-nav { 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    color: white; 
-    font-size: 3rem; 
-    cursor: pointer; 
-    padding: 20px; 
-    opacity: 0.6; 
-}
+.lightbox-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000 !important; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; }
+.lightbox-backdrop.active { opacity: 1; visibility: visible; }
+.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+.close-lightbox { position: fixed; top: 20px; right: 30px; color: white; font-size: 3rem; cursor: pointer; }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 3rem; cursor: pointer; padding: 20px; opacity: 0.6; }
 .btn-prev { left: 20px; }
 .btn-next { right: 20px; }
+/* --- MOBILE (< 768px) --- */
+@media (max-width: 768px) {
+    .header-premium { padding: 120px 0 40px 0 !important; }
+    .section-main-heading { font-size: 1.3rem !important; margin-bottom: 25px !important; }
+    .top-social-center { top: 85px; }
+    .back-link-top { top: 25px; left: 20px; font-size: 0.7rem; }
+    .contact-link-top { top: 20px; right: 20px; padding: 6px 12px; font-size: 0.7rem; }
+    
+    .folder-card { height: 250px !important; }
+    .photo-item { width: 220px !important; height: 150px !important; } /* Home mobile snellita */
+
+    .marquee-static-top, .marquee-static-bottom, .category-window .marquee-row {
+        overflow-x: hidden !important;
+        touch-action: pan-y;
+        mask-image: none !important; /* Rimuove i gradienti pesanti per fluidità */
+        -webkit-mask-image: none !important;
+    }
+
+    /* VELOCIZZAZIONE RULLO: Ridotto a 30s per scorrere più velocemente */
+    .marquee-content {
+        animation-duration: 30s !important;
+        will-change: transform;
+    }
+
+    .category-window {
+        display: none !important; 
+    }
+
+    /* Rimpicciolisce le foto nell'overlay per non saturare la RAM */
+    .category-window .photo-item {
+        height: 250px !important; 
+        width: auto !important;
+        margin-right: 15px !important;
+    }
+
+    .category-window .photo-item img {
+        height: 100% !important;
+        width: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* Configurazione generica Overlay attivo */
+    .category-window.active {
+        display: block !important; 
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: #0a0a0a;
+        z-index: 5000;
+        overflow-y: auto !important; 
+        overflow-x: hidden !important;
+        padding-top: 80px; 
+        padding-bottom: 50px;
+    }
+
+    .category-window .cat-content {
+        height: auto !important;
+        display: block !important;
+    }
+
+    /* Overlay Foto: lo teniamo flex per centrare le immagini verticalmente */
+    #photoCategoryOverlay.active {
+        display: flex !important; 
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: hidden !important; /* Non serve scroll verticale per il rullino */
+    }
+
+    /* Overlay Products: block per permettere lo scroll della lista cartelle */
+    #productsOverlay.active {
+        display: block !important; 
+    }
+
+    .category-window header {
+        margin-bottom: 30px !important;
+        padding: 0 20px;
+    }
+
+    #productsOverlay .folder-card {
+        margin-bottom: 20px;
+        height: 200px !important;
+    }
+
+    .folder-title-overlay { font-size: 1.4rem !important; }
+    
+    .close-cat-btn { 
+        top: 15px !important; 
+        right: 20px !important; 
+        font-size: 2.5rem !important; 
+        width: 50px; height: 50px; 
+        background: rgba(10, 10, 10, 0.8); 
+        border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center; 
+        z-index: 6000 !important; 
+    }
+
+    body.no-scroll-mobile { 
+        overflow: hidden !important; 
+        position: fixed; 
+        width: 100%; 
+        height: 100%; 
+    }
+}

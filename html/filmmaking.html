@@ -15,12 +15,43 @@
 </head>
 <body>
 
+    <div class="top-social-center">
+        <a href="https://vimeo.com/andreafrisinafilms" target="_blank"><i class="bi bi-vimeo"></i></a>
+        <a href="https://www.instagram.com/andreafrisinafilms/" target="_blank"><i class="bi bi-instagram"></i></a>
+    </div>
+
+    <a href="index.html#contatti" class="contact-top-right">Contattami</a>
+
     <a href="portfolio-selection.html" class="back-link" style="position:fixed; top:30px; left:30px; z-index:100; color:white; text-decoration:none;">&larr; Indietro</a>
 
-    <header class="page-header container" style="padding: 120px 0 60px 0; text-align:center; color:white;">
-        <h1 class="page-title">Filmmaking</h1>
-        <p class="page-subtitle">Personal and narrative films crafted by me, exploring stories, emotions, and human experiences.</p>
+    <header class="container" style="padding: 150px 0 80px 0; text-align:center; color:white; position: relative;">
+        <h1 class="section-main-heading">
+            Filmmaking
+        </h1>
+        
+        <div class="description-content">
+            <p>
+                Queste sono le mie storie più personali.
+            </p>
+            
+            <p>
+                Sono progetti totalmente indipendenti, realizzati con l’obiettivo di inseguire il <strong>sogno del cinema</strong>.
+            </p>
+            
+            <p>
+                Dalla regia alla scrittura, fino alla direzione della fotografia: sono le storie più sincere a cui ho lavorato, che considero l’inizio della mia <strong>carriera autoriale</strong> (o almeno, lo spero).
+            </p>
+        </div>
+
+        <div class="mobile-scroll-arrow d-lg-none" style="margin-top: 60px; animation: bounce 2s infinite;">
+            <i class="bi bi-chevron-down" style="font-size: 1.5rem; color: rgba(255,255,255,0.5);"></i>
+        </div>
     </header>
+
+        <style>
+
+
+        </style>
 
     <div class="container pb-5">
         <div class="row g-5 justify-content-center">
@@ -28,7 +59,8 @@
                 <div class="folder-card" onclick="openCategory('overlayShort')" style="background-image: url('../media/shortfilms.jpg');">
                     <div class="folder-overlay">
                         <span class="folder-title">Short Films</span>
-                        <p class="folder-desc">Structured narratives with actors and scripts.</p>
+                        <p class="folder-desc">Esplorando lo storytelling cinematografico, sono le storie nate nella mia testa che, con tanta fatica
+e soprattutto una matta passione, hanno preso vita.Ma è solo l’inizio.</p>
                     </div>
                 </div>
             </div>
@@ -36,7 +68,8 @@
                 <div class="folder-card" onclick="openCategory('overlayJourney')" style="background-image: url('../media/journeyfilms.jpg');">
                     <div class="folder-overlay">
                         <span class="folder-title">Journey Films</span>
-                        <p class="folder-desc">Personal travel films reflecting growth and meaningful moments.</p>
+                        <p class="folder-desc">Le mie storie più introspettive, le più vere e meno costruite
+Solo io, un viaggio e una camera. Non serve altro.</p>
                     </div>
                 </div>
             </div>
@@ -46,9 +79,10 @@
     <div id="overlayShort" class="category-window">
         <div class="close-cat-btn" onclick="closeCategory('overlayShort')">&times;</div>
         <div class="container cat-content pb-5">
-            <header class="text-center mb-5">
-                <h2 class="folder-title">Short Films</h2>
-                <p class="text-white-50">Cinematic storytelling with actors and scripts.</p>
+            <header class="text-center mb-5 d-flex flex-column align-items-center">
+                <h2 class="folder-title" style="width: 100%; text-align: center; margin-left: 0; margin-right: 0;">Short Films</h2>
+                <p class="text-white-50" style="width: 100%; text-align: center; max-width: 600px;">Esplorando lo storytelling cinematografico, sono le storie nate nella mia testa che, con tanta fatica
+e soprattutto una matta passione, hanno preso vita. Ma è solo l’inizio.</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayShort"></div>
         </div>
@@ -57,9 +91,10 @@
     <div id="overlayJourney" class="category-window">
         <div class="close-cat-btn" onclick="closeCategory('overlayJourney')">&times;</div>
         <div class="container cat-content pb-5">
-            <header class="text-center mb-5">
-                <h2 class="folder-title">Journey Films</h2>
-                <p class="text-white-50">Personal growth and travel experiences.</p>
+            <header class="text-center mb-5 d-flex flex-column align-items-center">
+                <h2 class="folder-title" style="width: 100%; text-align: center; margin-left: 0; margin-right: 0;">Journey Films</h2>
+                <p class="text-white-50" style="width: 100%; text-align: center; max-width: 600px;">Le mie storie più introspettive, le più vere e meno costruite
+Solo io, un viaggio e una camera. Non serve altro.</p>
             </header>
             <div class="row g-4 video-grid" data-category="overlayJourney"></div>
         </div>
@@ -82,5 +117,37 @@
         function openCategory(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeCategory(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
     </script>
+
+
+    <style>
+    /* 1. Abbassa l'intero contenitore del titolo e dei video */
+    .category-window .cat-content {
+        padding-top: 120px !important; /* Questo crea lo spazio dal bordo superiore */
+    }
+
+    /* 2. Assicura che l'header interno non resetti lo spazio */
+    .category-window header {
+        margin-top: 0 !important;
+        margin-bottom: 60px !important; /* Spazio tra il titolo e i video */
+    }
+
+    /* 3. Stile del titolo per renderlo più arioso */
+    .category-window .folder-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.2rem !important; /* Un po' più grande su PC */
+        letter-spacing: 5px !important;
+        margin-bottom: 15px !important;
+        font-weight: 300 !important;
+    }
+
+    /* 4. La descrizione sotto il titolo */
+    .category-window .text-white-50 {
+        font-size: 0.9rem !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+    </style>
+
 </body>
 </html>

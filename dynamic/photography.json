@@ -32,58 +32,93 @@
       "../media/photography/paesaggi/9.jpg"
     ]
   },
+  "products": {
+    "title": "Commercial Products",
+    "cover": "../media/photography/coppini/7.jpg"
+  },
   "alma": {
-    "title": "ALMA SCUOLA DI CUCINA ITALIANA",
-    "description": "Collaborazioni con l'eccellenza della cucina italiana.",
-    "rows": {
-      "row1": ["../media/photography/alma/1.jpg", "../media/photography/alma/2.jpg"],
-      "row2": ["../media/photography/alma/3.jpg", "../media/photography/alma/4.jpg"],
-      "row3": ["../media/photography/alma/5.jpg", "../media/photography/alma/6.jpg"]
-    }
+    "title": "ALMA SCUOLA DI CUCINA",
+    "cover": "../media/photography/alma/Ph30dduu.jpg",
+    "images": [
+      "../media/photography/alma/1.jpg",
+      "../media/photography/alma/2.jpg",
+      "../media/photography/alma/3.jpg",
+      "../media/photography/alma/4.jpg",
+      "../media/photography/alma/Ph10.jpg",
+      "../media/photography/alma/Ph10a.jpg",
+      "../media/photography/alma/Ph30dduu.jpg",
+      "../media/photography/alma/5.jpg",
+      "../media/photography/alma/6.jpg",
+      "../media/photography/alma/7.jpg"
+    ]
   },
   "coppini": {
     "title": "COPPINI ARTE OLEARIA",
-    "description": "Racconti visivi legati alla terra e all'arte olearia.",
-    "rows": {
-      "row1": ["../media/photography/coppini/1.jpg", "../media/photography/coppini/2.jpg"],
-      "row2": ["../media/photography/coppini/3.jpg", "../media/photography/coppini/4.jpg"],
-      "row3": ["../media/photography/coppini/5.jpg", "../media/photography/coppini/6.jpg"]
-    }
+    "cover": "../media/photography/coppini/7.jpg",
+    "images": [
+      "../media/photography/coppini/4.jpg",
+      "../media/photography/coppini/7.jpg",
+      "../media/photography/coppini/6.jpg",
+      "../media/photography/coppini/1.jpg",
+      "../media/photography/coppini/5.jpg"
+    ]
   },
   "riserva": {
     "title": "RISERVA SAN MASSIMO",
-    "description": "Scatti commerciali e paesaggistici realizzati per Riserva San Massimo.",
-    "rows": {
-      "row1": [],
-      "row2": [],
-      "row3": []
-    }
+    "cover": "../media/photography/riserva/2.jpg",
+    "images": [
+      "../media/photography/riserva/4.jpg",
+      "../media/photography/riserva/5.jpg",
+      "../media/photography/riserva/6.jpg",
+      "../media/photography/riserva/1.jpg",
+      "../media/photography/riserva/2.jpg",
+      "../media/photography/riserva/3.jpg"
+    ]
   },
   "vanilla": {
     "title": "DON VANILLA",
-    "description": "Progetti fotografici commerciali per Don Vanilla.",
-    "rows": {
-      "row1": [],
-      "row2": [],
-      "row3": []
-    }
+    "cover": "../media/photography/vanilla/3.jpg",
+    "images": [
+      "../media/photography/vanilla/1.jpg",
+      "../media/photography/vanilla/2.jpg",
+      "../media/photography/vanilla/3.jpg",
+      "../media/photography/vanilla/4.jpg"
+    ]
   },
   "eventi": {
     "title": "CERIMONIE / EVENTI",
-    "description": "Reportage di eventi e momenti unici.",
-    "rows": {
-      "row1": [],
-      "row2": [],
-      "row3": []
-    }
+    "cover": "../media/photography/cerimonieeventi/6.jpg",
+    "images": [
+      "../media/photography/cerimonieeventi/1.jpg",
+      "../media/photography/cerimonieeventi/2.jpg",
+      "../media/photography/cerimonieeventi/3.jpg",
+      "../media/photography/cerimonieeventi/4.jpg",
+      "../media/photography/cerimonieeventi/5.jpg",
+      "../media/photography/cerimonieeventi/6.jpg",
+      "../media/photography/cerimonieeventi/7.jpg",
+      "../media/photography/cerimonieeventi/8.jpg",
+      "../media/photography/cerimonieeventi/9.jpg"
+    ]
   },
   "backstage": {
-    "title": "BACKSTAGE FILM \"Sulla Stessa Barca\"",
-    "description": "Fotografia di scena e dietro le quinte.",
-    "rows": {
-      "row1": [],
-      "row2": [],
-      "row3": []
-    }
+    "title": "BACKSTAGE FILM",
+    "cover": "../media/photography/backstage/2.jpg",
+    "images": [
+      "../media/photography/backstage/1.jpg",
+      "../media/photography/backstage/2.jpg",
+      "../media/photography/backstage/3.jpg"
+    ]
+  },
+  "gelateriabrunelli": {
+    "title": "GELATERIA BRUNELLI",
+    "cover": "../media/photography/gelateriabrunelli/4.jpg",
+    "images": [
+      "../media/photography/gelateriabrunelli/6.jpg",
+      "../media/photography/gelateriabrunelli/1.jpg",
+      "../media/photography/gelateriabrunelli/7.jpg",
+      "../media/photography/gelateriabrunelli/4.jpg",
+      "../media/photography/gelateriabrunelli/2.jpg",
+      "../media/photography/gelateriabrunelli/3.jpg"
+    ]
   }
 }

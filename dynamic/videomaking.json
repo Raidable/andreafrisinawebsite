@@ -3,7 +3,7 @@
     { "id": "Y2ODxz_HI9M", "type": "youtube", "title": "Super Santos - Banda", "thumb": "maxresdefault", "aspect": "16x9", "external_link": true },
     { "id": "bf8p-BE5QuM", "type": "youtube", "title": "Campese - Gallina", "thumb": "hqdefault", "aspect": "16x9", "external_link": true }
   ],
-  "overlayFood": [
+  "overlayBelmonte": [
     { "type": "local", "title": "Assaggi", "src": "../media/videomaking/foodfilms/Assaggi.mp4", "poster": "../media/videomaking/foodfilms/Assaggi.jpg", "aspect": "9x16" },
     { "type": "local", "title": "Gamberetti ASMR", "src": "../media/videomaking/foodfilms/Ricetta32GamberettiAsmr.mp4", "poster": "../media/videomaking/foodfilms/Gamberetti.jpg", "aspect": "9x16" },
     { "type": "local", "title": "Servizio ASMR", "src": "../media/videomaking/foodfilms/Servizio Asmr.mp4", "poster": "../media/videomaking/foodfilms/Servizio.jpg", "aspect": "9x16" },
@@ -11,7 +11,7 @@
     { "type": "local", "title": "Spaghetti Cozze e Vongole", "src": "../media/videomaking/foodfilms/Ricetta1SpaghettiCozzeEVongole.mp4", "poster": "../media/videomaking/foodfilms/Spaghetti.jpg", "aspect": "9x16" }
   ],
   "overlayEvent": [
-    { "type": "local", "title": "Cozy Talks", "src": "../media/videomaking/eventfilms/Cozy Talks - Film Della Serata.mp4", "poster": "../media/videomaking/eventfilms/cozy.jpg", "aspect": "16x9" },
+    { "type": "local", "title": "Cozy Talks", "src": "../media/videomaking/eventfilms/Cozy Talks - Film Della Serata.mp4", "poster": "../media/videomaking/eventfilms/cozy.jpg", "aspect": "9x16" },
     { "type": "local", "title": "Film Del Karaoke", "src": "../media/videomaking/eventfilms/Film Del Karaoke.mp4", "poster": "../media/videomaking/eventfilms/filmkaraoke.jpg", "aspect": "16x9" },
     { "type": "local", "title": "Madiscool League", "src": "../media/videomaking/eventfilms/Madiscool League - Film Della Giornata.mp4", "poster": "../media/videomaking/eventfilms/madis.jpg", "aspect": "16x9" },
     { "type": "local", "title": "Stars Trial Luseney", "src": "../media/videomaking/eventfilms/Stars Trial Luseney 2025 - Film Della Giornata.mp4", "poster": "../media/videomaking/eventfilms/stars.jpg", "aspect": "16x9" },
@@ -26,19 +26,28 @@
     { "type": "local", "title": "Spot - Gioielli", "src": "../media/videomaking/commercialfilms/Spot Gioielli.mp4", "poster": "../media/videomaking/commercialfilms/gioielli.jpg", "aspect": "16x9" },
     { "type": "local", "title": "Spot - Phone Hub", "src": "../media/videomaking/commercialfilms/Spot Gallina X Phone Hub.mp4", "poster": "../media/videomaking/commercialfilms/phonehub.jpg", "aspect": "16x9" }
   ],
-  "overlayTeaser": [
-    { "id": "hudKdKJ0lO4", "type": "youtube", "title": "Chelcio - Apertura Iscrizioni", "thumb": "maxresdefault", "aspect": "16x9", "external_link": false },
-    { "id": "cljOrVQFW0w", "type": "youtube", "title": "Chelcio - In Theatre", "thumb": "hqdefault", "aspect": "16x9", "external_link": false }
+  "overlayStorytelling": [
+    { "id": "hudKdKJ0lO4", "type": "youtube", "title": "Chelcio - Apertura Iscrizioni", "thumb": "maxresdefault", "aspect": "16x9", "external_link": true }
+    
   ],
   "overlayFashion": [
     { "type": "local", "title": "Sfilata - LV", "src": "../media/videomaking/fashionfilms/Sfilata Lv.mp4", "poster": "../media/videomaking/fashionfilms/sfilata.jpg", "aspect": "16x9" }
   ],
-    "overlayBelmonte": [
+
+  "overlayMusic": [
+
   ],
-  "overlayMusic": [],
+
   "overlayAlma": [
 
+  ],
+  "overlayNightlife": [
+
+  ],
+  "overlayCeremonies": [
+
   ]
+
 
   
 }

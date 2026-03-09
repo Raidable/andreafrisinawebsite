@@ -260,4 +260,53 @@ document.addEventListener("DOMContentLoaded", function() {
         faders.forEach(function(fader) { fader.classList.add('visible'); });
     }
 
+    window.addEventListener('scroll', function() {
+        var portfolioSection = document.getElementById('portfolio');
+        if (portfolioSection) {
+            var videoWrapper = portfolioSection.querySelector('.bg-video-wrapper');
+            if (videoWrapper) {
+                var rect = portfolioSection.getBoundingClientRect();
+                // Mostra il video solo quando sei vicino alla sezione (400px di margine)
+                if (rect.top < window.innerHeight + 400 && rect.bottom > -400) {
+                    videoWrapper.style.opacity = "1";
+                } else {
+                    videoWrapper.style.opacity = "0";
+                }
+            }
+        }
+    });
+
+
+    var portfolioSection = document.getElementById('portfolio');
+    var lazyVideo = document.getElementById('lazy-portfolio-video');
+    var videoLoaded = false;
+
+    if (portfolioSection && lazyVideo) {
+        window.addEventListener('scroll', function() {
+            var rect = portfolioSection.getBoundingClientRect();
+            
+            // Quando la sezione è a 600px dallo schermo, carica il video fisicamente
+            if (!videoLoaded && rect.top < window.innerHeight + 600) {
+                var source = lazyVideo.querySelector('source');
+                if (source && source.getAttribute('data-src')) {
+                    source.src = source.getAttribute('data-src');
+                    lazyVideo.load();
+                    lazyVideo.play();
+                    lazyVideo.style.opacity = "1";
+                    videoLoaded = true; // Impedisce di ricaricarlo inutilmente
+                }
+            }
+            
+            // Gestione opacità di sicurezza per lo scroll
+            if (videoLoaded) {
+                if (rect.top < window.innerHeight + 400 && rect.bottom > -400) {
+                    lazyVideo.style.opacity = "1";
+                } else {
+                    lazyVideo.style.opacity = "0";
+                }
+            }
+        });
+    }
+
 });
+

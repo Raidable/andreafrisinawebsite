@@ -10,63 +10,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../css/style.css"> 
-    <link rel="stylesheet" href="../css/videomaking.css"> 
     <link rel="stylesheet" href="../css/photography.css">
 </head>
-<body style="background-color: #0a0a0a; color: white;">
+<body>
 
     <div class="top-social-center">
         <a href="https://vimeo.com/andreafrisinafilms" target="_blank"><i class="bi bi-vimeo"></i></a>
         <a href="https://www.instagram.com/andreafrisinastories/" target="_blank"><i class="bi bi-instagram"></i></a>
     </div>
 
-    <a href="portfolio-selection.html" class="back-link">&larr; Indietro</a>
+    <a href="index.html#contatti" class="contact-link-top">Contattami</a>
+    <a href="portfolio-selection.html" class="back-link-top">&larr; Indietro</a>
 
-    <header class="container" style="padding: 100px 0 40px 0; text-align:center;">
-        <h1 style="font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300;">Photography</h1>
-        <p style="color: #ccc; font-weight: 300; max-width: 800px; margin: 20px auto 0; line-height: 1.6;">
-            Scatto foto da quando ho memoria. Solo ultimamente ho deciso di approfondire questa arte che considero amica, ed accostarla alle mie storie in movimento.
-            <br><br>
-            Qui una carrellata di fotografie, varie e differenti tra loro, con l'intento di raccontare qualcosa. Come sempre.
-        </p>
+    <header class="container header-premium">
+        <h1 class="section-main-heading">Photography</h1>
+        
+        <div class="description-content">
+            <p class="text-highlight">Scatto foto da quando ne ho memoria.</p>
+            
+            <p>Solo negli ultimi tempi ho deciso di approfondire questa arte, che considero amica, e affiancarla alle mie <strong>storie in movimento</strong></p>
+            
+            <p style="margin-top: 25px;">
+                Qui una carrellata di fotografie diverse tra loro: da quelle più personali a quelle commerciali, ma tutte con l’intento di <strong>raccontare qualcosa</strong>
+            </p>
+
+            <p class="closing-text">Come sempre.</p>
+        </div>
+
+        <div class="mobile-scroll-arrow d-lg-none">
+            <i class="bi bi-chevron-down"></i>
+        </div>
     </header>
 
     <div class="marquee-static-top">
         <div class="marquee-row" id="marqueeFoodTop"></div>
     </div>
 
-    <div class="container py-5">
+    <div class="container pb-5">
         <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openPhotoCategory('alma')" style="background-image: url('../media/photography/covers/alma.jpg');">
-                    <div class="folder-overlay"><span class="folder-title">ALMA SCUOLA DI CUCINA</span></div>
+        
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="folder-card" data-key="products" onclick="openSubFolder('productsOverlay')">
+                        <div class="folder-overlay"><span class="folder-title">Commercial Products</span></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="folder-card" onclick="openPhotoCategory('alma')">
+                        <div class="folder-overlay"><span class="folder-title">ALMA SCUOLA DI CUCINA</span></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="folder-card" onclick="openPhotoCategory('eventi')">
+                        <div class="folder-overlay"><span class="folder-title">CERIMONIE / EVENTI</span></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="folder-card" onclick="openPhotoCategory('backstage')">
+                        <div class="folder-overlay"><span class="folder-title">BACKSTAGE FILM</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openPhotoCategory('coppini')" style="background-image: url('../media/photography/covers/coppini.jpg');">
-                    <div class="folder-overlay"><span class="folder-title">COPPINI ARTE OLEARIA</span></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openPhotoCategory('riserva')" style="background-image: url('../media/photography/covers/riserva.jpg');">
-                    <div class="folder-overlay"><span class="folder-title">RISERVA SAN MASSIMO</span></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openPhotoCategory('vanilla')" style="background-image: url('../media/photography/covers/vanilla.jpg');">
-                    <div class="folder-overlay"><span class="folder-title">DON VANILLA</span></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openPhotoCategory('eventi')" style="background-image: url('../media/photography/covers/eventi.jpg');">
-                    <div class="folder-overlay"><span class="folder-title">CERIMONIE / EVENTI</span></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="folder-card" onclick="openPhotoCategory('backstage')" style="background-image: url('../media/photography/covers/backstage.jpg');">
-                    <div class="folder-overlay"><span class="folder-title">BACKSTAGE FILM</span></div>
-                </div>
-            </div>
+
+
         </div>
     </div>
 
@@ -74,14 +83,47 @@
         <div class="marquee-row reverse" id="marqueeLandscapeBottom"></div>
     </div>
 
+    <div id="productsOverlay" class="category-window">
+    <div class="close-cat-btn" onclick="closeSubFolder('productsOverlay')">&times;</div>
+    <div class="container cat-content">
+        <header class="text-center mb-5">
+            <h2 class="folder-title-overlay">Commercial Products</h2>
+        </header>
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openPhotoCategory('gelateriabrunelli')">
+                    <div class="folder-overlay"><span class="folder-title">GELATERIA BRUNELLI</span></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openPhotoCategory('vanilla')">
+                    <div class="folder-overlay"><span class="folder-title">DON VANILLA</span></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openPhotoCategory('riserva')">
+                    <div class="folder-overlay"><span class="folder-title">RISERVA SAN MASSIMO</span></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="folder-card" onclick="openPhotoCategory('coppini')">
+                    <div class="folder-overlay"><span class="folder-title">COPPINI ARTE OLEARIA</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div id="photoCategoryOverlay" class="category-window">
         <div class="close-cat-btn" onclick="closePhotoCategory()">&times;</div>
-        <div class="container-fluid cat-content">
-            <h2 id="catTitle" class="text-center mb-5 folder-title" style="font-size: 2rem;"></h2>
-            <div class="marquee-container">
-                <div class="marquee-row" id="photoRow1"></div>
-                <div class="marquee-row reverse" id="photoRow2"></div>
-                <div class="marquee-row" id="photoRow3"></div>
+        
+        <div class="container-fluid cat-content d-flex flex-column justify-content-center" style="height: 100vh;">
+            <header class="text-center mb-5">
+                <h2 id="catTitle" class="folder-title-overlay"></h2>
+            </header>
+            
+            <div class="marquee-static-top" style="min-height: 400px; mask-image: none; -webkit-mask-image: none; background: transparent;">
+                <div class="marquee-row" id="photoRowSingle"></div>
             </div>
         </div>
     </div>
@@ -94,5 +136,6 @@
     </div>
 
     <script src="../js/dynamic_photography.js"></script>
+
 </body>
 </html>
