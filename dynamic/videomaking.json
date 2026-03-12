@@ -39,11 +39,13 @@
   ],
 
   "overlayAlma": [
+    { "type": "local", "title": "Alma - Piccoli", "src": "../media/videomaking/alma/AlmaPiccoli.mp4", "poster": "../media/videomaking/alma/almapiccoli.jpg", "aspect": "9x16" }
 
   ],
   "overlayNightlife": [
 
   ],
+
   "overlayCeremonies": [
 
   ]

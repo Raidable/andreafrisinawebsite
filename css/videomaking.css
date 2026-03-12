@@ -19,24 +19,14 @@ body {
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
     display: flex;
     gap: 25px;
-    align-items: center;
+    z-index: 1000;
 }
 
-.top-social-center a {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.4rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
 
-.top-social-center a:hover {
-    color: white;
-    transform: scale(1.2);
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
-}
+.top-social-center a { color: rgba(255, 255, 255, 0.6); font-size: 1.4rem; transition: 0.3s; }
+.top-social-center a:hover { color: white; transform: scale(1.1); }
 
 /* Tasto Contatti (Alto a DX) */
 .contact-link {
@@ -106,8 +96,10 @@ header.container {
 
 /* Regola per TUTTI i paragrafi della descrizione */
 .description-content p {
-    line-height: 1.9 !important;   /* Distanza tra le righe (come in Home) */
-    margin-bottom: 15px !important; /* Distanza tra un paragrafo e l'altro */
+    line-height: 1.3 !important;   /* Distanza tra le righe (come in Home) */
+    margin-bottom: 0 !important; /* Azzerato */
+    margin-top: 0 !important;    /* AGGIUNGI QUESTO: rimuove lo spazio sopra */
+    padding-bottom: 2px !important; /* Usa il padding se vuoi un controllo millimetrico */
 }
 
 /* Stile per il primo paragrafo (quello in evidenza) */
@@ -115,7 +107,7 @@ header.container {
     font-size: 1.1rem !important; 
     color: white !important;
     font-weight: 400 !important;
-    margin-bottom: 30px !important; /* Più spazio dopo il primo blocco */
+    margin-bottom: 15px !important; /* Regola questo per distanziarlo dal resto */
 }
 
 /* Stile per l'ultimo paragrafo (la chiusura in maiuscolo) */
@@ -159,6 +151,8 @@ header.container {
     text-align: center;
 }
 
+
+
 .folder-overlay p {
     white-space: normal !important;
 }
@@ -172,14 +166,23 @@ header.container {
     color: white; 
     margin-bottom: 10px; 
     width: 100%;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8), 0px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .folder-desc { 
+    display: block !important; /* Forza il paragrafo a non comportarsi come elemento flex */
     font-family: 'Montserrat', sans-serif; 
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9), 0px 1px 3px rgba(0, 0, 0, 1);
+    font-weight: 400; /* Leggermente più spesso per la lettura */
+    text-align: center; 
+    color: white !important; /* Bianco pieno invece di grigio */
+     width: 100%; /* Assicura che il testo occupi tutta la larghezza disponibile */
+     margin-top: 10px; /* Spazio tra titolo e descrizione */
+     clear: both; /* Assicura che il testo non si sovrapponga al titolo */
     font-size: 0.8rem; /* Ridotto */
     font-weight: 300; 
     color: #ddd; 
-    line-height: 1.4; 
+    line-height: 1.3; 
 }
 
 /* =========================================
@@ -218,7 +221,7 @@ header.container {
     
     .section-main-heading { 
         font-size: 1.3rem !important; 
-        margin-bottom: 20px !important; 
+        margin-bottom: 1px !important; 
         letter-spacing: 4px !important;
     }
     
@@ -229,48 +232,64 @@ header.container {
     }
 
     .description-content p {
-        line-height: 1.6 !important;
+        line-height: 1.4 !important;
         font-size: 0.9rem !important;
     }
 
-    /* Navigazione mobile - Fix sovrapposizioni */
-    .top-social-center { 
-        top: 20px !important; /* Alzati per lasciare spazio ai lati */
-    }
-    
-    .contact-link { 
-        top: 25px !important; 
-        right: 20px !important; 
-        padding: 6px 12px !important; 
-        font-size: 0.65rem !important; 
-    }
-    
+    .top-social-center {
+            position: absolute !important; /* Non fixed, così segue l'header */
+            top: 85px !important;         /* Distanza perfetta per stare sopra il titolo */
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            display: flex !important;
+            gap: 20px !important;
+            width: auto !important;
+            z-index: 1000;
+        }
+        
     .back-link { 
-        top: 28px !important; 
-        left: 20px !important; 
-        font-size: 0.65rem !important; 
-    }
+            position: fixed !important; 
+            top: 25px !important; 
+            left: 20px !important; 
+            font-size: 0.7rem !important; 
+        }
+
+        .contact-link { 
+            position: fixed !important; 
+            top: 20px !important; 
+            right: 20px !important; 
+            padding: 6px 12px !important; 
+            font-size: 0.7rem !important; 
+        }
 
     /* Cartelle piccole */
     .folder-card { height: 250px !important; margin-bottom: 15px !important; }
     .folder-title { font-size: 1.1rem !important; letter-spacing: 2px !important; }
-    .folder-desc { 
-        font-size: 0.75rem !important; 
-        display: block !important; /* Forza il comportamento a blocchi */
-         width: 100%;               /* Assicura che occupi tutto lo spazio */
 
-    }
 
     .category-window .cat-content { padding-top: 140px !important; }
     
     .category-window header {
         padding: 0 !important;
         margin-top: 50px !important; /* Spazio per la X */
-        margin-bottom: 20px !important;
+        margin-bottom: 10px !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
     }
+
+    .description-content p {
+        line-height: 1.4 !important; /* Interlinea compatta */
+        margin-top: 0 !important;    /* Rimuove lo spazio sopra ogni paragrafo */
+        margin-bottom: 1px !important; /* Spazio minimo tra i paragrafi (regola questo valore) */
+        font-size: 0.9rem !important;
+    }
+
+    /* Se vuoi che il primo paragrafo mantenga un po' di distacco dagli altri anche su mobile */
+    .description-content p:first-child {
+        margin-bottom: 5px !important; 
+    }
+
 }
 
 /* Animazione Freccia */

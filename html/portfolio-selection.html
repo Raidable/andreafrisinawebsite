@@ -125,15 +125,17 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+
             const container = document.getElementById('dynamic-bg-container');
             if (!container) return;
 
             if (window.innerWidth > 992) {
                 // DESKTOP: Inseriamo il video
                 container.innerHTML = `
-                    <video autoplay muted loop playsinline class="local-bg-video" 
+                    <video autoplay muted loop playsinline class="local-bg-video"
                         style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;">
                         <source src="../media/prova2.mp4" type="video/mp4">
                     </video>
@@ -144,7 +146,8 @@
                 container.style.backgroundAttachment = "scroll";
             }
         });
-        </script>
+
+        </script> 
 
 </body>
 </html>

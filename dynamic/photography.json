@@ -120,5 +120,11 @@
       "../media/photography/gelateriabrunelli/2.jpg",
       "../media/photography/gelateriabrunelli/3.jpg"
     ]
+  },
+  "chefforcone": {
+    "title": "CHEF EMMANUELE FORCONE",
+    "cover": "../media/photography/chefforcone/1.jpg",
+    "images": [
+    ]
   }
 }

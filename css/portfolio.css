@@ -249,8 +249,23 @@
     .cat-card:hover .card-bg-img {
         transform: scale(1.1);
         filter: brightness(1) grayscale(0%);
+       
+
     }
     .cat-card:hover .cat-name { letter-spacing: 8px; }
+
+    .local-bg-wrapper {
+        position: absolute !important; /* Meno pesante di fixed */
+        height: 100% !important;
+    }
+
+    /* Riduci l'uso dei filtri (brightness/grayscale) che richiedono calcoli continui */
+    .card-bg-img {
+        filter: none !important; 
+        background-color: #111;
+    }
+    
+
 }
 
 /* =========================================
